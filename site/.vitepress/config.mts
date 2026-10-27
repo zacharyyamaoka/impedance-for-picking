@@ -9,7 +9,9 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: false,
   // WHY: Vite's dev pre-bundling moves @mujoco/mujoco's JS away from its .wasm (same fix as pidtuna-website)
-  vite: { optimizeDeps: { exclude: ['@mujoco/mujoco'] } },
+  // WHY worker format 'es': LivePick's physics worker reuses lib/mujoco.ts, whose dynamic import() can't code-split into Vite's
+  // default iife worker bundle (the build fails otherwise); ES-module workers run in Chrome 80+, Safari 15+, Firefox 114+
+  vite: { optimizeDeps: { exclude: ['@mujoco/mujoco'] }, worker: { format: 'es' } },
   head: [
     ['script', {}, HEAD_SCRIPT],
     ['link', { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }],
