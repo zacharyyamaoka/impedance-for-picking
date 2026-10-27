@@ -1,0 +1,1612 @@
+{
+ "schema": "impedance-livepick/1",
+ "source": {
+  "package": "bam_impedance_controller",
+  "lane": "/home/bam/bam_ws/.claude/worktrees/bam-impedance-controller/src/core/mdp/agent/controllers/bam_impedance_controller",
+  "commit": "3b8050fe",
+  "dirty_src": [],
+  "sources_sha256": "0063b41689225aef"
+ },
+ "loop_hz": 4000.0,
+ "joints": [
+  "shoulder_pan_joint",
+  "shoulder_lift_joint",
+  "elbow_joint",
+  "wrist_1_joint",
+  "wrist_2_joint",
+  "wrist_3_joint"
+ ],
+ "home_rad": [
+  0.0,
+  -1.2,
+  1.4,
+  -1.6,
+  -1.57,
+  0.0
+ ],
+ "home_seed": [
+  0.0,
+  -1.2,
+  1.4,
+  -1.6,
+  -1.57,
+  0.0
+ ],
+ "torque_cap_nm": [
+  150.0,
+  150.0,
+  150.0,
+  28.0,
+  28.0,
+  28.0
+ ],
+ "sites": {
+  "tcp": "tcp",
+  "tip_body": "tip",
+  "tip_geom": "tip_contact",
+  "belt_body": "belt",
+  "belt_geom": "belt_surface",
+  "belt_joint": "belt_x",
+  "compensator_joint": "compensator"
+ },
+ "truths": [
+  {
+   "name": "shoulder_pan_joint",
+   "armature_kg_m2": 0.5,
+   "coulomb_nm": 4.0,
+   "viscous_nm_s_rad": 2.0,
+   "torque_bandwidth_hz": 300.0,
+   "velocity_filter_hz": 200.0,
+   "encoder_counts_per_rev": 131072,
+   "measurement_delay_s": 0.0005,
+   "velocity_noise_rad_s": 0.0,
+   "rotor_inertia_kg_m2": 0.5
+  },
+  {
+   "name": "shoulder_lift_joint",
+   "armature_kg_m2": 0.5,
+   "coulomb_nm": 4.0,
+   "viscous_nm_s_rad": 2.0,
+   "torque_bandwidth_hz": 300.0,
+   "velocity_filter_hz": 200.0,
+   "encoder_counts_per_rev": 131072,
+   "measurement_delay_s": 0.0005,
+   "velocity_noise_rad_s": 0.0,
+   "rotor_inertia_kg_m2": 0.5
+  },
+  {
+   "name": "elbow_joint",
+   "armature_kg_m2": 0.5,
+   "coulomb_nm": 4.0,
+   "viscous_nm_s_rad": 2.0,
+   "torque_bandwidth_hz": 300.0,
+   "velocity_filter_hz": 200.0,
+   "encoder_counts_per_rev": 131072,
+   "measurement_delay_s": 0.0005,
+   "velocity_noise_rad_s": 0.0,
+   "rotor_inertia_kg_m2": 0.5
+  },
+  {
+   "name": "wrist_1_joint",
+   "armature_kg_m2": 0.08,
+   "coulomb_nm": 0.8,
+   "viscous_nm_s_rad": 0.3,
+   "torque_bandwidth_hz": 300.0,
+   "velocity_filter_hz": 200.0,
+   "encoder_counts_per_rev": 131072,
+   "measurement_delay_s": 0.0005,
+   "velocity_noise_rad_s": 0.0,
+   "rotor_inertia_kg_m2": 0.08
+  },
+  {
+   "name": "wrist_2_joint",
+   "armature_kg_m2": 0.08,
+   "coulomb_nm": 0.8,
+   "viscous_nm_s_rad": 0.3,
+   "torque_bandwidth_hz": 300.0,
+   "velocity_filter_hz": 200.0,
+   "encoder_counts_per_rev": 131072,
+   "measurement_delay_s": 0.0005,
+   "velocity_noise_rad_s": 0.0,
+   "rotor_inertia_kg_m2": 0.08
+  },
+  {
+   "name": "wrist_3_joint",
+   "armature_kg_m2": 0.08,
+   "coulomb_nm": 0.8,
+   "viscous_nm_s_rad": 0.3,
+   "torque_bandwidth_hz": 300.0,
+   "velocity_filter_hz": 200.0,
+   "encoder_counts_per_rev": 131072,
+   "measurement_delay_s": 0.0005,
+   "velocity_noise_rad_s": 0.0,
+   "rotor_inertia_kg_m2": 0.08
+  }
+ ],
+ "friction_solref": [
+  0.002,
+  1.0
+ ],
+ "noslip_iterations": 5,
+ "belt": {
+  "surface_z": 0.1,
+  "y": -0.45,
+  "half_size": [
+   1.5,
+   0.2,
+   0.02
+  ],
+  "mass_kg": 20.0,
+  "kv": 40000.0,
+  "speed_m_s": 0.25
+ },
+ "tool": {
+  "length_m": 0.12,
+  "tip_radius_m": 0.015,
+  "tool_mass_kg": 0.25,
+  "tip_mass_kg": 0.05
+ },
+ "compensator": {
+  "stiffness_n_m": 200.0,
+  "damping_n_s_m": 10.0,
+  "preload_n": 4.0,
+  "stroke_m": 0.03
+ },
+ "contact_impedance": 0.05,
+ "friction_mu": 0.6,
+ "objects": {
+  "rigid": {
+   "label": "Rigid",
+   "contact_stiffness_n_m": 100000.0,
+   "contact_damping_n_s_m": 200.0
+  },
+  "soft": {
+   "label": "Soft",
+   "contact_stiffness_n_m": 20000.0,
+   "contact_damping_n_s_m": 200.0
+  }
+ },
+ "surface_offset_m": 0.01,
+ "default_stiffness": [
+  3000.0,
+  3000.0,
+  500.0,
+  150.0,
+  150.0,
+  150.0
+ ],
+ "zeta_grid": [
+  0.3,
+  0.5,
+  0.7,
+  1.0,
+  1.4,
+  2.0
+ ],
+ "host_rates_hz": [
+  100.0,
+  250.0,
+  500.0,
+  1000.0
+ ],
+ "host_margin": 2.0,
+ "metrics": {
+  "impact_window_s": 0.1,
+  "lost_contact_s": 0.001
+ },
+ "diverged": {
+  "speed_rad_s": 20.0,
+  "tool_error_m": 0.3
+ },
+ "plan": {
+  "center_xy": [
+   -0.1,
+   -0.45
+  ],
+  "approach_m": 0.06,
+  "press_in_m": 0.015,
+  "descent_speed_m_s": 0.2,
+  "ramp_s": 0.1,
+  "dwell_s": 0.6,
+  "belt_speed_m_s": 0.25,
+  "belt_ramp_s": 0.3,
+  "hold_before_s": 0.1,
+  "hold_after_s": 0.1,
+  "tail_s": 0.2,
+  "lead_s": 0.3,
+  "disturbance_n": 20.0,
+  "disturbance_s": 0.2,
+  "disturbance_angle_rad": 1.5707963267948966,
+  "contact_speed_m_s": null,
+  "slow_zone_m": 0.03,
+  "phases": {
+   "descend": 0.4,
+   "dwell": 0.875,
+   "lift": 1.475,
+   "lifted": 1.9500000000000002,
+   "belt_stop": 2.0500000000000003,
+   "end": 2.5500000000000003,
+   "disturbance_on": 1.075,
+   "disturbance_off": 1.2750000000000001
+  }
+ },
+ "path": {
+  "fine_dt": 0.0005,
+  "ik_tolerance": 1e-10,
+  "ik_damping": 0.0001,
+  "ik_iterations": 200,
+  "ik_stride": 4,
+  "coulomb_band_rad_s": 0.05,
+  "rotation": [
+   [
+    0.0,
+    1.0,
+    0.0
+   ],
+   [
+    1.0,
+    -0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  ]
+ },
+ "builds": {
+  "ur5e": {
+   "label": "UR-style (harmonic drive)",
+   "link_scale": 1.0,
+   "link_bodies": [
+    "shoulder_link",
+    "upper_arm_link",
+    "forearm_link",
+    "wrist_1_link",
+    "wrist_2_link",
+    "wrist_3_link"
+   ],
+   "models": {
+    "true": "models/pick_live_true.xml",
+    "true_comp": "models/pick_live_true_comp.xml",
+    "nominal": "models/pick_live_nominal.xml"
+   },
+   "armature_true": [
+    0.5,
+    0.5,
+    0.5,
+    0.08,
+    0.08,
+    0.08
+   ],
+   "armature_nominal": [
+    0.5,
+    0.5,
+    0.5,
+    0.08,
+    0.08,
+    0.08
+   ],
+   "coulomb_nm": [
+    4.0,
+    4.0,
+    4.0,
+    0.8,
+    0.8,
+    0.8
+   ],
+   "viscous_nm_s_rad": [
+    2.0,
+    2.0,
+    2.0,
+    0.3,
+    0.3,
+    0.3
+   ],
+   "limits": {
+    "0.3": [
+     {
+      "name": "shoulder_pan_joint",
+      "kpBase": 455.0,
+      "kdBase": 30.3,
+      "kpMax": 455.0,
+      "kdMax": 30.3,
+      "scaleMax": 2.0,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "shoulder_lift_joint",
+      "kpBase": 625.0,
+      "kdBase": 41.6,
+      "kpMax": 625.0,
+      "kdMax": 41.6,
+      "scaleMax": 2.0,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "elbow_joint",
+      "kpBase": 259.0,
+      "kdBase": 17.3,
+      "kpMax": 259.0,
+      "kdMax": 17.3,
+      "scaleMax": 2.0,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "wrist_1_joint",
+      "kpBase": 22.6,
+      "kdBase": 1.51,
+      "kpMax": 22.6,
+      "kdMax": 1.51,
+      "scaleMax": 2.0,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_2_joint",
+      "kpBase": 18.8,
+      "kdBase": 1.25,
+      "kpMax": 18.8,
+      "kdMax": 1.25,
+      "scaleMax": 2.0,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_3_joint",
+      "kpBase": 18.0,
+      "kdBase": 1.2,
+      "kpMax": 18.0,
+      "kdMax": 1.2,
+      "scaleMax": 2.0,
+      "torqueCapNm": 28.0
+     }
+    ],
+    "0.5": [
+     {
+      "name": "shoulder_pan_joint",
+      "kpBase": 455.0,
+      "kdBase": 30.3,
+      "kpMax": 31291.135051311216,
+      "kdMax": 204.4981477887875,
+      "scaleMax": 68.77172538749717,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "shoulder_lift_joint",
+      "kpBase": 625.0,
+      "kdBase": 41.6,
+      "kpMax": 31291.1350513229,
+      "kdMax": 240.40747950009313,
+      "scaleMax": 50.06581608211664,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "elbow_joint",
+      "kpBase": 259.0,
+      "kdBase": 17.3,
+      "kpMax": 31291.13505120251,
+      "kdMax": 195.9142024118895,
+      "scaleMax": 120.81519324788614,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "wrist_1_joint",
+      "kpBase": 22.6,
+      "kdBase": 1.51,
+      "kpMax": 5264.910019973356,
+      "kdMax": 24.134039568629927,
+      "scaleMax": 232.96062035280335,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_2_joint",
+      "kpBase": 18.8,
+      "kdBase": 1.25,
+      "kpMax": 5599.9999999261245,
+      "kdMax": 22.527689271321076,
+      "scaleMax": 297.87234042160236,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_3_joint",
+      "kpBase": 18.0,
+      "kdBase": 1.2,
+      "kpMax": 5599.999999974003,
+      "kdMax": 21.19735715597381,
+      "scaleMax": 311.1111111096668,
+      "torqueCapNm": 28.0
+     }
+    ],
+    "0.7": [
+     {
+      "name": "shoulder_pan_joint",
+      "kpBase": 455.0,
+      "kdBase": 30.3,
+      "kpMax": 31291.135051311216,
+      "kdMax": 286.2974069043025,
+      "scaleMax": 68.77172538749717,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "shoulder_lift_joint",
+      "kpBase": 625.0,
+      "kdBase": 41.6,
+      "kpMax": 31291.1350513229,
+      "kdMax": 336.57047130013035,
+      "scaleMax": 50.06581608211664,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "elbow_joint",
+      "kpBase": 259.0,
+      "kdBase": 17.3,
+      "kpMax": 31291.13505120251,
+      "kdMax": 274.2798833766453,
+      "scaleMax": 120.81519324788614,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "wrist_1_joint",
+      "kpBase": 22.6,
+      "kdBase": 1.51,
+      "kpMax": 5264.910019973356,
+      "kdMax": 33.787655396081895,
+      "scaleMax": 232.96062035280335,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_2_joint",
+      "kpBase": 18.8,
+      "kdBase": 1.25,
+      "kpMax": 5599.9999999261245,
+      "kdMax": 31.538764979849503,
+      "scaleMax": 297.87234042160236,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_3_joint",
+      "kpBase": 18.0,
+      "kdBase": 1.2,
+      "kpMax": 5009.936826677318,
+      "kdMax": 28.069318233393908,
+      "scaleMax": 278.32982370429545,
+      "torqueCapNm": 28.0
+     }
+    ],
+    "1": [
+     {
+      "name": "shoulder_pan_joint",
+      "kpBase": 455.0,
+      "kdBase": 30.3,
+      "kpMax": 31291.135051311216,
+      "kdMax": 408.996295577575,
+      "scaleMax": 68.77172538749717,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "shoulder_lift_joint",
+      "kpBase": 625.0,
+      "kdBase": 41.6,
+      "kpMax": 31291.1350513229,
+      "kdMax": 480.81495900018626,
+      "scaleMax": 50.06581608211664,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "elbow_joint",
+      "kpBase": 259.0,
+      "kdBase": 17.3,
+      "kpMax": 31291.13505120251,
+      "kdMax": 391.828404823779,
+      "scaleMax": 120.81519324788614,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "wrist_1_joint",
+      "kpBase": 22.6,
+      "kdBase": 1.51,
+      "kpMax": 4756.645437577911,
+      "kdMax": 45.87910419145979,
+      "scaleMax": 210.4710370609695,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_2_joint",
+      "kpBase": 18.8,
+      "kdBase": 1.25,
+      "kpMax": 3896.5204503087075,
+      "kdMax": 37.58297103912296,
+      "scaleMax": 207.26172608025038,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_3_joint",
+      "kpBase": 18.0,
+      "kdBase": 1.2,
+      "kpMax": 3449.904714928931,
+      "kdMax": 33.275244065159576,
+      "scaleMax": 191.66137305160726,
+      "torqueCapNm": 28.0
+     }
+    ],
+    "1.4": [
+     {
+      "name": "shoulder_pan_joint",
+      "kpBase": 455.0,
+      "kdBase": 30.3,
+      "kpMax": 31291.135051311216,
+      "kdMax": 572.594813808605,
+      "scaleMax": 68.77172538749717,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "shoulder_lift_joint",
+      "kpBase": 625.0,
+      "kdBase": 41.6,
+      "kpMax": 31291.1350513229,
+      "kdMax": 673.1409426002607,
+      "scaleMax": 50.06581608211664,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "elbow_joint",
+      "kpBase": 259.0,
+      "kdBase": 17.3,
+      "kpMax": 31291.13505120251,
+      "kdMax": 548.5597667532905,
+      "scaleMax": 120.81519324788614,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "wrist_1_joint",
+      "kpBase": 22.6,
+      "kdBase": 1.51,
+      "kpMax": 2949.8977638277956,
+      "kdMax": 50.58200701531353,
+      "scaleMax": 130.52644972689362,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_2_joint",
+      "kpBase": 18.8,
+      "kdBase": 1.25,
+      "kpMax": 2416.4796628036793,
+      "kdMax": 41.43546693553599,
+      "scaleMax": 128.53615227679146,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_3_joint",
+      "kpBase": 18.0,
+      "kdBase": 1.2,
+      "kpMax": 2139.504896368709,
+      "kdMax": 36.686170281709195,
+      "scaleMax": 118.86138313159495,
+      "torqueCapNm": 28.0
+     }
+    ],
+    "2": [
+     {
+      "name": "shoulder_pan_joint",
+      "kpBase": 455.0,
+      "kdBase": 30.3,
+      "kpMax": 19603.296362959907,
+      "kdMax": 647.445571199881,
+      "scaleMax": 43.08416783068112,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "shoulder_lift_joint",
+      "kpBase": 625.0,
+      "kdBase": 41.6,
+      "kpMax": 27092.326351927102,
+      "kdMax": 894.7886307121329,
+      "scaleMax": 43.34772216308336,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "elbow_joint",
+      "kpBase": 259.0,
+      "kdBase": 17.3,
+      "kpMax": 17992.11378303465,
+      "kdMax": 594.2324275299202,
+      "scaleMax": 69.46762078391757,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "wrist_1_joint",
+      "kpBase": 22.6,
+      "kdBase": 1.51,
+      "kpMax": 1622.709402537052,
+      "kdMax": 53.59384445169845,
+      "scaleMax": 71.80130099721468,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_2_joint",
+      "kpBase": 18.8,
+      "kdBase": 1.25,
+      "kpMax": 1329.2814137337687,
+      "kdMax": 43.90268597001904,
+      "scaleMax": 70.70645817732812,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_3_joint",
+      "kpBase": 18.0,
+      "kdBase": 1.2,
+      "kpMax": 1176.920351167206,
+      "kdMax": 38.870598847752305,
+      "scaleMax": 65.38446395373367,
+      "torqueCapNm": 28.0
+     }
+    ]
+   },
+   "calibration": {
+    "bare": {
+     "efc_R": 28.994814854154598,
+     "impedance": 0.05,
+     "dmax": 0.05,
+     "virtual_mass_kg": 0.03448892517610653,
+     "solref": {
+      "rigid": [
+       -144974.07427077298,
+       -289.948148541546
+      ],
+      "soft": [
+       -28994.814854154596,
+       -289.948148541546
+      ]
+     }
+    },
+    "comp": {
+     "efc_R": 154.47814088451926,
+     "impedance": 0.05,
+     "dmax": 0.05,
+     "virtual_mass_kg": 0.006473407786202929,
+     "solref": {
+      "rigid": [
+       -772390.7044225964,
+       -1544.7814088451928
+      ],
+      "soft": [
+       -154478.14088451926,
+       -1544.7814088451928
+      ]
+     }
+    }
+   },
+   "q_pick": [
+    1.0571828116055149,
+    -1.417866403030326,
+    2.206350165216391,
+    -2.3592800889811327,
+    -1.5707963267946583,
+    1.0571828116053257
+   ],
+   "host_kp_max_100hz_7ms": {
+    "torque": [
+     2075.995495855101,
+     2869.0862208821345,
+     1905.3707337235144,
+     171.8454564158819,
+     140.77133643958925,
+     124.6362500859734
+    ],
+    "host_spring": [
+     36469.517535675,
+     50401.93509703437,
+     33472.110861622845,
+     3018.850907286605,
+     2472.964287761795,
+     2189.515303461159
+    ]
+   }
+  },
+  "qdd": {
+   "label": "QDD (10:1)",
+   "link_scale": 1.0,
+   "link_bodies": [
+    "shoulder_link",
+    "upper_arm_link",
+    "forearm_link",
+    "wrist_1_link",
+    "wrist_2_link",
+    "wrist_3_link"
+   ],
+   "models": {
+    "true": "models/pick_live_true.xml",
+    "true_comp": "models/pick_live_true_comp.xml",
+    "nominal": "models/pick_live_nominal.xml"
+   },
+   "armature_true": [
+    0.00183,
+    0.00183,
+    0.00183,
+    0.00183,
+    0.00183,
+    0.00183
+   ],
+   "armature_nominal": [
+    0.00183,
+    0.00183,
+    0.00183,
+    0.00183,
+    0.00183,
+    0.00183
+   ],
+   "coulomb_nm": [
+    4.0,
+    4.0,
+    4.0,
+    0.8,
+    0.8,
+    0.8
+   ],
+   "viscous_nm_s_rad": [
+    2.0,
+    2.0,
+    2.0,
+    0.3,
+    0.3,
+    0.3
+   ],
+   "limits": {
+    "0.3": [
+     {
+      "name": "shoulder_pan_joint",
+      "kpBase": 285.3977823448014,
+      "kdBase": 19.005610560543914,
+      "kpMax": 285.3977823448014,
+      "kdMax": 19.005610560543914,
+      "scaleMax": 2.0,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "shoulder_lift_joint",
+      "kpBase": 456.4289645388712,
+      "kdBase": 30.37991187970727,
+      "kpMax": 456.4289645388712,
+      "kdMax": 30.37991187970727,
+      "scaleMax": 2.0,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "elbow_joint",
+      "kpBase": 153.8118515150879,
+      "kdBase": 10.273919039424792,
+      "kpMax": 153.8118515150879,
+      "kdMax": 10.273919039424792,
+      "scaleMax": 2.0,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "wrist_1_joint",
+      "kpBase": 6.6309359244124,
+      "kdBase": 0.44304040910897013,
+      "kpMax": 6.6309359244124,
+      "kdMax": 0.44304040910897013,
+      "scaleMax": 2.0,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_2_joint",
+      "kpBase": 2.5836655110137055,
+      "kdBase": 0.17178627067910274,
+      "kpMax": 2.5836655110137055,
+      "kdMax": 0.17178627067910274,
+      "scaleMax": 2.0,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_3_joint",
+      "kpBase": 0.46373057143341984,
+      "kdBase": 0.03091537142889466,
+      "kpMax": 0.46373057143341984,
+      "kdMax": 0.03091537142889466,
+      "scaleMax": 2.0,
+      "torqueCapNm": 28.0
+     }
+    ],
+    "0.5": [
+     {
+      "name": "shoulder_pan_joint",
+      "kpBase": 285.3977823448014,
+      "kdBase": 19.005610560543914,
+      "kpMax": 31291.135051260408,
+      "kdMax": 161.9604510381793,
+      "scaleMax": 109.64042815671299,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "shoulder_lift_joint",
+      "kpBase": 456.4289645388712,
+      "kdBase": 30.37991187970727,
+      "kpMax": 31291.135051364938,
+      "kdMax": 205.44452158947163,
+      "scaleMax": 68.55641837493437,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "elbow_joint",
+      "kpBase": 153.8118515150879,
+      "kdBase": 10.273919039424792,
+      "kpMax": 31291.135051128393,
+      "kdMax": 150.9770510977588,
+      "scaleMax": 203.43773735835268,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "wrist_1_joint",
+      "kpBase": 6.6309359244124,
+      "kdBase": 0.44304040910897013,
+      "kpMax": 2475.561637912519,
+      "kdMax": 8.96405705154487,
+      "scaleMax": 373.33517713517807,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_2_joint",
+      "kpBase": 2.5836655110137055,
+      "kdBase": 0.17178627067910274,
+      "kpMax": 949.8651859702028,
+      "kdMax": 3.4394803942320844,
+      "scaleMax": 367.6424761336546,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_3_joint",
+      "kpBase": 0.46373057143341984,
+      "kdBase": 0.03091537142889466,
+      "kpMax": 157.6546898957896,
+      "kdMax": 0.570870711933133,
+      "scaleMax": 339.9704475132386,
+      "torqueCapNm": 28.0
+     }
+    ],
+    "0.7": [
+     {
+      "name": "shoulder_pan_joint",
+      "kpBase": 285.3977823448014,
+      "kdBase": 19.005610560543914,
+      "kpMax": 31291.135051260408,
+      "kdMax": 226.74463145345098,
+      "scaleMax": 109.64042815671299,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "shoulder_lift_joint",
+      "kpBase": 456.4289645388712,
+      "kdBase": 30.37991187970727,
+      "kpMax": 31291.135051364938,
+      "kdMax": 287.62233022526027,
+      "scaleMax": 68.55641837493437,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "elbow_joint",
+      "kpBase": 153.8118515150879,
+      "kdBase": 10.273919039424792,
+      "kpMax": 31291.135051128393,
+      "kdMax": 211.36787153686228,
+      "scaleMax": 203.43773735835268,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "wrist_1_joint",
+      "kpBase": 6.6309359244124,
+      "kdBase": 0.44304040910897013,
+      "kpMax": 2026.713319611339,
+      "kdMax": 11.355125444517498,
+      "scaleMax": 305.6451370838629,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_2_joint",
+      "kpBase": 2.5836655110137055,
+      "kdBase": 0.17178627067910274,
+      "kpMax": 777.6435030978375,
+      "kdMax": 4.356925788834971,
+      "scaleMax": 300.9845894458404,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_3_joint",
+      "kpBase": 0.46373057143341984,
+      "kdBase": 0.03091537142889466,
+      "kpMax": 129.07004819335592,
+      "kdMax": 0.7231444991176815,
+      "scaleMax": 278.3298237042954,
+      "torqueCapNm": 28.0
+     }
+    ],
+    "1": [
+     {
+      "name": "shoulder_pan_joint",
+      "kpBase": 285.3977823448014,
+      "kdBase": 19.005610560543914,
+      "kpMax": 31291.135051260408,
+      "kdMax": 323.9209020763586,
+      "scaleMax": 109.64042815671299,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "shoulder_lift_joint",
+      "kpBase": 456.4289645388712,
+      "kdBase": 30.37991187970727,
+      "kpMax": 31291.135051364938,
+      "kdMax": 410.88904317894327,
+      "scaleMax": 68.55641837493437,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "elbow_joint",
+      "kpBase": 153.8118515150879,
+      "kdBase": 10.273919039424792,
+      "kpMax": 31291.135051128393,
+      "kdMax": 301.9541021955176,
+      "scaleMax": 203.43773735835268,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "wrist_1_joint",
+      "kpBase": 6.6309359244124,
+      "kdBase": 0.44304040910897013,
+      "kpMax": 1395.6199606959167,
+      "kdMax": 13.461123901018153,
+      "scaleMax": 210.47103706096956,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_2_joint",
+      "kpBase": 2.5836655110137055,
+      "kdBase": 0.17178627067910274,
+      "kpMax": 535.4949734267128,
+      "kdMax": 5.164990748681325,
+      "scaleMax": 207.2617260802504,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_3_joint",
+      "kpBase": 0.46373057143341984,
+      "kdBase": 0.03091537142889466,
+      "kpMax": 88.8792380469357,
+      "kdMax": 0.8572637747179425,
+      "scaleMax": 191.66137305160728,
+      "torqueCapNm": 28.0
+     }
+    ],
+    "1.4": [
+     {
+      "name": "shoulder_pan_joint",
+      "kpBase": 285.3977823448014,
+      "kdBase": 19.005610560543914,
+      "kpMax": 22352.93293791824,
+      "kdMax": 383.28657506132373,
+      "scaleMax": 78.3220274322689,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "shoulder_lift_joint",
+      "kpBase": 456.4289645388712,
+      "kdBase": 30.37991187970727,
+      "kpMax": 31291.135051364938,
+      "kdMax": 575.2446604505205,
+      "scaleMax": 68.55641837493437,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "elbow_joint",
+      "kpBase": 153.8118515150879,
+      "kdBase": 10.273919039424792,
+      "kpMax": 19423.989602648886,
+      "kdMax": 333.06387441429916,
+      "scaleMax": 126.28408936838994,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "wrist_1_joint",
+      "kpBase": 6.6309359244124,
+      "kdBase": 0.44304040910897013,
+      "kpMax": 865.5125245800681,
+      "kdMax": 14.840975550739936,
+      "scaleMax": 130.52644972689365,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_2_joint",
+      "kpBase": 2.5836655110137055,
+      "kdBase": 0.17178627067910274,
+      "kpMax": 332.0944235559519,
+      "kdMax": 5.694435470962399,
+      "scaleMax": 128.53615227679148,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_3_joint",
+      "kpBase": 0.46373057143341984,
+      "kdBase": 0.03091537142889466,
+      "kpMax": 55.119657120981174,
+      "kdMax": 0.9451388171355972,
+      "scaleMax": 118.86138313159495,
+      "torqueCapNm": 28.0
+     }
+    ],
+    "2": [
+     {
+      "name": "shoulder_pan_joint",
+      "kpBase": 285.3977823448014,
+      "kdBase": 19.005610560543914,
+      "kpMax": 12296.12595304762,
+      "kdMax": 406.1088576030972,
+      "scaleMax": 43.0841678306811,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "shoulder_lift_joint",
+      "kpBase": 456.4289645388712,
+      "kdBase": 30.37991187970727,
+      "kpMax": 19785.155942014815,
+      "kdMax": 653.4519171153491,
+      "scaleMax": 43.34772216308336,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "elbow_joint",
+      "kpBase": 153.8118515150879,
+      "kdBase": 10.273919039424792,
+      "kpMax": 10684.943373122362,
+      "kdMax": 352.89571393313634,
+      "scaleMax": 69.46762078391755,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "wrist_1_joint",
+      "kpBase": 6.6309359244124,
+      "kdBase": 0.44304040910897013,
+      "kpMax": 476.1098262019788,
+      "kdMax": 15.724661438147677,
+      "scaleMax": 71.8013009972147,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_2_joint",
+      "kpBase": 2.5836655110137055,
+      "kdBase": 0.17178627067910274,
+      "kpMax": 182.68183739869568,
+      "kdMax": 6.033502956468271,
+      "scaleMax": 70.70645817732813,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_3_joint",
+      "kpBase": 0.46373057143341984,
+      "kdBase": 0.03091537142889466,
+      "kpMax": 30.320774832132756,
+      "kdMax": 1.0014158342015227,
+      "scaleMax": 65.38446395373367,
+      "torqueCapNm": 28.0
+     }
+    ]
+   },
+   "calibration": {
+    "bare": {
+     "efc_R": 28.994814854154598,
+     "impedance": 0.05,
+     "dmax": 0.05,
+     "virtual_mass_kg": 0.03448892517610653,
+     "solref": {
+      "rigid": [
+       -144974.07427077298,
+       -289.948148541546
+      ],
+      "soft": [
+       -28994.814854154596,
+       -289.948148541546
+      ]
+     }
+    },
+    "comp": {
+     "efc_R": 154.47814088451926,
+     "impedance": 0.05,
+     "dmax": 0.05,
+     "virtual_mass_kg": 0.006473407786202929,
+     "solref": {
+      "rigid": [
+       -772390.7044225964,
+       -1544.7814088451928
+      ],
+      "soft": [
+       -154478.14088451926,
+       -1544.7814088451928
+      ]
+     }
+    }
+   },
+   "q_pick": [
+    1.0571828116055149,
+    -1.417866403030326,
+    2.206350165216391,
+    -2.3592800889811327,
+    -1.5707963267946583,
+    1.0571828116053257
+   ],
+   "host_kp_max_100hz_7ms": {
+    "torque": [
+     1302.1637597249278,
+     2095.254484751961,
+     1131.5389975933408,
+     50.42018630066888,
+     19.34606632437626,
+     3.210979970760393
+    ],
+    "host_spring": [
+     22875.427313992284,
+     36807.844875351664,
+     19878.020639940132,
+     885.7436695385716,
+     339.85705001376186,
+     56.40806571312561
+    ]
+   }
+  },
+  "qdd_light": {
+   "label": "Light QDD (links x0.3)",
+   "link_scale": 0.3,
+   "link_bodies": [
+    "shoulder_link",
+    "upper_arm_link",
+    "forearm_link",
+    "wrist_1_link",
+    "wrist_2_link",
+    "wrist_3_link"
+   ],
+   "models": {
+    "true": "models/pick_live_true_light.xml",
+    "true_comp": "models/pick_live_true_light_comp.xml",
+    "nominal": "models/pick_live_nominal_light.xml"
+   },
+   "armature_true": [
+    0.00183,
+    0.00183,
+    0.00183,
+    0.00183,
+    0.00183,
+    0.00183
+   ],
+   "armature_nominal": [
+    0.00183,
+    0.00183,
+    0.00183,
+    0.00183,
+    0.00183,
+    0.00183
+   ],
+   "coulomb_nm": [
+    4.0,
+    4.0,
+    4.0,
+    0.8,
+    0.8,
+    0.8
+   ],
+   "viscous_nm_s_rad": [
+    2.0,
+    2.0,
+    2.0,
+    0.3,
+    0.3,
+    0.3
+   ],
+   "limits": {
+    "0.3": [
+     {
+      "name": "shoulder_pan_joint",
+      "kpBase": 101.2730777362372,
+      "kdBase": 6.744119242654917,
+      "kpMax": 101.2730777362372,
+      "kdMax": 6.744119242654917,
+      "scaleMax": 2.0,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "shoulder_lift_joint",
+      "kpBase": 151.28223538988215,
+      "kdBase": 10.069345587550556,
+      "kpMax": 151.28223538988215,
+      "kdMax": 10.069345587550556,
+      "scaleMax": 2.0,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "elbow_joint",
+      "kpBase": 60.90593230877022,
+      "kdBase": 4.068234088578088,
+      "kpMax": 60.90593230877022,
+      "kdMax": 4.068234088578088,
+      "scaleMax": 2.0,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "wrist_1_joint",
+      "kpBase": 3.7104698938115446,
+      "kdBase": 0.24791192653342622,
+      "kpMax": 3.7104698938115446,
+      "kdMax": 0.24791192653342622,
+      "scaleMax": 2.0,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_2_joint",
+      "kpBase": 2.087296106780785,
+      "kdBase": 0.13878298582319046,
+      "kpMax": 2.087296106780785,
+      "kdMax": 0.13878298582319046,
+      "scaleMax": 2.0,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_3_joint",
+      "kpBase": 0.4429809718776894,
+      "kdBase": 0.029532064791845964,
+      "kpMax": 0.4429809718776894,
+      "kdMax": 0.029532064791845964,
+      "scaleMax": 2.0,
+      "torqueCapNm": 28.0
+     }
+    ],
+    "0.5": [
+     {
+      "name": "shoulder_pan_joint",
+      "kpBase": 101.2730777362372,
+      "kdBase": 6.744119242654917,
+      "kpMax": 22687.065082811358,
+      "kdMax": 82.15030586187292,
+      "scaleMax": 224.01871839916984,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "shoulder_lift_joint",
+      "kpBase": 151.28223538988215,
+      "kdBase": 10.069345587550556,
+      "kpMax": 31291.135050935267,
+      "kdMax": 118.27744463803032,
+      "scaleMax": 206.83945454859426,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "elbow_joint",
+      "kpBase": 60.90593230877022,
+      "kdBase": 4.068234088578088,
+      "kpMax": 21999.28771818529,
+      "kdMax": 79.65985058867358,
+      "scaleMax": 361.2010666983498,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "wrist_1_joint",
+      "kpBase": 3.7104698938115446,
+      "kdBase": 0.24791192653342622,
+      "kpMax": 1385.2489350608782,
+      "kdMax": 5.016013455010686,
+      "scaleMax": 373.335177135178,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_2_joint",
+      "kpBase": 2.087296106780785,
+      "kdBase": 0.13878298582319046,
+      "kpMax": 767.3787091210248,
+      "kdMax": 2.778693296646086,
+      "scaleMax": 367.64247613365455,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_3_joint",
+      "kpBase": 0.4429809718776894,
+      "kdBase": 0.029532064791845964,
+      "kpMax": 150.60043924910744,
+      "kdMax": 0.5453271325350947,
+      "scaleMax": 339.9704475132386,
+      "torqueCapNm": 28.0
+     }
+    ],
+    "0.7": [
+     {
+      "name": "shoulder_pan_joint",
+      "kpBase": 101.2730777362372,
+      "kdBase": 6.744119242654917,
+      "kpMax": 18573.634476334515,
+      "kdMax": 104.06304009480665,
+      "scaleMax": 183.40150108510585,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "shoulder_lift_joint",
+      "kpBase": 151.28223538988215,
+      "kdBase": 10.069345587550556,
+      "kpMax": 27915.113062413802,
+      "kdMax": 156.40081286009638,
+      "scaleMax": 184.52340415562622,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "elbow_joint",
+      "kpBase": 60.90593230877022,
+      "kdBase": 4.068234088578088,
+      "kpMax": 18010.55920304411,
+      "kdMax": 100.90828194472718,
+      "scaleMax": 295.7110829818241,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "wrist_1_joint",
+      "kpBase": 3.7104698938115446,
+      "kdBase": 0.24791192653342622,
+      "kpMax": 1134.0870793395757,
+      "kdMax": 6.353982542225999,
+      "scaleMax": 305.6451370838629,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_2_joint",
+      "kpBase": 2.087296106780785,
+      "kdBase": 0.13878298582319046,
+      "kpMax": 628.2439617513154,
+      "kdMax": 3.51988064933371,
+      "scaleMax": 300.9845894458403,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_3_joint",
+      "kpBase": 0.4429809718776894,
+      "kdBase": 0.029532064791845964,
+      "kpMax": 123.29481580707476,
+      "kdMax": 0.6907874372762768,
+      "scaleMax": 278.32982370429545,
+      "torqueCapNm": 28.0
+     }
+    ],
+    "1": [
+     {
+      "name": "shoulder_pan_joint",
+      "kpBase": 101.2730777362372,
+      "kdBase": 6.744119242654917,
+      "kpMax": 12790.035357745262,
+      "kdMax": 123.36327617667595,
+      "scaleMax": 126.29255122527766,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "shoulder_lift_joint",
+      "kpBase": 151.28223538988215,
+      "kdBase": 10.069345587550556,
+      "kpMax": 19222.69351960401,
+      "kdMax": 185.40796668575865,
+      "scaleMax": 127.0651076120312,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "elbow_joint",
+      "kpBase": 60.90593230877022,
+      "kdBase": 4.068234088578088,
+      "kpMax": 12402.294731987151,
+      "kdMax": 119.62341521754665,
+      "scaleMax": 203.63032403990093,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "wrist_1_joint",
+      "kpBase": 3.7104698938115446,
+      "kdBase": 0.24791192653342622,
+      "kpMax": 780.9464465340213,
+      "kdMax": 7.532435170683832,
+      "scaleMax": 210.47103706096954,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_2_joint",
+      "kpBase": 2.087296106780785,
+      "kdBase": 0.13878298582319046,
+      "kpMax": 432.61659393197203,
+      "kdMax": 4.172701549532784,
+      "scaleMax": 207.26172608025036,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_3_joint",
+      "kpBase": 0.4429809718776894,
+      "kdBase": 0.029532064791845964,
+      "kpMax": 84.90234130581338,
+      "kdMax": 0.8189055530806505,
+      "scaleMax": 191.66137305160726,
+      "torqueCapNm": 28.0
+     }
+    ],
+    "1.4": [
+     {
+      "name": "shoulder_pan_joint",
+      "kpBase": 101.2730777362372,
+      "kdBase": 6.744119242654917,
+      "kpMax": 7931.9127726078705,
+      "kdMax": 136.00880424692835,
+      "scaleMax": 78.3220274322689,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "shoulder_lift_joint",
+      "kpBase": 151.28223538988215,
+      "kdBase": 10.069345587550556,
+      "kpMax": 11921.212411640496,
+      "kdMax": 204.41347399585445,
+      "scaleMax": 78.80113868569788,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "elbow_joint",
+      "kpBase": 60.90593230877022,
+      "kdBase": 4.068234088578088,
+      "kpMax": 7691.450198745846,
+      "kdMax": 131.88558352139836,
+      "scaleMax": 126.28408936838993,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "wrist_1_joint",
+      "kpBase": 3.7104698938115446,
+      "kdBase": 0.24791192653342622,
+      "kpMax": 484.3144620577449,
+      "kdMax": 8.304558150393152,
+      "scaleMax": 130.52644972689362,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_2_joint",
+      "kpBase": 2.087296106780785,
+      "kdBase": 0.13878298582319046,
+      "kpMax": 268.2930102279289,
+      "kdMax": 4.600430256233415,
+      "scaleMax": 128.53615227679146,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_3_joint",
+      "kpBase": 0.4429809718776894,
+      "kdBase": 0.029532064791845964,
+      "kpMax": 52.65333101836033,
+      "kdMax": 0.9028486314367749,
+      "scaleMax": 118.86138313159496,
+      "torqueCapNm": 28.0
+     }
+    ],
+    "2": [
+     {
+      "name": "shoulder_pan_joint",
+      "kpBase": 101.2730777362372,
+      "kdBase": 6.744119242654917,
+      "kpMax": 4363.266277917658,
+      "kdMax": 144.10726519144623,
+      "scaleMax": 43.08416783068111,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "shoulder_lift_joint",
+      "kpBase": 151.28223538988215,
+      "kdBase": 10.069345587550556,
+      "kpMax": 6557.740307890788,
+      "kdMax": 216.58499880893316,
+      "scaleMax": 43.34772216308336,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "elbow_joint",
+      "kpBase": 60.90593230877022,
+      "kdBase": 4.068234088578088,
+      "kpMax": 4230.990209116601,
+      "kdMax": 139.73853284483985,
+      "scaleMax": 69.46762078391755,
+      "torqueCapNm": 150.0
+     },
+     {
+      "name": "wrist_1_joint",
+      "kpBase": 3.7104698938115446,
+      "kdBase": 0.24791192653342622,
+      "kpMax": 266.416565686666,
+      "kdMax": 8.799041873081682,
+      "scaleMax": 71.80130099721471,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_2_joint",
+      "kpBase": 2.087296106780785,
+      "kdBase": 0.13878298582319046,
+      "kpMax": 147.58531487779538,
+      "kdMax": 4.874356675661709,
+      "scaleMax": 70.70645817732812,
+      "torqueCapNm": 28.0
+     },
+     {
+      "name": "wrist_3_joint",
+      "kpBase": 0.4429809718776894,
+      "kdBase": 0.029532064791845964,
+      "kpMax": 28.964073387926693,
+      "kdMax": 0.9566075363913951,
+      "scaleMax": 65.38446395373367,
+      "torqueCapNm": 28.0
+     }
+    ]
+   },
+   "calibration": {
+    "bare": {
+     "efc_R": 42.222725241583596,
+     "impedance": 0.05,
+     "dmax": 0.05,
+     "virtual_mass_kg": 0.023683928365077135,
+     "solref": {
+      "rigid": [
+       -211113.626207918,
+       -422.22725241583595
+      ],
+      "soft": [
+       -42222.7252415836,
+       -422.22725241583595
+      ]
+     }
+    },
+    "comp": {
+     "efc_R": 165.40120483055975,
+     "impedance": 0.05,
+     "dmax": 0.05,
+     "virtual_mass_kg": 0.0060459051735712544,
+     "solref": {
+      "rigid": [
+       -827006.0241527987,
+       -1654.0120483055978
+      ],
+      "soft": [
+       -165401.20483055976,
+       -1654.0120483055978
+      ]
+     }
+    }
+   },
+   "q_pick": [
+    1.0571828116055149,
+    -1.417866403030326,
+    2.206350165216391,
+    -2.3592800889811327,
+    -1.5707963267946583,
+    1.0571828116053257
+   ],
+   "host_kp_max_100hz_7ms": {
+    "torque": [
+     462.0713257842021,
+     694.4668432341736,
+     448.06324683890426,
+     28.21360143448822,
+     15.629333111525673,
+     3.067304844126403
+    ],
+    "host_spring": [
+     8117.319306359295,
+     12199.867855128186,
+     7871.23597826121,
+     495.6351949288768,
+     274.5642941517612,
+     53.88408983712769
+    ]
+   }
+  }
+ },
+ "xml_roundtrip": {
+  "ur5e": {
+   "max_relative_mass_error": 0.0
+  },
+  "qdd": {
+   "max_relative_mass_error": 0.0
+  },
+  "qdd_light": {
+   "max_relative_mass_error": 1.243535079550797e-11
+  }
+ }
+}

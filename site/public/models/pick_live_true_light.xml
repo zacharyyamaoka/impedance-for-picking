@@ -1,0 +1,98 @@
+<mujoco model="pick_live_true_light">
+  <!-- bam_impedance_controller's conveyor-pick scene for the site's live demo (<LivePick />), written by scripts/export_livepick.py from sim/scene.py's _arm_spec: the PID tuner's UR5e fixture (kinematics and inertials of MuJoCo Menagerie's universal_robots_ur5e, BSD-3-Clause, drawn with capsules - see NOTICE.md), the suction tool, the 3 m belt (slide joint along x, velocity-driven). Joint armature / friction / damping and the tip's contact solref are set after compiling, as scene.build_scene does. -->
+  <compiler angle="radian"/>
+
+  <option timestep="0.00025" integrator="implicitfast" cone="elliptic" noslip_iterations="5"/>
+
+  <asset>
+    <texture type="skybox" colorspace="auto" name="sky" builtin="gradient" rgb1="0.97 0.97 0.98" rgb2="0.8 0.83 0.87" width="256" height="1536"/>
+  </asset>
+
+  <worldbody>
+    <geom name="floor" size="2 2 0.05" pos="0 0 -0.001" type="plane" contype="0" conaffinity="0" rgba="0.86 0.87 0.88 1"/>
+    <camera name="side" pos="-0.05 -1.25 0.24" quat="0.748046 0.663647 0 0" fovy="32"/>
+    <light name="key" pos="0.6 0.4 2" dir="-0.282216 -0.188144 -0.940721" diffuse="0.75 0.75 0.75"/>
+    <light name="fill" pos="-0.8 -1.5 1.2" dir="0.39036 0.78072 -0.48795" diffuse="0.35 0.35 0.35"/>
+    <body name="base" quat="0 0 0 -1">
+      <inertial pos="0 0 0" mass="4" diaginertia="0.00443333 0.00443333 0.0072"/>
+      <geom size="0.05 0.0815" pos="0 0 0.0815" quat="0 1 0 0" type="capsule" contype="0" conaffinity="0" group="3"/>
+      <body name="shoulder_link" pos="0 0 0.163">
+        <inertial pos="0 0 0" mass="1.11" diaginertia="0.00308025 0.00308025 0.001998"/>
+        <joint name="shoulder_pan_joint" pos="0 0 0" axis="0 0 1" range="-6.28319 6.28319"/>
+        <geom size="0.05 0.069" pos="0 0.069 0" quat="0.707107 0.707107 0 0" type="capsule" contype="0" conaffinity="0" group="3"/>
+        <body name="upper_arm_link" pos="0 0.138 0" quat="0.707107 0 0.707107 0">
+          <inertial pos="0 0 0.2125" mass="2.5179" diaginertia="0.0401658 0.0401658 0.00453222"/>
+          <joint name="shoulder_lift_joint" pos="0 0 0" axis="0 1 0" range="-6.28319 6.28319"/>
+          <geom size="0.05 0.222366" pos="0 -0.0655 0.2125" quat="0.148941 -0.988846 0 0" type="capsule" contype="0" conaffinity="0" group="3"/>
+          <body name="forearm_link" pos="0 -0.131 0.425">
+            <inertial pos="0 0 0.196" mass="0.6825" diaginertia="0.00935388 0.00935388 0.0012285"/>
+            <joint name="elbow_joint" pos="0 0 0" axis="0 1 0" range="-3.1415 3.1415"/>
+            <geom size="0.04 0.196" pos="0 0 0.196" quat="0 1 0 0" type="capsule" contype="0" conaffinity="0" group="3"/>
+            <body name="wrist_1_link" pos="0 0 0.392" quat="0.707107 0 0.707107 0">
+              <inertial pos="0 0.127 0" mass="0.3657" diaginertia="0.00076797 0.00076797 0.00065826"/>
+              <joint name="wrist_1_joint" pos="0 0 0" axis="0 1 0" range="-6.28319 6.28319"/>
+              <geom size="0.04 0.0635" pos="0 0.0635 0" quat="0.707107 0.707107 0 0" type="capsule" contype="0" conaffinity="0" group="3"/>
+              <body name="wrist_2_link" pos="0 0.127 0">
+                <inertial pos="0 0 0.1" mass="0.3657" diaginertia="0.00076797 0.00076797 0.00065826"/>
+                <joint name="wrist_2_joint" pos="0 0 0" axis="0 0 1" range="-6.28319 6.28319"/>
+                <geom size="0.04 0.05" pos="0 0 0.05" quat="0 1 0 0" type="capsule" contype="0" conaffinity="0" group="3"/>
+                <body name="wrist_3_link" pos="0 0 0.1">
+                  <inertial pos="0 0.0771683 0" quat="0.707107 0 0 0.707107" mass="0.05667" diaginertia="3.96402e-05 2.97259e-05 2.97259e-05"/>
+                  <joint name="wrist_3_joint" pos="0 0 0" axis="0 1 0" range="-6.28319 6.28319"/>
+                  <geom size="0.04 0.05" pos="0 0.05 0" quat="0.707107 0.707107 0 0" type="capsule" contype="0" conaffinity="0" group="3"/>
+                  <site name="tool" pos="0 0.1 0" quat="-0.707107 0.707107 0 0" size="0.01"/>
+                  <body name="tool_body" pos="0 0.1 0" quat="-0.707107 0.707107 0 0">
+                    <inertial pos="0 0 0.04" mass="0.25" diaginertia="0.0002 0.0002 0.0001"/>
+                    <geom name="tool_housing" size="0.028 0.045" pos="0 0 0.045" type="cylinder" contype="0" conaffinity="0" group="1" rgba="0.25 0.27 0.3 1"/>
+                    <body name="tip" pos="0 0 0.105">
+                      <inertial pos="0 0 0" mass="0.05" diaginertia="5e-06 5e-06 5e-06"/>
+                      <geom name="tip_contact" size="0.015" priority="1" friction="0.6" solref="-10000 -10" solimp="0.05 0.05" rgba="0.95 0.55 0.1 1"/>
+                      <site name="tcp" pos="0 0 0.015" size="0.004"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="belt" pos="0 -0.45 0.08">
+      <joint name="belt_x" pos="0 0 0" axis="1 0 0" type="slide"/>
+      <geom name="belt_surface" size="1.5 0.2 0.02" type="box" friction="0.6" mass="20" rgba="0.18 0.2 0.22 1"/>
+      <geom size="0.004 0.2 0.0005" pos="-1.4 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="-1.3 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="-1.2 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="-1.1 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="-1 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="-0.9 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="-0.8 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="-0.7 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="-0.6 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="-0.5 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="-0.4 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="-0.3 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="-0.2 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="-0.1 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="0 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="0.1 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="0.2 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="0.3 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="0.4 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="0.5 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="0.6 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="0.7 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="0.8 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="0.9 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="1 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="1.1 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="1.2 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="1.3 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="1.4 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <general name="belt_drive" joint="belt_x" biastype="affine" gainprm="40000" biasprm="0 0 -40000"/>
+  </actuator>
+</mujoco>
