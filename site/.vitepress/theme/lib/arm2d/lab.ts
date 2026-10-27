@@ -301,9 +301,11 @@ export class Lab {
   /** Put the arm back at rest on the reference's pose (after an instability, or for a preset). */
   reset(at?: Vec2) {
     if (at) this.setTarget(...at)
-    this.refPos = reachable(this.params, ...this.target)
+    // WHY start the tool ON the surface when the target is inside the belt: placing it 3 cm deep is a 3 kN contact spike
+    const start = reachable(this.params, this.target[0], Math.max(this.target[1], SURFACE_Z + 0.001))
+    this.refPos = start
     this.refVel = [0, 0]
-    this.arm.q = inverseKinematics(this.params, ...this.refPos)
+    this.arm.q = inverseKinematics(this.params, ...start)
     this.arm.v = [0, 0]
     this.queue = []
     this.board = this.holdCommand()

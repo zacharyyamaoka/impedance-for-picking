@@ -86,3 +86,17 @@ describe('a mode switch moves the torque between board and host', () => {
     expect(Math.abs(torque[0].hostFf) + Math.abs(torque[1].hostFf)).toBeGreaterThan(1)
   })
 })
+
+describe('a preset that starts pressed does not start inside the belt', () => {
+  test('sideways push: no reset spike', () => {
+    const lab = new Lab({ mode: 'joint' })
+    lab.runPreset(PRESETS.find((preset) => preset.id === 'push')!)
+    let peak = 0
+    for (let i = 0; i < 80; i++) {
+      lab.advance(0.01)
+      peak = Math.max(peak, lab.snapshot().contactForce)
+    }
+    console.log(`push preset, first 0.8 s: peak ${peak.toFixed(1)} N`)
+    expect(peak).toBeLessThan(150)
+  })
+})
