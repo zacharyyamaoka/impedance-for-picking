@@ -186,11 +186,13 @@ test('390 px phone: no horizontal scroll and nothing pokes out of the page', asy
       for (const el of document.querySelectorAll('main.lp *')) {
         const r = el.getBoundingClientRect()
         if (r.width === 0 || r.right <= width + 1) continue
-        // inside a box that scrolls sideways on its own (tables, the step bar, code) is fine
+        // inside a box that scrolls sideways on its own (tables, the step bar, code) is fine. WHY not hidden / clip too: <html> clips
+        // overflow-x, so counting a clipping ancestor would excuse content that is simply cut off (mutation-checked: a 700 px div in a
+        // card passed the first version of this gate)
         let scroller = false
         for (let a = el.parentElement; a; a = a.parentElement) {
           const o = getComputedStyle(a).overflowX
-          if (o === 'auto' || o === 'scroll' || o === 'hidden' || o === 'clip') {
+          if (o === 'auto' || o === 'scroll') {
             if (a.getBoundingClientRect().right <= width + 1) scroller = true
             break
           }

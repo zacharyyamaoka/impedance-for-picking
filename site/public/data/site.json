@@ -2,7 +2,7 @@
  "schema": "impedance-site/1",
  "lane": {
   "branch": "claude/bam-impedance-controller",
-  "commit": "3b8050fe",
+  "commit": "02715d57",
   "package": "/home/bam/bam_ws/.claude/worktrees/bam-impedance-controller/src/core/mdp/agent/controllers/bam_impedance_controller"
  },
  "comparison": {
@@ -3943,7 +3943,7 @@
   },
   "review_page": {
    "path": "/home/bam/bam_ws/reports/media/impedance-modes-2026-10-26/index.html",
-   "sha256_12": "dd5004c9c40f",
+   "sha256_12": "690507861156",
    "what": "the review page (the verified wording the page quotes)"
   },
   "log": {
