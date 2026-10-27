@@ -74,3 +74,55 @@ control the contact: a mix of both the fingers and the arm."
 
 Replays (MuJoCo in the browser): `site/public/models/arm_hand.xml` (capsule geometry, no meshes) and per-run qpos tapes
 `{"t": [], "qpos": [[...]]}` at ~200 Hz.
+
+## `site/public/data/factorial.json` (frozen 2026-10-27 by the dispatcher)
+
+Zach (2026-10-27): "I want to see the worst case with just the impedance controller ... add more runs so I can see all of those
+combinations, then filter it or create different views ... what does it look like in the worst case with QDD motors and the
+impedance controller." And: "what we really care about for durability are the peak impact forces on the JOINTS ... shocks
+through the gears ... model the impact on each joint ... specify the motion speed so we never surpass the safe gear loading ...
+an estimated lifetime of the gearbox using a model for wear and safety limits."
+
+```json
+{
+  "schema": "impedance-factorial/1",
+  "generated_at": "ISO-8601",
+  "source": {"lane_commit": "sha", "script": "docs/factorial_study.py"},
+  "factors": {
+    "build":      ["ur5e", "qdd", "qdd_light"],
+    "controller": ["stiff", "torque", "joint", "joint_coupled", "host_spring"],
+    "approach":   ["fast", "slow"],
+    "spring":     ["off", "on"],
+    "object":     ["rigid", "soft"]
+  },
+  "factor_labels": {"ur5e": "UR-style (harmonic drive)", "qdd": "QDD 10:1", "...": "..."},
+  "joints": ["shoulder_pan", "shoulder_lift", "elbow", "wrist_1", "wrist_2", "wrist_3"],
+  "gearboxes": {
+    "ur5e": {"model": "name + source", "per_joint": [{"rated_nm": 0, "repeated_peak_nm": 0, "momentary_peak_nm": 0,
+             "ratio": 0, "life_model": "S-N / L10 description + source"}]},
+    "qdd": {}, "qdd_light": {}
+  },
+  "runs": [
+    {"build": "ur5e", "controller": "stiff", "approach": "fast", "spring": "off", "object": "rigid",
+     "touch_peak_n": 0, "press_mean_n": 0, "touch_speed_m_s": 0,
+     "joint_contact_torque_peak_nm": [0, 0, 0, 0, 0, 0],
+     "gear_torque_peak_nm": [0, 0, 0, 0, 0, 0],
+     "gear_load_ratio": [0, 0, 0, 0, 0, 0],
+     "gear_life_picks": [0, 0, 0, 0, 0, 0],
+     "safe_approach_speed_m_s": 0,
+     "converged": true, "flag": null,
+     "trace": {"t_ms": [], "fz_n": [], "gear_torque_nm": [[], [], [], [], [], []]}}
+  ]
+}
+```
+
+- `joint_contact_torque_peak_nm` = peak |Jᵀ F_contact| per joint over the touch and the hold.
+- `gear_torque_peak_nm` = the torque the GEAR transmits, motor side vs link side: the rotor's reflected inertia must be decelerated
+  through the gear at impact, so a high-ratio gearbox sees a shock a QDD doesn't. Give the formula and its sign convention in the script.
+- `gear_load_ratio` = gear_torque_peak / the gearbox's repeated-peak rating (> 1 = over the limit).
+- `gear_life_picks` = estimated picks to failure from a cited fatigue model over that pick's torque history, gear and bearing,
+  whichever is shorter; the model, exponents and ratings are in `gearboxes` with their sources.
+- `safe_approach_speed_m_s` = the fastest approach that keeps every joint's gear torque under its repeated-peak rating, for that
+  combination.
+- Every run passes `run_converged` + `perturbation_check`; otherwise `converged: false` and `flag` says why.
+- 3 × 5 × 2 × 2 × 2 = 120 runs.
