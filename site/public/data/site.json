@@ -1,0 +1,4000 @@
+{
+ "schema": "impedance-site/1",
+ "lane": {
+  "branch": "claude/bam-impedance-controller",
+  "commit": "3b8050fe",
+  "package": "/home/bam/bam_ws/.claude/worktrees/bam-impedance-controller/src/core/mdp/agent/controllers/bam_impedance_controller"
+ },
+ "comparison": {
+  "summary_table": [
+   {
+    "controller": "stiff",
+    "impact N": "178 / 249",
+    "dwell Fz N": "57.6 \u00b1 3.2",
+    "bounces": "0 (0)",
+    "in contact": "1.00",
+    "x/y RMS": "6.84 / 12.55",
+    "max x/y": "8.3 / 16.3",
+    "y defl mm": "0.01",
+    "release ms": "0",
+    "s": "1.00",
+    "physics kHz": "16/16",
+    "K error": "0.87",
+    "soft axis \u00b0": "55.1",
+    "leak": "0.71",
+    "diverged": "no"
+   },
+   {
+    "controller": "spring",
+    "impact N": "37 / 37",
+    "dwell Fz N": "9.4 \u00b1 0.6",
+    "bounces": "0 (0)",
+    "in contact": "1.00",
+    "x/y RMS": "4.54 / 2.95",
+    "max x/y": "8.0 / 5.1",
+    "y defl mm": "9.23",
+    "release ms": "0",
+    "s": "1.00",
+    "physics kHz": "64/64",
+    "K error": "0.87",
+    "soft axis \u00b0": "17.4",
+    "leak": "0.24",
+    "diverged": "no"
+   },
+   {
+    "controller": "torque",
+    "impact N": "155 / 228",
+    "dwell Fz N": "2.6 \u00b1 5.1",
+    "bounces": "1 (4)",
+    "in contact": "0.33",
+    "x/y RMS": "1.81 / 6.04",
+    "max x/y": "6.6 / 11.3",
+    "y defl mm": "8.80",
+    "release ms": "149",
+    "s": "0.48",
+    "physics kHz": "16/16",
+    "K error": "0.57",
+    "soft axis \u00b0": "5.6",
+    "leak": "0.10",
+    "diverged": "no"
+   },
+   {
+    "controller": "torque @ ceiling",
+    "impact N": "161 / 229",
+    "dwell Fz N": "10.1 \u00b1 6.9",
+    "bounces": "3 (4)",
+    "in contact": "0.83",
+    "x/y RMS": "1.48 / 3.67",
+    "max x/y": "3.5 / 7.8",
+    "y defl mm": "4.64",
+    "release ms": "64",
+    "s": "0.95",
+    "physics kHz": "32/16",
+    "K error": "oscillates",
+    "soft axis \u00b0": "\u2014",
+    "leak": "\u2014",
+    "diverged": "no"
+   },
+   {
+    "controller": "joint",
+    "impact N": "174 / 260",
+    "dwell Fz N": "30.1 \u00b1 2.4",
+    "bounces": "0 (1)",
+    "in contact": "1.00",
+    "x/y RMS": "6.66 / 9.00",
+    "max x/y": "7.3 / 10.9",
+    "y defl mm": "0.01",
+    "release ms": "0",
+    "s": "1.00",
+    "physics kHz": "16/16",
+    "K error": "0.30",
+    "soft axis \u00b0": "14.2",
+    "leak": "0.22",
+    "diverged": "no"
+   },
+   {
+    "controller": "joint_coupled",
+    "impact N": "161 / 246",
+    "dwell Fz N": "9.0 \u00b1 5.6",
+    "bounces": "2 (2)",
+    "in contact": "0.83",
+    "x/y RMS": "3.00 / 4.08",
+    "max x/y": "5.5 / 7.2",
+    "y defl mm": "5.35",
+    "release ms": "65",
+    "s": "1.00",
+    "physics kHz": "16/16",
+    "K error": "0.07*",
+    "soft axis \u00b0": "2.6*",
+    "leak": "0.05*",
+    "diverged": "no"
+   },
+   {
+    "controller": "joint_coupled + row-sum cap",
+    "impact N": "153* / 226",
+    "dwell Fz N": "1.9* \u00b1 4.9*",
+    "bounces": "24* (3)",
+    "in contact": "0.20*",
+    "x/y RMS": "6.45* / 10.45",
+    "max x/y": "18.7* / 16.1",
+    "y defl mm": "15.08*",
+    "release ms": "\u2014*",
+    "s": "0.21*",
+    "physics kHz": "64*/32",
+    "K error": "0.75",
+    "soft axis \u00b0": "8.0",
+    "leak": "0.17",
+    "diverged": "no"
+   },
+   {
+    "controller": "host_spring",
+    "impact N": "174 / 257",
+    "dwell Fz N": "11.3 \u00b1 5.1",
+    "bounces": "1 (3)",
+    "in contact": "0.93",
+    "x/y RMS": "1.47 / 3.28",
+    "max x/y": "4.1 / 7.0",
+    "y defl mm": "4.55",
+    "release ms": "32",
+    "s": "1.00",
+    "physics kHz": "16/16",
+    "K error": "0.07",
+    "soft axis \u00b0": "2.4",
+    "leak": "0.05",
+    "diverged": "no"
+   },
+   {
+    "controller": "spring + host_spring",
+    "impact N": "38 / 37",
+    "dwell Fz N": "8.5 \u00b1 0.3",
+    "bounces": "0 (0)",
+    "in contact": "1.00",
+    "x/y RMS": "1.42 / 0.88",
+    "max x/y": "2.8 / 3.4",
+    "y defl mm": "4.62",
+    "release ms": "0",
+    "s": "1.00",
+    "physics kHz": "64/64",
+    "K error": "0.30",
+    "soft axis \u00b0": "0.3",
+    "leak": "0.03",
+    "diverged": "no"
+   }
+  ],
+  "probe": {
+   "stiff": {
+    "error_mean": 0.8706,
+    "error_max": 0.8867,
+    "tilt_deg": 55.07,
+    "flagged": false
+   },
+   "spring": {
+    "error_mean": 0.8713,
+    "error_max": 0.878,
+    "tilt_deg": 17.42,
+    "flagged": false
+   },
+   "torque": {
+    "error_mean": 0.5688,
+    "error_max": 0.5828,
+    "tilt_deg": 5.65,
+    "flagged": false
+   },
+   "torque @ ceiling": {
+    "error_mean": null,
+    "error_max": null,
+    "tilt_deg": null,
+    "flagged": true
+   },
+   "joint": {
+    "error_mean": 0.2962,
+    "error_max": 0.3345,
+    "tilt_deg": 14.22,
+    "flagged": false
+   },
+   "joint_coupled": {
+    "error_mean": 0.0704,
+    "error_max": 0.0813,
+    "tilt_deg": 2.6,
+    "flagged": true
+   },
+   "joint_coupled + row-sum cap": {
+    "error_mean": 0.7478,
+    "error_max": 0.7723,
+    "tilt_deg": 7.97,
+    "flagged": false
+   },
+   "host_spring": {
+    "error_mean": 0.0698,
+    "error_max": 0.0833,
+    "tilt_deg": 2.38,
+    "flagged": false
+   },
+   "spring + host_spring": {
+    "error_mean": 0.2996,
+    "error_max": 0.303,
+    "tilt_deg": 0.26,
+    "flagged": false
+   }
+  },
+  "headline": {
+   "series_peak_n": 37.6,
+   "series_dwell_mean_n": 8.5,
+   "series_dwell_std_n": 0.3,
+   "spring_peak_n": 37.2,
+   "arm_peak_min_n": 155.4,
+   "arm_peak_max_n": 178.2,
+   "arm_rows": [
+    "stiff",
+    "torque",
+    "joint",
+    "joint_coupled",
+    "host_spring"
+   ]
+  },
+  "runs_total": 384,
+  "runs_diverged": 0,
+  "held_note": "350 of 384 comparison runs held (the README's ledger; 'held' = the three-rate and perturbation checks)",
+  "latency": [
+   {
+    "controller": "stiff",
+    "label": "stiff",
+    "delta_mm": 10.0,
+    "converged": true,
+    "loop_hz": 16000.0,
+    "touch_s": 0.72,
+    "host_response_ms": null,
+    "board_response_ms": 0.06,
+    "peak_after_touch_ms": 13.25,
+    "impact_peak_fz_n": 178.17
+   },
+   {
+    "controller": "torque",
+    "label": "torque",
+    "delta_mm": 10.0,
+    "converged": true,
+    "loop_hz": 16000.0,
+    "touch_s": 0.73,
+    "host_response_ms": 10.81,
+    "board_response_ms": 10.81,
+    "peak_after_touch_ms": 12.38,
+    "impact_peak_fz_n": 155.41
+   },
+   {
+    "controller": "joint",
+    "label": "joint",
+    "delta_mm": 10.0,
+    "converged": true,
+    "loop_hz": 16000.0,
+    "touch_s": 0.72,
+    "host_response_ms": null,
+    "board_response_ms": 0.06,
+    "peak_after_touch_ms": 13.56,
+    "impact_peak_fz_n": 174.28
+   },
+   {
+    "controller": "joint_coupled",
+    "label": "joint_coupled",
+    "delta_mm": 10.0,
+    "converged": true,
+    "loop_hz": 16000.0,
+    "touch_s": 0.76,
+    "host_response_ms": 11.87,
+    "board_response_ms": 0.06,
+    "peak_after_touch_ms": 13.44,
+    "impact_peak_fz_n": 161.33
+   },
+   {
+    "controller": "host_spring",
+    "label": "host_spring",
+    "delta_mm": 10.0,
+    "converged": true,
+    "loop_hz": 16000.0,
+    "touch_s": 0.73,
+    "host_response_ms": 10.25,
+    "board_response_ms": 0.06,
+    "peak_after_touch_ms": 13.37,
+    "impact_peak_fz_n": 173.8
+   },
+   {
+    "controller": "host_spring",
+    "label": "host_spring|touch on a host sample",
+    "delta_mm": 9.34,
+    "converged": true,
+    "loop_hz": 16000.0,
+    "touch_s": 0.73,
+    "host_response_ms": 17.0,
+    "board_response_ms": 0.06,
+    "peak_after_touch_ms": 13.44,
+    "impact_peak_fz_n": 174.18
+   }
+  ],
+  "speed": [
+   {
+    "controller": "stiff",
+    "speed": 0.05,
+    "peak_n": 39.5,
+    "model_sticking_n": 38.5,
+    "mass_sticking_kg": 7.59
+   },
+   {
+    "controller": "stiff",
+    "speed": 0.1,
+    "peak_n": 81.9,
+    "model_sticking_n": 78.0,
+    "mass_sticking_kg": 8.1
+   },
+   {
+    "controller": "stiff",
+    "speed": 0.2,
+    "peak_n": 178.2,
+    "model_sticking_n": 164.9,
+    "mass_sticking_kg": 8.37
+   },
+   {
+    "controller": "spring",
+    "speed": 0.05,
+    "peak_n": 9.6,
+    "model_sticking_n": 9.0,
+    "mass_sticking_kg": 0.05
+   },
+   {
+    "controller": "spring",
+    "speed": 0.1,
+    "peak_n": 18.2,
+    "model_sticking_n": 17.6,
+    "mass_sticking_kg": 0.05
+   },
+   {
+    "controller": "spring",
+    "speed": 0.2,
+    "peak_n": 37.2,
+    "model_sticking_n": 36.7,
+    "mass_sticking_kg": 0.05
+   },
+   {
+    "controller": "torque",
+    "speed": 0.05,
+    "peak_n": 40.2,
+    "model_sticking_n": 40.8,
+    "mass_sticking_kg": 7.54
+   },
+   {
+    "controller": "torque",
+    "speed": 0.1,
+    "peak_n": 78.3,
+    "model_sticking_n": 78.2,
+    "mass_sticking_kg": 8.04
+   },
+   {
+    "controller": "torque",
+    "speed": 0.2,
+    "peak_n": 155.4,
+    "model_sticking_n": 148.2,
+    "mass_sticking_kg": 8.35
+   },
+   {
+    "controller": "torque @ ceiling",
+    "speed": 0.05,
+    "peak_n": 39.0,
+    "model_sticking_n": 44.1,
+    "mass_sticking_kg": 7.59
+   },
+   {
+    "controller": "torque @ ceiling",
+    "speed": 0.1,
+    "peak_n": 78.7,
+    "model_sticking_n": 77.9,
+    "mass_sticking_kg": 8.09
+   },
+   {
+    "controller": "torque @ ceiling",
+    "speed": 0.2,
+    "peak_n": 161.3,
+    "model_sticking_n": 153.4,
+    "mass_sticking_kg": 8.38
+   },
+   {
+    "controller": "joint",
+    "speed": 0.05,
+    "peak_n": 38.9,
+    "model_sticking_n": 37.5,
+    "mass_sticking_kg": 7.55
+   },
+   {
+    "controller": "joint",
+    "speed": 0.1,
+    "peak_n": 80.8,
+    "model_sticking_n": 77.3,
+    "mass_sticking_kg": 8.09
+   },
+   {
+    "controller": "joint",
+    "speed": 0.2,
+    "peak_n": 174.3,
+    "model_sticking_n": 159.0,
+    "mass_sticking_kg": 8.39
+   },
+   {
+    "controller": "joint_coupled",
+    "speed": 0.05,
+    "peak_n": 40.4,
+    "model_sticking_n": 39.8,
+    "mass_sticking_kg": 7.71
+   },
+   {
+    "controller": "joint_coupled",
+    "speed": 0.1,
+    "peak_n": 81.9,
+    "model_sticking_n": 78.5,
+    "mass_sticking_kg": 8.1
+   },
+   {
+    "controller": "joint_coupled",
+    "speed": 0.2,
+    "peak_n": 161.3,
+    "model_sticking_n": 146.4,
+    "mass_sticking_kg": 8.3
+   },
+   {
+    "controller": "joint_coupled + row-sum cap",
+    "speed": 0.05,
+    "peak_n": 51.4,
+    "model_sticking_n": 49.4,
+    "mass_sticking_kg": 7.21
+   },
+   {
+    "controller": "joint_coupled + row-sum cap",
+    "speed": 0.1,
+    "peak_n": 86.2,
+    "model_sticking_n": 82.2,
+    "mass_sticking_kg": 7.83
+   },
+   {
+    "controller": "joint_coupled + row-sum cap",
+    "speed": 0.2,
+    "peak_n": 153.0,
+    "model_sticking_n": 140.4,
+    "mass_sticking_kg": 8.2
+   },
+   {
+    "controller": "host_spring",
+    "speed": 0.05,
+    "peak_n": 39.0,
+    "model_sticking_n": 38.1,
+    "mass_sticking_kg": 7.57
+   },
+   {
+    "controller": "host_spring",
+    "speed": 0.1,
+    "peak_n": 82.9,
+    "model_sticking_n": 80.7,
+    "mass_sticking_kg": 8.1
+   },
+   {
+    "controller": "host_spring",
+    "speed": 0.2,
+    "peak_n": 173.8,
+    "model_sticking_n": 161.0,
+    "mass_sticking_kg": 8.37
+   },
+   {
+    "controller": "spring + host_spring",
+    "speed": 0.05,
+    "peak_n": 9.4,
+    "model_sticking_n": 8.8,
+    "mass_sticking_kg": 0.05
+   },
+   {
+    "controller": "spring + host_spring",
+    "speed": 0.1,
+    "peak_n": 18.2,
+    "model_sticking_n": 17.6,
+    "mass_sticking_kg": 0.05
+   },
+   {
+    "controller": "spring + host_spring",
+    "speed": 0.2,
+    "peak_n": 37.6,
+    "model_sticking_n": 36.9,
+    "mass_sticking_kg": 0.05
+   }
+  ],
+  "ringing": [
+   {
+    "controller": "torque",
+    "contact_n_m": 100000.0,
+    "std_n": 4.65,
+    "in_contact": 0.52
+   },
+   {
+    "controller": "torque",
+    "contact_n_m": 20000.0,
+    "std_n": 2.59,
+    "in_contact": 0.72
+   },
+   {
+    "controller": "torque @ ceiling",
+    "contact_n_m": 100000.0,
+    "std_n": 3.93,
+    "in_contact": 0.94
+   },
+   {
+    "controller": "torque @ ceiling",
+    "contact_n_m": 20000.0,
+    "std_n": 3.05,
+    "in_contact": 0.92
+   },
+   {
+    "controller": "joint_coupled",
+    "contact_n_m": 100000.0,
+    "std_n": 2.94,
+    "in_contact": 0.93
+   },
+   {
+    "controller": "joint_coupled",
+    "contact_n_m": 20000.0,
+    "std_n": 3.29,
+    "in_contact": 0.88
+   },
+   {
+    "controller": "host_spring",
+    "contact_n_m": 100000.0,
+    "std_n": 1.64,
+    "in_contact": 0.99
+   },
+   {
+    "controller": "host_spring",
+    "contact_n_m": 20000.0,
+    "std_n": 2.5,
+    "in_contact": 0.96
+   },
+   {
+    "controller": "spring + host_spring",
+    "contact_n_m": 100000.0,
+    "std_n": 0.1,
+    "in_contact": 1.0
+   },
+   {
+    "controller": "spring + host_spring",
+    "contact_n_m": 20000.0,
+    "std_n": 0.1,
+    "in_contact": 1.0
+   }
+  ],
+  "base": {
+   "stiffness": [
+    3000.0,
+    3000.0,
+    500.0,
+    150.0,
+    150.0,
+    150.0
+   ],
+   "host_rate_hz": 100.0,
+   "host_delay_ms": 7.0,
+   "contact_n_m": 100000.0,
+   "contact_b": 200.0,
+   "compensator": {
+    "stiffness_n_m": 200.0,
+    "damping_n_s_m": 10.0,
+    "preload_n": 4.0,
+    "stroke_m": 0.03
+   }
+  },
+  "phases": {
+   "descend": 0.4,
+   "dwell": 0.875,
+   "lift": 1.475,
+   "lifted": 1.9500000000000002,
+   "belt_stop": 2.0500000000000003,
+   "end": 2.5500000000000003,
+   "disturbance_on": 1.075,
+   "disturbance_off": 1.2750000000000001
+  },
+  "video": {
+   "delta_mm": 20.0,
+   "speed": 0.2,
+   "seconds": 7.5,
+   "peaks_n": {
+    "stiff": 172.45,
+    "spring": 36.55,
+    "torque": 149.36,
+    "host_spring": 167.3
+   }
+  },
+  "reflected_mass_kg": 10.1,
+  "generated_at": "2026-10-27T03:22:48+00:00"
+ },
+ "impact": {
+  "builds": [
+   {
+    "build": "ur5e",
+    "controller": "stiff",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 36.2,
+    "peak_100ms_n": 36.2,
+    "after_touch_ms": 24.1,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "stiff",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 83.8,
+    "peak_100ms_n": 84.0,
+    "after_touch_ms": 32.6,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "stiff",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 81.9,
+    "peak_100ms_n": 81.9,
+    "after_touch_ms": 12.1,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "stiff",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 178.2,
+    "peak_100ms_n": 178.2,
+    "after_touch_ms": 13.2,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "stiff_max",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 68.5,
+    "peak_100ms_n": 189.5,
+    "after_touch_ms": 99.9,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "stiff_max",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 138.4,
+    "peak_100ms_n": 376.2,
+    "after_touch_ms": 100.0,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "stiff_max",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 196.5,
+    "peak_100ms_n": 433.8,
+    "after_touch_ms": 78.4,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "stiff_max",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 410.2,
+    "peak_100ms_n": 488.9,
+    "after_touch_ms": 42.8,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "host_spring",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 36.2,
+    "peak_100ms_n": 36.2,
+    "after_touch_ms": 22.4,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "host_spring",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 81.2,
+    "peak_100ms_n": 81.2,
+    "after_touch_ms": 29.8,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "host_spring",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 82.9,
+    "peak_100ms_n": 82.9,
+    "after_touch_ms": 12.2,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "host_spring",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 173.8,
+    "peak_100ms_n": 173.8,
+    "after_touch_ms": 13.4,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "joint",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 35.9,
+    "peak_100ms_n": 35.9,
+    "after_touch_ms": 24.5,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "joint",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 83.3,
+    "peak_100ms_n": 83.4,
+    "after_touch_ms": 31.4,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "joint",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 80.8,
+    "peak_100ms_n": 80.8,
+    "after_touch_ms": 12.3,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "joint",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 174.3,
+    "peak_100ms_n": 174.3,
+    "after_touch_ms": 13.6,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "stiff",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 38.5,
+    "peak_100ms_n": 38.5,
+    "after_touch_ms": 25.8,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "stiff",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 104.3,
+    "peak_100ms_n": 136.6,
+    "after_touch_ms": 72.3,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "stiff",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 85.4,
+    "peak_100ms_n": 85.4,
+    "after_touch_ms": 12.4,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "stiff",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 248.6,
+    "peak_100ms_n": 248.6,
+    "after_touch_ms": 20.6,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "stiff_max",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 68.7,
+    "peak_100ms_n": 190.1,
+    "after_touch_ms": 99.9,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "stiff_max",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 138.2,
+    "peak_100ms_n": 361.0,
+    "after_touch_ms": 99.9,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "stiff_max",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 196.0,
+    "peak_100ms_n": 501.9,
+    "after_touch_ms": 90.4,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "stiff_max",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 444.1,
+    "peak_100ms_n": 571.9,
+    "after_touch_ms": 45.8,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "host_spring",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 37.3,
+    "peak_100ms_n": 37.3,
+    "after_touch_ms": 23.2,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "host_spring",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 106.8,
+    "peak_100ms_n": 157.9,
+    "after_touch_ms": 79.4,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "host_spring",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 84.1,
+    "peak_100ms_n": 84.1,
+    "after_touch_ms": 12.2,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "host_spring",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 256.8,
+    "peak_100ms_n": 256.8,
+    "after_touch_ms": 22.5,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "joint",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 35.8,
+    "peak_100ms_n": 35.8,
+    "after_touch_ms": 26.2,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "joint",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 102.8,
+    "peak_100ms_n": 176.2,
+    "after_touch_ms": 91.8,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "joint",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 78.9,
+    "peak_100ms_n": 78.9,
+    "after_touch_ms": 12.4,
+    "held": true
+   },
+   {
+    "build": "ur5e",
+    "controller": "joint",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 259.7,
+    "peak_100ms_n": 259.7,
+    "after_touch_ms": 23.4,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "stiff",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 28.5,
+    "peak_100ms_n": 28.5,
+    "after_touch_ms": 15.3,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "stiff",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 65.1,
+    "peak_100ms_n": 65.1,
+    "after_touch_ms": 25.3,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "stiff",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 65.0,
+    "peak_100ms_n": 65.0,
+    "after_touch_ms": 9.4,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "stiff",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 140.8,
+    "peak_100ms_n": 140.8,
+    "after_touch_ms": 10.3,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "stiff_max",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 68.2,
+    "peak_100ms_n": 189.1,
+    "after_touch_ms": 99.9,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "stiff_max",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 137.6,
+    "peak_100ms_n": 376.0,
+    "after_touch_ms": 99.9,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "stiff_max",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 194.2,
+    "peak_100ms_n": 424.7,
+    "after_touch_ms": 76.3,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "stiff_max",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 404.6,
+    "peak_100ms_n": 473.3,
+    "after_touch_ms": 41.4,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "host_spring",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 29.8,
+    "peak_100ms_n": 29.8,
+    "after_touch_ms": 15.1,
+    "held": false
+   },
+   {
+    "build": "qdd",
+    "controller": "host_spring",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 61.2,
+    "peak_100ms_n": 61.2,
+    "after_touch_ms": 20.3,
+    "held": false
+   },
+   {
+    "build": "qdd",
+    "controller": "host_spring",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 68.0,
+    "peak_100ms_n": 68.0,
+    "after_touch_ms": 9.4,
+    "held": false
+   },
+   {
+    "build": "qdd",
+    "controller": "host_spring",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 131.4,
+    "peak_100ms_n": 131.4,
+    "after_touch_ms": 10.4,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "joint",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 30.1,
+    "peak_100ms_n": 30.1,
+    "after_touch_ms": 19.3,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "joint",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 71.4,
+    "peak_100ms_n": 71.4,
+    "after_touch_ms": 27.3,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "joint",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 66.5,
+    "peak_100ms_n": 66.5,
+    "after_touch_ms": 10.1,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "joint",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 143.5,
+    "peak_100ms_n": 143.5,
+    "after_touch_ms": 11.1,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "stiff",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 29.6,
+    "peak_100ms_n": 30.9,
+    "after_touch_ms": 99.9,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "stiff",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 79.4,
+    "peak_100ms_n": 88.2,
+    "after_touch_ms": 64.3,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "stiff",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 66.5,
+    "peak_100ms_n": 66.5,
+    "after_touch_ms": 9.5,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "stiff",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 176.5,
+    "peak_100ms_n": 176.5,
+    "after_touch_ms": 17.4,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "stiff_max",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 68.5,
+    "peak_100ms_n": 190.0,
+    "after_touch_ms": 99.9,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "stiff_max",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 137.8,
+    "peak_100ms_n": 360.0,
+    "after_touch_ms": 100.0,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "stiff_max",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 195.4,
+    "peak_100ms_n": 492.8,
+    "after_touch_ms": 87.9,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "stiff_max",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 443.1,
+    "peak_100ms_n": 552.8,
+    "after_touch_ms": 43.9,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "host_spring",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 32.0,
+    "peak_100ms_n": 32.0,
+    "after_touch_ms": 15.2,
+    "held": false
+   },
+   {
+    "build": "qdd",
+    "controller": "host_spring",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 85.9,
+    "peak_100ms_n": 97.6,
+    "after_touch_ms": 57.1,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "host_spring",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 72.7,
+    "peak_100ms_n": 72.7,
+    "after_touch_ms": 9.4,
+    "held": false
+   },
+   {
+    "build": "qdd",
+    "controller": "host_spring",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 193.3,
+    "peak_100ms_n": 193.3,
+    "after_touch_ms": 19.8,
+    "held": false
+   },
+   {
+    "build": "qdd",
+    "controller": "joint",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 30.9,
+    "peak_100ms_n": 30.9,
+    "after_touch_ms": 21.0,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "joint",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 94.5,
+    "peak_100ms_n": 165.0,
+    "after_touch_ms": 99.4,
+    "held": false
+   },
+   {
+    "build": "qdd",
+    "controller": "joint",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 66.7,
+    "peak_100ms_n": 66.7,
+    "after_touch_ms": 10.1,
+    "held": true
+   },
+   {
+    "build": "qdd",
+    "controller": "joint",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 218.0,
+    "peak_100ms_n": 221.8,
+    "after_touch_ms": 76.3,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "stiff",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 20.6,
+    "peak_100ms_n": 20.6,
+    "after_touch_ms": 0.2,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "stiff",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 40.2,
+    "peak_100ms_n": 40.2,
+    "after_touch_ms": 0.2,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "stiff",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 37.3,
+    "peak_100ms_n": 37.3,
+    "after_touch_ms": 4.2,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "stiff",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 78.5,
+    "peak_100ms_n": 78.5,
+    "after_touch_ms": 5.2,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "stiff_max",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 64.3,
+    "peak_100ms_n": 180.1,
+    "after_touch_ms": 100.0,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "stiff_max",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 129.8,
+    "peak_100ms_n": 358.2,
+    "after_touch_ms": 100.0,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "stiff_max",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 163.3,
+    "peak_100ms_n": 372.2,
+    "after_touch_ms": 75.9,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "stiff_max",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 343.3,
+    "peak_100ms_n": 398.3,
+    "after_touch_ms": 38.8,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "host_spring",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 20.9,
+    "peak_100ms_n": 20.9,
+    "after_touch_ms": 0.0,
+    "held": false
+   },
+   {
+    "build": "qdd_light",
+    "controller": "host_spring",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 38.7,
+    "peak_100ms_n": 38.7,
+    "after_touch_ms": 9.9,
+    "held": false
+   },
+   {
+    "build": "qdd_light",
+    "controller": "host_spring",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 37.7,
+    "peak_100ms_n": 37.7,
+    "after_touch_ms": 4.3,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "host_spring",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 74.7,
+    "peak_100ms_n": 74.7,
+    "after_touch_ms": 5.3,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "joint",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 20.0,
+    "peak_100ms_n": 20.0,
+    "after_touch_ms": 0.0,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "joint",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 44.8,
+    "peak_100ms_n": 48.2,
+    "after_touch_ms": 82.6,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "joint",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "ur5e",
+    "peak_30ms_n": 37.3,
+    "peak_100ms_n": 37.3,
+    "after_touch_ms": 4.6,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "joint",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "ur5e",
+    "peak_30ms_n": 83.7,
+    "peak_100ms_n": 83.7,
+    "after_touch_ms": 5.8,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "stiff",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 23.2,
+    "peak_100ms_n": 23.2,
+    "after_touch_ms": 0.8,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "stiff",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 45.2,
+    "peak_100ms_n": 45.2,
+    "after_touch_ms": 21.9,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "stiff",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 42.6,
+    "peak_100ms_n": 42.6,
+    "after_touch_ms": 4.2,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "stiff",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 101.9,
+    "peak_100ms_n": 116.0,
+    "after_touch_ms": 92.4,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "stiff_max",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 64.6,
+    "peak_100ms_n": 181.3,
+    "after_touch_ms": 100.0,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "stiff_max",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 130.1,
+    "peak_100ms_n": 336.3,
+    "after_touch_ms": 100.0,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "stiff_max",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 164.7,
+    "peak_100ms_n": 440.6,
+    "after_touch_ms": 89.0,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "stiff_max",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 400.8,
+    "peak_100ms_n": 468.6,
+    "after_touch_ms": 39.8,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "host_spring",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 24.4,
+    "peak_100ms_n": 24.4,
+    "after_touch_ms": 0.0,
+    "held": false
+   },
+   {
+    "build": "qdd_light",
+    "controller": "host_spring",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 60.2,
+    "peak_100ms_n": 61.2,
+    "after_touch_ms": 92.6,
+    "held": false
+   },
+   {
+    "build": "qdd_light",
+    "controller": "host_spring",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 44.5,
+    "peak_100ms_n": 44.5,
+    "after_touch_ms": 4.4,
+    "held": false
+   },
+   {
+    "build": "qdd_light",
+    "controller": "host_spring",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 121.5,
+    "peak_100ms_n": 144.2,
+    "after_touch_ms": 82.7,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "joint",
+    "contact_n_m": 20000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 22.7,
+    "peak_100ms_n": 25.4,
+    "after_touch_ms": 100.0,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "joint",
+    "contact_n_m": 20000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 78.7,
+    "peak_100ms_n": 160.3,
+    "after_touch_ms": 100.0,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "joint",
+    "contact_n_m": 100000.0,
+    "speed": 0.1,
+    "friction": "jmc",
+    "peak_30ms_n": 42.2,
+    "peak_100ms_n": 42.2,
+    "after_touch_ms": 4.7,
+    "held": true
+   },
+   {
+    "build": "qdd_light",
+    "controller": "joint",
+    "contact_n_m": 100000.0,
+    "speed": 0.2,
+    "friction": "jmc",
+    "peak_30ms_n": 151.1,
+    "peak_100ms_n": 179.7,
+    "after_touch_ms": 52.8,
+    "held": true
+   }
+  ],
+  "contact_b_sensitivity": {
+   "40": {
+    "stiff": 196.2,
+    "spring": 15.0,
+    "ratio": 13.08
+   },
+   "200": {
+    "stiff": 178.2,
+    "spring": 37.2,
+    "ratio": 4.79
+   },
+   "600": {
+    "stiff": 162.2,
+    "spring": 110.5,
+    "ratio": 1.47
+   }
+  },
+  "drop": {
+   "soft, B 10, board, impedance 0.05": {
+    "peak_n": 14.42,
+    "rate_hz": 32000.0,
+    "converged": true
+   },
+   "soft, B 10, board, impedance 0.005": {
+    "peak_n": 15.32,
+    "rate_hz": 32000.0,
+    "converged": true
+   },
+   "soft, B 10, ideal, impedance 0.05": {
+    "peak_n": 14.51,
+    "rate_hz": 32000.0,
+    "converged": true
+   },
+   "soft, B 10, ideal, impedance 0.005": {
+    "peak_n": 15.39,
+    "rate_hz": 32000.0,
+    "converged": true
+   },
+   "soft, B 200, board, impedance 0.05": {
+    "peak_n": 34.82,
+    "rate_hz": 64000.0,
+    "converged": true
+   },
+   "soft, B 200, board, impedance 0.005": {
+    "peak_n": 39.71,
+    "rate_hz": 64000.0,
+    "converged": true
+   },
+   "soft, B 200, ideal, impedance 0.05": {
+    "peak_n": 34.82,
+    "rate_hz": 64000.0,
+    "converged": true
+   },
+   "soft, B 200, ideal, impedance 0.005": {
+    "peak_n": 39.71,
+    "rate_hz": 64000.0,
+    "converged": true
+   },
+   "stiff (the judge's), B 10, board, impedance 0.05": {
+    "peak_n": 196.57,
+    "rate_hz": 256000.0,
+    "converged": true
+   },
+   "stiff (the judge's), B 10, board, impedance 0.005": {
+    "peak_n": 221.3,
+    "rate_hz": 256000.0,
+    "converged": true
+   },
+   "stiff (the judge's), B 10, ideal, impedance 0.05": {
+    "peak_n": 141.59,
+    "rate_hz": 16000.0,
+    "converged": true
+   },
+   "stiff (the judge's), B 10, ideal, impedance 0.005": {
+    "peak_n": 141.57,
+    "rate_hz": 16000.0,
+    "converged": true
+   },
+   "stiff (the judge's), B 200, board, impedance 0.05": {
+    "peak_n": 138.91,
+    "rate_hz": 16000.0,
+    "converged": true
+   },
+   "stiff (the judge's), B 200, board, impedance 0.005": {
+    "peak_n": 138.92,
+    "rate_hz": 16000.0,
+    "converged": true
+   },
+   "stiff (the judge's), B 200, ideal, impedance 0.05": {
+    "peak_n": 134.81,
+    "rate_hz": 16000.0,
+    "converged": true
+   },
+   "stiff (the judge's), B 200, ideal, impedance 0.005": {
+    "peak_n": 134.79,
+    "rate_hz": 16000.0,
+    "converged": true
+   },
+   "stiff (analytic max), B 10, board, impedance 0.05": {
+    "peak_n": 14.65,
+    "rate_hz": 32000.0,
+    "converged": true
+   },
+   "stiff (analytic max), B 10, board, impedance 0.005": {
+    "peak_n": 15.43,
+    "rate_hz": 32000.0,
+    "converged": true
+   },
+   "stiff (analytic max), B 10, ideal, impedance 0.05": {
+    "peak_n": 35.36,
+    "rate_hz": 16000.0,
+    "converged": true
+   },
+   "stiff (analytic max), B 10, ideal, impedance 0.005": {
+    "peak_n": 35.36,
+    "rate_hz": 16000.0,
+    "converged": true
+   },
+   "stiff (analytic max), B 200, board, impedance 0.05": {
+    "peak_n": 35.88,
+    "rate_hz": 64000.0,
+    "converged": true
+   },
+   "stiff (analytic max), B 200, board, impedance 0.005": {
+    "peak_n": 39.71,
+    "rate_hz": 64000.0,
+    "converged": true
+   },
+   "stiff (analytic max), B 200, ideal, impedance 0.05": {
+    "peak_n": 35.31,
+    "rate_hz": 64000.0,
+    "converged": true
+   },
+   "stiff (analytic max), B 200, ideal, impedance 0.005": {
+    "peak_n": 39.71,
+    "rate_hz": 64000.0,
+    "converged": true
+   }
+  },
+  "drop_fixture": {
+   "trunk_kg": 10.0,
+   "link_m": 0.3,
+   "foot_kg": 0.05,
+   "rotor_kg_m2": 0.00183,
+   "speed_m_s": 0.2,
+   "ground_n_m": 100000.0,
+   "free_contact_mass_kg": 0.0703,
+   "passive_free_mass_n": 16.8,
+   "passive_trunk_mass_n": 200.7
+  },
+  "boundary": {
+   "torque": {
+    "ideal_wn": 55.7,
+    "measured_wn": 49.0,
+    "ratio": 0.88
+   },
+   "host_spring": {
+    "ideal_wn": 233.6,
+    "measured_wn": 217.9,
+    "ratio": 0.933
+   }
+  }
+ },
+ "oracle": {
+  "cells": [
+   {
+    "cell": "S1q",
+    "controller": "host_spring",
+    "compensator": true,
+    "friction": "jmc",
+    "build": "qdd",
+    "columns": {
+     "stiff": {
+      "cost": 9.771,
+      "admissible": false,
+      "converged": true
+     },
+     "seed (description)": {
+      "cost": 1.958,
+      "admissible": true,
+      "converged": true
+     },
+     "seed (perfect)": {
+      "cost": 1.958,
+      "admissible": true,
+      "converged": true
+     },
+     "tuned": {
+      "cost": 1.188,
+      "admissible": true,
+      "converged": true
+     }
+    },
+    "oracle": 1.188,
+    "ideal": 0.512,
+    "regret": 0.0,
+    "seed_loss": 0.6478,
+    "impl_loss": 1.3192
+   },
+   {
+    "cell": "S2q",
+    "controller": "host_spring",
+    "compensator": false,
+    "friction": "jmc",
+    "build": "qdd",
+    "columns": {
+     "stiff": {
+      "cost": 37.442,
+      "admissible": false,
+      "converged": true
+     },
+     "seed (description)": {
+      "cost": 79.05,
+      "admissible": false,
+      "converged": true
+     },
+     "seed (perfect)": {
+      "cost": 79.05,
+      "admissible": false,
+      "converged": true
+     },
+     "tuned": {
+      "cost": 33.725,
+      "admissible": false,
+      "converged": true
+     }
+    },
+    "oracle": null,
+    "ideal": null,
+    "regret": null,
+    "seed_loss": null,
+    "impl_loss": null
+   },
+   {
+    "cell": "S1u",
+    "controller": "host_spring",
+    "compensator": true,
+    "friction": "ur5e",
+    "build": "ur5e",
+    "columns": {
+     "stiff": {
+      "cost": 19.759,
+      "admissible": false,
+      "converged": false
+     },
+     "seed (description)": {
+      "cost": 0.772,
+      "admissible": true,
+      "converged": true
+     },
+     "seed (perfect)": {
+      "cost": 0.772,
+      "admissible": true,
+      "converged": true
+     },
+     "tuned": {
+      "cost": 0.62,
+      "admissible": true,
+      "converged": true
+     }
+    },
+    "oracle": 0.543,
+    "ideal": 0.441,
+    "regret": 0.1416,
+    "seed_loss": 0.4213,
+    "impl_loss": 0.2308
+   },
+   {
+    "cell": "S2u",
+    "controller": "host_spring",
+    "compensator": false,
+    "friction": "ur5e",
+    "build": "ur5e",
+    "columns": {
+     "stiff": {
+      "cost": 102.264,
+      "admissible": false,
+      "converged": true
+     },
+     "seed (description)": {
+      "cost": 34.986,
+      "admissible": false,
+      "converged": false
+     },
+     "seed (perfect)": {
+      "cost": 26.158,
+      "admissible": false,
+      "converged": true
+     },
+     "tuned": {
+      "cost": 17.292,
+      "admissible": false,
+      "converged": true
+     }
+    },
+    "oracle": null,
+    "ideal": null,
+    "regret": null,
+    "seed_loss": null,
+    "impl_loss": null
+   },
+   {
+    "cell": "S1j",
+    "controller": "host_spring",
+    "compensator": true,
+    "friction": "jmc",
+    "build": "ur5e",
+    "columns": {
+     "stiff": {
+      "cost": 3.494,
+      "admissible": false,
+      "converged": true
+     },
+     "seed (description)": {
+      "cost": 0.781,
+      "admissible": true,
+      "converged": true
+     },
+     "seed (perfect)": {
+      "cost": 0.781,
+      "admissible": true,
+      "converged": true
+     },
+     "tuned": {
+      "cost": 0.63,
+      "admissible": true,
+      "converged": true
+     }
+    },
+    "oracle": 0.624,
+    "ideal": 0.442,
+    "regret": 0.0095,
+    "seed_loss": 0.2519,
+    "impl_loss": 0.4112
+   },
+   {
+    "cell": "S2j",
+    "controller": "host_spring",
+    "compensator": false,
+    "friction": "jmc",
+    "build": "ur5e",
+    "columns": {
+     "stiff": {
+      "cost": 75.068,
+      "admissible": false,
+      "converged": true
+     },
+     "seed (description)": {
+      "cost": 43.356,
+      "admissible": false,
+      "converged": true
+     },
+     "seed (perfect)": {
+      "cost": 43.356,
+      "admissible": false,
+      "converged": true
+     },
+     "tuned": {
+      "cost": 27.234,
+      "admissible": false,
+      "converged": true
+     }
+    },
+    "oracle": null,
+    "ideal": null,
+    "regret": null,
+    "seed_loss": null,
+    "impl_loss": null
+   },
+   {
+    "cell": "S2ql",
+    "controller": "host_spring",
+    "compensator": false,
+    "friction": "jmc",
+    "build": "qdd_light",
+    "columns": {
+     "stiff": {
+      "cost": 74.734,
+      "admissible": false,
+      "converged": false
+     },
+     "seed (description)": {
+      "cost": 79.393,
+      "admissible": false,
+      "converged": true
+     },
+     "seed (perfect)": {
+      "cost": 79.393,
+      "admissible": false,
+      "converged": true
+     },
+     "tuned": {
+      "cost": 65.186,
+      "admissible": false,
+      "converged": false
+     }
+    },
+    "oracle": null,
+    "ideal": null,
+    "regret": null,
+    "seed_loss": null,
+    "impl_loss": null
+   },
+   {
+    "cell": "S5q",
+    "controller": "joint",
+    "compensator": false,
+    "friction": "jmc",
+    "build": "qdd",
+    "columns": {
+     "stiff": {
+      "cost": 37.442,
+      "admissible": false,
+      "converged": true
+     },
+     "seed (description)": {
+      "cost": 68.276,
+      "admissible": false,
+      "converged": true
+     },
+     "seed (perfect)": {
+      "cost": 68.276,
+      "admissible": false,
+      "converged": true
+     },
+     "tuned": {
+      "cost": 41.501,
+      "admissible": false,
+      "converged": true
+     }
+    },
+    "oracle": null,
+    "ideal": null,
+    "regret": null,
+    "seed_loss": null,
+    "impl_loss": null
+   },
+   {
+    "cell": "S5ql",
+    "controller": "joint",
+    "compensator": false,
+    "friction": "jmc",
+    "build": "qdd_light",
+    "columns": {
+     "stiff": {
+      "cost": 74.734,
+      "admissible": false,
+      "converged": false
+     },
+     "seed (description)": {
+      "cost": 93.997,
+      "admissible": false,
+      "converged": true
+     },
+     "seed (perfect)": {
+      "cost": 93.997,
+      "admissible": false,
+      "converged": true
+     },
+     "tuned": {
+      "cost": 74.011,
+      "admissible": false,
+      "converged": true
+     }
+    },
+    "oracle": null,
+    "ideal": null,
+    "regret": null,
+    "seed_loss": null,
+    "impl_loss": null
+   },
+   {
+    "cell": "S5u",
+    "controller": "joint",
+    "compensator": false,
+    "friction": "ur5e",
+    "build": "ur5e",
+    "columns": {
+     "stiff": {
+      "cost": 102.264,
+      "admissible": false,
+      "converged": true
+     },
+     "seed (description)": {
+      "cost": 22.985,
+      "admissible": false,
+      "converged": true
+     },
+     "seed (perfect)": {
+      "cost": 23.96,
+      "admissible": false,
+      "converged": true
+     },
+     "tuned": {
+      "cost": 24.545,
+      "admissible": false,
+      "converged": true
+     }
+    },
+    "oracle": null,
+    "ideal": null,
+    "regret": null,
+    "seed_loss": null,
+    "impl_loss": null
+   },
+   {
+    "cell": "S6u",
+    "controller": "torque",
+    "compensator": false,
+    "friction": "ur5e",
+    "build": "ur5e",
+    "columns": {
+     "stiff": {
+      "cost": 102.264,
+      "admissible": false,
+      "converged": true
+     },
+     "seed (description)": {
+      "cost": 74.449,
+      "admissible": false,
+      "converged": false
+     },
+     "seed (perfect)": {
+      "cost": 25.892,
+      "admissible": false,
+      "converged": false
+     },
+     "tuned": {
+      "cost": 25.704,
+      "admissible": false,
+      "converged": true
+     }
+    },
+    "oracle": null,
+    "ideal": null,
+    "regret": null,
+    "seed_loss": null,
+    "impl_loss": null
+   }
+  ],
+  "kpis": {
+   "I1": {
+    "met": false,
+    "measured": false,
+    "worst_static": 1463702.8,
+    "corrected_static": 0.226,
+    "corrected_dynamic": 0.258,
+    "corrected_held": 9,
+    "corrected_rows": 20
+   },
+   "I2": {
+    "met": false,
+    "misses": [
+     "S2q",
+     "S2u",
+     "S2j",
+     "S2ql",
+     "S5q",
+     "S5ql",
+     "S6u",
+     "S5u"
+    ]
+   },
+   "I3": {
+    "met": false,
+    "s1q_seed_loss": 0.648
+   },
+   "I4": {
+    "met": true,
+    "worst_regret": 0.1416,
+    "regrets": {
+     "S1q": 0.0,
+     "S1u": 0.1416,
+     "S1j": 0.0095
+    },
+    "no_oracle": [
+     "S2q",
+     "S2u",
+     "S2j",
+     "S2ql",
+     "S5q",
+     "S5ql",
+     "S6u",
+     "S5u"
+    ]
+   },
+   "I5": {
+    "met": false,
+    "share": 0.167,
+    "points": 36,
+    "worst_regret": 4.9
+   },
+   "I6": {
+    "met": false,
+    "per_cell": {
+     "S1u": 0.231,
+     "S1j": 0.411,
+     "S2u": null,
+     "S2j": null,
+     "S1q": 1.319,
+     "S2q": null,
+     "S2ql": null
+    }
+   },
+   "I7": {
+    "met": true,
+    "diverged": 0,
+    "pick_runs": 49560
+   }
+  },
+  "readiness": {
+   "met": false,
+   "parts": {
+    "I1": false,
+    "I3": false,
+    "I4": true,
+    "I5": false,
+    "I7": true
+   },
+   "cells": [
+    "S1q",
+    "S2q"
+   ],
+   "corrected_met": false,
+   "corrected_parts": {
+    "I1": false,
+    "I3": false,
+    "I4": true,
+    "I5": false,
+    "I7": true
+   }
+  },
+  "whatifs": {
+   "S1q-contact_aware": {
+    "cell": "S1q",
+    "law": "contact_aware",
+    "status": "ok",
+    "rows": [
+     {
+      "pick": "tuned",
+      "whatif": "baseline",
+      "cost": 0.776,
+      "admissible": true,
+      "rejections": [],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 1,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 0,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "tuned",
+      "whatif": "slow",
+      "cost": 0.631,
+      "admissible": false,
+      "rejections": [
+       "lost contact"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 2,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 0,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "tuned",
+      "whatif": "host 500 Hz / 2 ms",
+      "cost": 0.675,
+      "admissible": true,
+      "rejections": [],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 1,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 0,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "tuned",
+      "whatif": "c -20 %",
+      "cost": 21.292,
+      "admissible": false,
+      "rejections": [
+       "lost contact",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 2,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 12,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "tuned",
+      "whatif": "c +20 %",
+      "cost": 17.756,
+      "admissible": false,
+      "rejections": [
+       "lost contact",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 5,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 12,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": false
+     },
+     {
+      "pick": "oracle (best)",
+      "whatif": "baseline",
+      "cost": 0.776,
+      "admissible": true,
+      "rejections": [],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 1,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 0,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "oracle (best)",
+      "whatif": "slow",
+      "cost": 0.631,
+      "admissible": false,
+      "rejections": [
+       "lost contact"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 2,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 0,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "oracle (best)",
+      "whatif": "host 500 Hz / 2 ms",
+      "cost": 0.675,
+      "admissible": true,
+      "rejections": [],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 1,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 0,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "oracle (best)",
+      "whatif": "c -20 %",
+      "cost": 21.292,
+      "admissible": false,
+      "rejections": [
+       "lost contact",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 2,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 12,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "oracle (best)",
+      "whatif": "c +20 %",
+      "cost": 17.756,
+      "admissible": false,
+      "rejections": [
+       "lost contact",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 5,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 12,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": false
+     }
+    ],
+    "pose": {
+     "study_zy": -1.436,
+     "best_zy": -1.115,
+     "best_centre": [
+      -0.25,
+      -0.42
+     ]
+    }
+   },
+   "S1q": {
+    "cell": "S1q",
+    "law": "reference",
+    "status": "ok",
+    "rows": [
+     {
+      "pick": "tuned",
+      "whatif": "baseline",
+      "cost": 1.188,
+      "admissible": true,
+      "rejections": [],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 1,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 0,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "tuned",
+      "whatif": "slow",
+      "cost": 2.028,
+      "admissible": false,
+      "rejections": [
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 1,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 2,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "tuned",
+      "whatif": "no push",
+      "cost": 0.946,
+      "admissible": true,
+      "rejections": [],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 0,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 0,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "tuned",
+      "whatif": "pose",
+      "cost": 1.529,
+      "admissible": false,
+      "rejections": [
+       "lost contact"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 3,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 0,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "tuned",
+      "whatif": "slow + pose",
+      "cost": 1.144,
+      "admissible": false,
+      "rejections": [
+       "lost contact",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 4,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 5,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "tuned",
+      "whatif": "host 500 Hz / 2 ms",
+      "cost": 1.322,
+      "admissible": true,
+      "rejections": [],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 1,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 0,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "grid's lowest search cost",
+      "whatif": "baseline",
+      "cost": 1.188,
+      "admissible": true,
+      "rejections": [],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 1,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 0,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "grid's lowest search cost",
+      "whatif": "slow",
+      "cost": 2.028,
+      "admissible": false,
+      "rejections": [
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 1,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 2,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "grid's lowest search cost",
+      "whatif": "no push",
+      "cost": 0.946,
+      "admissible": true,
+      "rejections": [],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 0,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 0,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "grid's lowest search cost",
+      "whatif": "pose",
+      "cost": 1.529,
+      "admissible": false,
+      "rejections": [
+       "lost contact"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 3,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 0,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "grid's lowest search cost",
+      "whatif": "slow + pose",
+      "cost": 1.144,
+      "admissible": false,
+      "rejections": [
+       "lost contact",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 4,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 5,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "grid's lowest search cost",
+      "whatif": "host 500 Hz / 2 ms",
+      "cost": 1.322,
+      "admissible": true,
+      "rejections": [],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 1,
+       "seal force": 0,
+       "force ripple": 0,
+       "x/y error": 0,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     }
+    ],
+    "pose": {
+     "study_zy": -1.436,
+     "best_zy": -1.115,
+     "best_centre": [
+      -0.25,
+      -0.42
+     ]
+    }
+   },
+   "S2q-contact_aware": {
+    "cell": "S2q",
+    "law": "contact_aware",
+    "status": "ok",
+    "rows": [
+     {
+      "pick": "tuned",
+      "whatif": "baseline",
+      "cost": 51.236,
+      "admissible": false,
+      "rejections": [
+       "peak force",
+       "lost contact",
+       "seal force",
+       "force ripple"
+      ],
+      "gate_tapes": {
+       "peak force": 3,
+       "lost contact": 9,
+       "seal force": 3,
+       "force ripple": 6,
+       "x/y error": 0,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": false
+     },
+     {
+      "pick": "tuned",
+      "whatif": "slow",
+      "cost": 49.049,
+      "admissible": false,
+      "rejections": [
+       "lost contact",
+       "force ripple"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 9,
+       "seal force": 1,
+       "force ripple": 6,
+       "x/y error": 0,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "tuned",
+      "whatif": "host 500 Hz / 2 ms",
+      "cost": 59.493,
+      "admissible": false,
+      "rejections": [
+       "lost contact",
+       "seal force",
+       "force ripple"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 8,
+       "seal force": 2,
+       "force ripple": 5,
+       "x/y error": 0,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": false
+     },
+     {
+      "pick": "tuned",
+      "whatif": "c -20 %",
+      "cost": 36.021,
+      "admissible": false,
+      "rejections": [
+       "lost contact",
+       "force ripple",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 5,
+       "seal force": 1,
+       "force ripple": 4,
+       "x/y error": 12,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": false
+     },
+     {
+      "pick": "tuned",
+      "whatif": "c +20 %",
+      "cost": 47.262,
+      "admissible": false,
+      "rejections": [
+       "lost contact",
+       "seal force",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 12,
+       "seal force": 12,
+       "force ripple": 0,
+       "x/y error": 12,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "grid's lowest search cost",
+      "whatif": "baseline",
+      "cost": 13.231,
+      "admissible": false,
+      "rejections": [
+       "peak force",
+       "seal force",
+       "force ripple"
+      ],
+      "gate_tapes": {
+       "peak force": 3,
+       "lost contact": 1,
+       "seal force": 7,
+       "force ripple": 4,
+       "x/y error": 1,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "grid's lowest search cost",
+      "whatif": "slow",
+      "cost": 15.075,
+      "admissible": false,
+      "rejections": [
+       "seal force",
+       "force ripple",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 1,
+       "seal force": 7,
+       "force ripple": 4,
+       "x/y error": 7,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "grid's lowest search cost",
+      "whatif": "host 500 Hz / 2 ms",
+      "cost": 15.833,
+      "admissible": false,
+      "rejections": [
+       "seal force",
+       "force ripple"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 0,
+       "seal force": 12,
+       "force ripple": 4,
+       "x/y error": 0,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "grid's lowest search cost",
+      "whatif": "c -20 %",
+      "cost": 61.28,
+      "admissible": false,
+      "rejections": [
+       "lost contact",
+       "seal force",
+       "force ripple",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 2,
+       "seal force": 12,
+       "force ripple": 4,
+       "x/y error": 12,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "grid's lowest search cost",
+      "whatif": "c +20 %",
+      "cost": 84.311,
+      "admissible": false,
+      "rejections": [
+       "lost contact",
+       "seal force",
+       "force ripple",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 8,
+       "seal force": 7,
+       "force ripple": 4,
+       "x/y error": 12,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": false
+     }
+    ],
+    "pose": {
+     "study_zy": -1.436,
+     "best_zy": -1.115,
+     "best_centre": [
+      -0.25,
+      -0.42
+     ]
+    }
+   },
+   "S2q": {
+    "cell": "S2q",
+    "law": "reference",
+    "status": "ok",
+    "rows": [
+     {
+      "pick": "tuned",
+      "whatif": "baseline",
+      "cost": 33.725,
+      "admissible": false,
+      "rejections": [
+       "peak force",
+       "lost contact",
+       "seal force",
+       "force ripple",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 5,
+       "lost contact": 2,
+       "seal force": 5,
+       "force ripple": 9,
+       "x/y error": 4,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "tuned",
+      "whatif": "slow",
+      "cost": 19.375,
+      "admissible": false,
+      "rejections": [
+       "lost contact",
+       "seal force",
+       "force ripple",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 2,
+       "seal force": 6,
+       "force ripple": 9,
+       "x/y error": 3,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "tuned",
+      "whatif": "no push",
+      "cost": 29.964,
+      "admissible": false,
+      "rejections": [
+       "peak force",
+       "seal force",
+       "force ripple",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 5,
+       "lost contact": 0,
+       "seal force": 5,
+       "force ripple": 8,
+       "x/y error": 4,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "tuned",
+      "whatif": "pose",
+      "cost": 38.95,
+      "admissible": false,
+      "rejections": [
+       "peak force",
+       "lost contact",
+       "force ripple",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 2,
+       "lost contact": 3,
+       "seal force": 1,
+       "force ripple": 3,
+       "x/y error": 2,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "tuned",
+      "whatif": "slow + pose",
+      "cost": 26.835,
+      "admissible": false,
+      "rejections": [
+       "lost contact",
+       "force ripple",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 3,
+       "seal force": 1,
+       "force ripple": 5,
+       "x/y error": 5,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "tuned",
+      "whatif": "host 500 Hz / 2 ms",
+      "cost": 35.741,
+      "admissible": false,
+      "rejections": [
+       "peak force",
+       "lost contact",
+       "seal force",
+       "force ripple",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 5,
+       "lost contact": 2,
+       "seal force": 6,
+       "force ripple": 9,
+       "x/y error": 4,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "grid's lowest search cost",
+      "whatif": "baseline",
+      "cost": 18.548,
+      "admissible": false,
+      "rejections": [
+       "peak force",
+       "lost contact",
+       "seal force",
+       "force ripple",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 5,
+       "lost contact": 3,
+       "seal force": 3,
+       "force ripple": 10,
+       "x/y error": 4,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "grid's lowest search cost",
+      "whatif": "slow",
+      "cost": 15.635,
+      "admissible": false,
+      "rejections": [
+       "lost contact",
+       "seal force",
+       "force ripple",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 3,
+       "seal force": 2,
+       "force ripple": 8,
+       "x/y error": 3,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "grid's lowest search cost",
+      "whatif": "no push",
+      "cost": 16.208,
+      "admissible": false,
+      "rejections": [
+       "peak force",
+       "seal force",
+       "force ripple",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 5,
+       "lost contact": 1,
+       "seal force": 3,
+       "force ripple": 7,
+       "x/y error": 3,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "grid's lowest search cost",
+      "whatif": "pose",
+      "cost": 59.721,
+      "admissible": false,
+      "rejections": [
+       "peak force",
+       "lost contact",
+       "seal force",
+       "force ripple",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 2,
+       "lost contact": 8,
+       "seal force": 3,
+       "force ripple": 6,
+       "x/y error": 2,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": false
+     },
+     {
+      "pick": "grid's lowest search cost",
+      "whatif": "slow + pose",
+      "cost": 23.875,
+      "admissible": false,
+      "rejections": [
+       "lost contact",
+       "seal force",
+       "force ripple",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 0,
+       "lost contact": 7,
+       "seal force": 2,
+       "force ripple": 6,
+       "x/y error": 4,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": true
+     },
+     {
+      "pick": "grid's lowest search cost",
+      "whatif": "host 500 Hz / 2 ms",
+      "cost": 19.034,
+      "admissible": false,
+      "rejections": [
+       "peak force",
+       "lost contact",
+       "seal force",
+       "force ripple",
+       "x/y error"
+      ],
+      "gate_tapes": {
+       "peak force": 4,
+       "lost contact": 3,
+       "seal force": 4,
+       "force ripple": 9,
+       "x/y error": 3,
+       "saturates": 0,
+       "diverged": 0
+      },
+      "converged": false
+     }
+    ],
+    "pose": {
+     "study_zy": -1.436,
+     "best_zy": -1.325,
+     "best_centre": [
+      -0.15,
+      -0.42
+     ]
+    }
+   }
+  },
+  "compute": {
+   "pick_runs": 49560,
+   "wall_h": 2.95,
+   "diverged": 0,
+   "workers": 8,
+   "code_commit": "e87851d7",
+   "finished_at": "2026-10-26 23:30:40"
+  },
+  "budget": {
+   "height_uncertainty_m": 0.015,
+   "press_in_m": 0.02,
+   "seal_force_n": 8.0,
+   "seal_force_range_n": [
+    4.0,
+    20.0
+   ],
+   "peak_force_n": 30.0,
+   "force_ripple_n": 3.0,
+   "lateral_disturbance_n": 20.0,
+   "lateral_error_m": 0.005,
+   "rotational_disturbance_nm": 5.0,
+   "rotational_error_rad": 0.035,
+   "damping_ratio": 0.7,
+   "damping_ratio_z": 1.0
+  },
+  "ceilings": {
+   "ur5e": [
+    {
+     "joint": "shoulder_pan_joint",
+     "inertia_kg_m2": 1.3364645411701797,
+     "board_kp_max": 31291.135051311216,
+     "board_kp_base": 455.0,
+     "host_spring_kp_max": 36469.517535675,
+     "torque_kp_max": 2075.995495855101
+    },
+    {
+     "joint": "shoulder_lift_joint",
+     "inertia_kg_m2": 1.847032908994596,
+     "board_kp_max": 31291.1350513229,
+     "board_kp_base": 625.0,
+     "host_spring_kp_max": 50401.93509703437,
+     "torque_kp_max": 2869.0862208821345
+    },
+    {
+     "joint": "elbow_joint",
+     "inertia_kg_m2": 1.2266213623724649,
+     "board_kp_max": 31291.13505120251,
+     "board_kp_base": 259.0,
+     "host_spring_kp_max": 33472.110861622845,
+     "torque_kp_max": 1905.3707337235144
+    },
+    {
+     "joint": "wrist_1_joint",
+     "inertia_kg_m2": 0.11062902569855175,
+     "board_kp_max": 4756.645437577911,
+     "board_kp_base": 22.6,
+     "host_spring_kp_max": 3018.850907286605,
+     "torque_kp_max": 171.8454564158819
+    },
+    {
+     "joint": "wrist_2_joint",
+     "inertia_kg_m2": 0.09062442569855171,
+     "board_kp_max": 3896.5204503087075,
+     "board_kp_base": 18.8,
+     "host_spring_kp_max": 2472.964287761795,
+     "torque_kp_max": 140.77133643958925
+    },
+    {
+     "joint": "wrist_3_joint",
+     "inertia_kg_m2": 0.080237134,
+     "board_kp_max": 3449.904714928931,
+     "board_kp_base": 18.0,
+     "host_spring_kp_max": 2189.515303461159,
+     "torque_kp_max": 124.6362500859734
+    }
+   ],
+   "qdd": [
+    {
+     "joint": "shoulder_pan_joint",
+     "inertia_kg_m2": 0.8382945411701797,
+     "board_kp_max": 31291.135051260408,
+     "board_kp_base": 285.3977823448014,
+     "host_spring_kp_max": 22875.427313992284,
+     "torque_kp_max": 1302.1637597249278
+    },
+    {
+     "joint": "shoulder_lift_joint",
+     "inertia_kg_m2": 1.348862908994596,
+     "board_kp_max": 31291.135051364938,
+     "board_kp_base": 456.4289645388712,
+     "host_spring_kp_max": 36807.844875351664,
+     "torque_kp_max": 2095.254484751961
+    },
+    {
+     "joint": "elbow_joint",
+     "inertia_kg_m2": 0.7284513623724649,
+     "board_kp_max": 31291.135051128393,
+     "board_kp_base": 153.8118515150879,
+     "host_spring_kp_max": 19878.020639940132,
+     "torque_kp_max": 1131.5389975933408
+    },
+    {
+     "joint": "wrist_1_joint",
+     "inertia_kg_m2": 0.03245902569855175,
+     "board_kp_max": 1395.6199606959167,
+     "board_kp_base": 6.6309359244124,
+     "host_spring_kp_max": 885.7436695385716,
+     "torque_kp_max": 50.42018630066888
+    },
+    {
+     "joint": "wrist_2_joint",
+     "inertia_kg_m2": 0.012454425698551713,
+     "board_kp_max": 535.4949734267128,
+     "board_kp_base": 2.5836655110137055,
+     "host_spring_kp_max": 339.85705001376186,
+     "torque_kp_max": 19.34606632437626
+    },
+    {
+     "joint": "wrist_3_joint",
+     "inertia_kg_m2": 0.0020671339999999935,
+     "board_kp_max": 88.8792380469357,
+     "board_kp_base": 0.46373057143341984,
+     "host_spring_kp_max": 56.40806571312561,
+     "torque_kp_max": 3.210979970760393
+    }
+   ],
+   "qdd_light": [
+    {
+     "joint": "shoulder_pan_joint",
+     "inertia_kg_m2": 0.2974678623508839,
+     "board_kp_max": 12790.035357745262,
+     "board_kp_base": 101.2730777362372,
+     "host_spring_kp_max": 8117.319306359295,
+     "torque_kp_max": 462.0713257842021
+    },
+    {
+     "joint": "shoulder_lift_joint",
+     "inertia_kg_m2": 0.4470772276982068,
+     "board_kp_max": 19222.69351960401,
+     "board_kp_base": 151.28223538988215,
+     "host_spring_kp_max": 12199.867855128186,
+     "torque_kp_max": 694.4668432341736
+    },
+    {
+     "joint": "elbow_joint",
+     "inertia_kg_m2": 0.28844987515501486,
+     "board_kp_max": 12402.294731987151,
+     "board_kp_base": 60.90593230877022,
+     "host_spring_kp_max": 7871.23597826121,
+     "torque_kp_max": 448.06324683890426
+    },
+    {
+     "joint": "wrist_1_joint",
+     "inertia_kg_m2": 0.018163082709565487,
+     "board_kp_max": 780.9464465340213,
+     "board_kp_base": 3.7104698938115446,
+     "host_spring_kp_max": 495.6351949288768,
+     "torque_kp_max": 28.21360143448822
+    },
+    {
+     "joint": "wrist_2_joint",
+     "inertia_kg_m2": 0.010061702709565504,
+     "board_kp_max": 432.61659393197203,
+     "board_kp_base": 2.087296106780785,
+     "host_spring_kp_max": 274.5642941517612,
+     "torque_kp_max": 15.629333111525673
+    },
+    {
+     "joint": "wrist_3_joint",
+     "inertia_kg_m2": 0.0019746402000000223,
+     "board_kp_max": 84.90234130581338,
+     "board_kp_base": 0.4429809718776894,
+     "host_spring_kp_max": 53.88408983712769,
+     "torque_kp_max": 3.067304844126403
+    }
+   ]
+  }
+ },
+ "judge": {
+  "rounds": [
+   {
+    "round": 1,
+    "verdict": "FIX",
+    "headline": "The large peaks reproduce, but the comparison does not establish its main conclusion.",
+    "raised": "F1-F4"
+   },
+   {
+    "round": 2,
+    "verdict": "FIX",
+    "headline": "The corrected headline forces reproduce, but the convergence and anticipation claims still need fixes.",
+    "raised": "F5-F10"
+   },
+   {
+    "round": 3,
+    "verdict": "FIX",
+    "headline": "The default heavy-arm forces reproduce, but three spec-breaking claims remain.",
+    "raised": "F11-F14"
+   },
+   {
+    "round": 4,
+    "verdict": "FIX",
+    "headline": "F12\u2019s matched-speed comparison and F14\u2019s timing repair hold in my tests. F11 still falsely certifies a row, and F13\u2019s narrowed headline still exceeds the data.",
+    "raised": "F15-F18"
+   },
+   {
+    "round": 5,
+    "verdict": "FIX",
+    "headline": "F15\u2019s \u201ctiny perturbation\u201d changes the trajectory by almost a full host period. The surviving impact peaks reproduce, but the certification counts and remaining explanations need correction.",
+    "raised": "F19-F25"
+   },
+   {
+    "round": 6,
+    "verdict": "FIX",
+    "headline": "The held impact peaks reproduce, but two explanatory claims and one convergence certification still need correction.",
+    "raised": "F26-F28"
+   },
+   {
+    "round": 7,
+    "verdict": "FIX",
+    "headline": "The impact-force peaks held up, but F27 still overstates anticipation\u2019s effect, and F28 misses a published contact-event instability.",
+    "raised": "F29, F30; text and disclosure"
+   },
+   {
+    "round": 8,
+    "verdict": "FIX",
+    "headline": "F29 and F30 check out. One remaining RISK understates the solver\u2019s effect on the compensator\u2019s impact peak.",
+    "raised": "F31; text"
+   },
+   {
+    "round": 9,
+    "verdict": "PASS",
+    "headline": "F31 is fixed. I found no new SPEC-BREAKING or RISK finding in the audited impact claims.",
+    "raised": "none"
+   }
+  ],
+  "r9": {
+   "checks": 243,
+   "drop_equations_soft_n": 15.505,
+   "drop_equations_stiff_n": 141.553,
+   "f31_b200": [
+    37.41,
+    41.219,
+    41.627
+   ],
+   "host_pd_stable_unstable": [
+    49,
+    50
+   ],
+   "host_spring_stable_unstable": [
+    217,
+    219
+   ]
+  }
+ },
+ "ceilings": {
+  "delays_ms": [
+   0.0,
+   0.5,
+   1.0,
+   1.5,
+   2.0,
+   2.5,
+   3.0,
+   3.5,
+   4.0,
+   4.5,
+   5.0,
+   5.5,
+   6.0,
+   6.5,
+   7.0,
+   7.5,
+   8.0,
+   8.5,
+   9.0,
+   9.5,
+   10.0,
+   10.5,
+   11.0,
+   11.5,
+   12.0,
+   12.5,
+   13.0,
+   13.5,
+   14.0,
+   14.5,
+   15.0
+  ],
+  "rates_hz": [
+   50,
+   100,
+   250,
+   500,
+   1000
+  ],
+  "zeta": 1.0,
+  "table": {
+   "50": {
+    "host_pd": [
+     49.97,
+     53.35,
+     57.24,
+     61.93,
+     67.61,
+     74.82,
+     73.34,
+     67.61,
+     62.81,
+     58.77,
+     55.22,
+     52.16,
+     49.46,
+     47.06,
+     44.89,
+     42.91,
+     41.14,
+     39.54,
+     38.05,
+     36.67,
+     35.4,
+     34.24,
+     33.13,
+     32.11,
+     31.15,
+     30.27,
+     29.41,
+     28.63,
+     27.87,
+     27.16,
+     26.48
+    ],
+    "host_spring": [
+     249.91,
+     263.08,
+     277.65,
+     294.11,
+     312.39,
+     333.25,
+     357.06,
+     384.61,
+     374.98,
+     333.25,
+     299.99,
+     272.71,
+     250.15,
+     230.96,
+     214.79,
+     200.87,
+     188.68,
+     178.15,
+     168.82,
+     160.69,
+     153.47,
+     146.97,
+     141.32,
+     136.14,
+     131.44,
+     127.23,
+     123.5,
+     119.99,
+     116.81,
+     114.02,
+     111.32
+    ]
+   },
+   "100": {
+    "host_pd": [
+     99.95,
+     114.48,
+     135.22,
+     146.68,
+     125.63,
+     110.44,
+     98.92,
+     89.77,
+     82.28,
+     76.11,
+     70.81,
+     66.26,
+     62.3,
+     58.82,
+     55.74,
+     52.96,
+     50.49,
+     48.27,
+     46.21,
+     44.31,
+     42.61,
+     41.88,
+     41.04,
+     40.1,
+     39.1,
+     38.06,
+     37.06,
+     36.03,
+     35.06,
+     34.09,
+     33.15
+    ],
+    "host_spring": [
+     499.82,
+     555.3,
+     624.78,
+     714.11,
+     749.97,
+     599.97,
+     500.29,
+     429.57,
+     377.36,
+     337.64,
+     306.95,
+     282.63,
+     262.89,
+     247.0,
+     233.62,
+     222.64,
+     213.39,
+     205.69,
+     199.14,
+     193.52,
+     188.74,
+     184.12,
+     179.19,
+     173.95,
+     168.56,
+     163.32,
+     158.23,
+     153.33,
+     148.65,
+     144.21,
+     140.15
+    ]
+   },
+   "250": {
+    "host_pd": [
+     249.87,
+     374.09,
+     276.1,
+     214.57,
+     177.02,
+     151.34,
+     132.4,
+     118.04,
+     106.53,
+     101.38,
+     95.16,
+     88.86,
+     82.88,
+     77.48,
+     72.64,
+     68.31,
+     64.42,
+     61.99,
+     59.45,
+     56.97,
+     54.54,
+     52.24,
+     50.04,
+     48.02,
+     46.12,
+     44.75,
+     43.39,
+     42.02,
+     40.7,
+     39.41,
+     38.18
+    ],
+    "host_spring": [
+     1249.55,
+     1666.26,
+     1499.93,
+     1004.34,
+     767.36,
+     636.16,
+     556.59,
+     505.56,
+     471.85,
+     441.42,
+     408.3,
+     377.48,
+     350.37,
+     326.95,
+     307.66,
+     291.39,
+     277.58,
+     265.01,
+     252.93,
+     241.19,
+     230.54,
+     220.88,
+     212.01,
+     204.12,
+     197.06,
+     190.43,
+     184.12,
+     177.97,
+     172.29,
+     166.77,
+     161.87
+    ]
+   },
+   "500": {
+    "host_pd": [
+     499.74,
+     552.2,
+     354.04,
+     264.8,
+     213.06,
+     190.32,
+     165.76,
+     145.27,
+     128.83,
+     118.91,
+     109.08,
+     100.09,
+     92.23,
+     86.77,
+     81.39,
+     76.37,
+     71.8,
+     68.36,
+     64.96,
+     61.78,
+     58.76,
+     56.38,
+     54.08,
+     51.84,
+     49.76,
+     48.03,
+     46.33,
+     44.68,
+     43.13,
+     41.81,
+     40.52
+    ],
+    "host_spring": [
+     2499.1,
+     2999.86,
+     1534.73,
+     1113.19,
+     943.71,
+     816.59,
+     700.73,
+     615.31,
+     555.16,
+     505.86,
+     461.09,
+     424.01,
+     394.11,
+     368.24,
+     344.57,
+     323.75,
+     305.7,
+     289.8,
+     275.15,
+     261.78,
+     249.81,
+     239.11,
+     229.01,
+     219.72,
+     211.24,
+     203.4,
+     196.13,
+     189.35,
+     183.05,
+     177.07,
+     171.58
+    ]
+   },
+   "1000": {
+    "host_pd": [
+     999.49,
+     708.08,
+     426.11,
+     331.52,
+     257.67,
+     218.17,
+     184.46,
+     162.79,
+     143.6,
+     129.91,
+     117.53,
+     108.17,
+     99.53,
+     92.67,
+     86.26,
+     81.04,
+     76.1,
+     71.96,
+     68.09,
+     64.78,
+     61.64,
+     58.87,
+     56.27,
+     53.95,
+     51.78,
+     49.83,
+     47.92,
+     46.23,
+     44.63,
+     43.16,
+     41.74
+    ],
+    "host_spring": [
+     4998.2,
+     3069.45,
+     1887.41,
+     1401.46,
+     1110.32,
+     922.18,
+     788.23,
+     689.15,
+     611.4,
+     550.31,
+     499.62,
+     458.02,
+     422.48,
+     392.26,
+     366.09,
+     343.15,
+     322.86,
+     305.02,
+     288.74,
+     274.26,
+     261.18,
+     249.39,
+     238.43,
+     228.51,
+     219.41,
+     210.93,
+     203.16,
+     195.88,
+     189.09,
+     182.81,
+     176.85
+    ]
+   }
+  },
+  "rack": {
+   "rate_hz": 100,
+   "delay_ms": 7,
+   "host_pd": 55.7,
+   "host_spring": 233.6,
+   "wn_ratio": 4.19,
+   "k_ratio": 17.6
+  },
+  "function": "bam_impedance_controller.stability.host_wn_ceiling(period_s, delay_s, damping_ratio=1, board_damping)"
+ },
+ "sources": {
+  "results": {
+   "path": "/home/bam/bam_ws/reports/media/impedance-modes-2026-10-26/results.json",
+   "sha256_12": "7cf1ed94ed86",
+   "what": "the MuJoCo comparison (bam-impedance compare): 384 runs, tables, probe"
+  },
+  "impact": {
+   "path": "/home/bam/bam_ws/reports/media/impedance-modes-2026-10-26/impact/impact_study.json",
+   "sha256_12": "92f160a7a517",
+   "what": "the impact study: builds, contact sensitivity, drop fixture, boundary"
+  },
+  "kpis": {
+   "path": "/home/bam/bam_ws/reports/media/impedance-modes-2026-10-26/oracle/kpis.json",
+   "sha256_12": "716940d3b512",
+   "what": "the oracle study's KPIs and readiness"
+  },
+  "oracle": {
+   "path": "/home/bam/bam_ws/reports/media/impedance-modes-2026-10-26/oracle/evidence.json",
+   "sha256_12": "eaabaf0e2757",
+   "what": "the oracle study's per-cell costs"
+  },
+  "whatifs-S1q-contact_aware": {
+   "path": "/home/bam/bam_ws/reports/media/impedance-modes-2026-10-26/oracle/whatifs-S1q-contact_aware.json",
+   "sha256_12": "b33a8939e1bb",
+   "what": "an oracle what-if (diagnostics outside the study's definitions)"
+  },
+  "whatifs-S1q": {
+   "path": "/home/bam/bam_ws/reports/media/impedance-modes-2026-10-26/oracle/whatifs-S1q.json",
+   "sha256_12": "e2132b21a64c",
+   "what": "an oracle what-if (diagnostics outside the study's definitions)"
+  },
+  "whatifs-S2q-contact_aware": {
+   "path": "/home/bam/bam_ws/reports/media/impedance-modes-2026-10-26/oracle/whatifs-S2q-contact_aware.json",
+   "sha256_12": "34a76c8f2ea2",
+   "what": "an oracle what-if (diagnostics outside the study's definitions)"
+  },
+  "whatifs-S2q": {
+   "path": "/home/bam/bam_ws/reports/media/impedance-modes-2026-10-26/oracle/whatifs-S2q.json",
+   "sha256_12": "cc27d9740b71",
+   "what": "an oracle what-if (diagnostics outside the study's definitions)"
+  },
+  "impact_study_py": {
+   "path": "/home/bam/bam_ws/.claude/worktrees/bam-impedance-controller/src/core/mdp/agent/controllers/bam_impedance_controller/docs/impact_study.py",
+   "sha256_12": "bb9d75e08505",
+   "what": "the impact study's script (the drop fixture's parameters)"
+  },
+  "readme": {
+   "path": "/home/bam/bam_ws/.claude/worktrees/bam-impedance-controller/src/core/mdp/agent/controllers/bam_impedance_controller/README.md",
+   "sha256_12": "34191e66a465",
+   "what": "the controller's README (the verified wording the page quotes)"
+  },
+  "review_page": {
+   "path": "/home/bam/bam_ws/reports/media/impedance-modes-2026-10-26/index.html",
+   "sha256_12": "dd5004c9c40f",
+   "what": "the review page (the verified wording the page quotes)"
+  },
+  "log": {
+   "path": "/home/bam/bam_ws/.claude/worktrees/bam-impedance-controller/src/core/mdp/agent/controllers/bam_impedance_controller/docs/Log.md",
+   "sha256_12": "2ad197341e18",
+   "what": "the controller's design log (what each judge round changed)"
+  },
+  "verdict_r1": {
+   "path": "/home/bam/bam_ws/reports/media/audits/2026-10-26-impedance-impact-r1-verdict.md",
+   "sha256_12": "543d815363f6",
+   "what": "Codex impact judge, round 1 verdict"
+  },
+  "verdict_r2": {
+   "path": "/home/bam/bam_ws/reports/media/audits/2026-10-26-impedance-impact-r2-verdict.md",
+   "sha256_12": "7b84ed6b7e64",
+   "what": "Codex impact judge, round 2 verdict"
+  },
+  "verdict_r3": {
+   "path": "/home/bam/bam_ws/reports/media/audits/2026-10-26-impedance-impact-r3-verdict.md",
+   "sha256_12": "fb6eaa9092a6",
+   "what": "Codex impact judge, round 3 verdict"
+  },
+  "verdict_r4": {
+   "path": "/home/bam/bam_ws/reports/media/audits/2026-10-26-impedance-impact-r4-verdict.md",
+   "sha256_12": "895f50b02b29",
+   "what": "Codex impact judge, round 4 verdict"
+  },
+  "verdict_r5": {
+   "path": "/home/bam/bam_ws/reports/media/audits/2026-10-26-impedance-impact-r5-verdict.md",
+   "sha256_12": "05b54b3541be",
+   "what": "Codex impact judge, round 5 verdict"
+  },
+  "verdict_r6": {
+   "path": "/home/bam/bam_ws/reports/media/audits/2026-10-26-impedance-impact-r6-verdict.md",
+   "sha256_12": "55c4bde9e19c",
+   "what": "Codex impact judge, round 6 verdict"
+  },
+  "verdict_r7": {
+   "path": "/home/bam/bam_ws/reports/media/audits/2026-10-26-impedance-impact-r7-verdict.md",
+   "sha256_12": "0559cdb99337",
+   "what": "Codex impact judge, round 7 verdict"
+  },
+  "verdict_r8": {
+   "path": "/home/bam/bam_ws/reports/media/audits/2026-10-26-impedance-impact-r8-verdict.md",
+   "sha256_12": "a6bdebd25997",
+   "what": "Codex impact judge, round 8 verdict"
+  },
+  "verdict_r9": {
+   "path": "/home/bam/bam_ws/reports/media/audits/2026-10-26-impedance-impact-r9-verdict.md",
+   "sha256_12": "a4b417109ff8",
+   "what": "Codex impact judge, round 9 verdict"
+  }
+ }
+}

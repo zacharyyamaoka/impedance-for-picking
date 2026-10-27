@@ -1,211 +1,285 @@
-/* pidtuna.com look. Three design directions share one set of tokens; html[data-variant] picks one, VitePress' .dark picks
-   the mode. Components read --pt-* tokens only, so a variant is a block of variables plus a few layout rules in Landing.vue. */
+/* The impedance controller's site. Three design directions share one set of tokens; html[data-variant] picks one, VitePress'
+   .dark picks the mode. Components read --pt-* tokens only (the names are pidtuna-website's, kept so other lanes' components -
+   ArmLab, LivePick - follow every direction), so a direction is a block of values plus a few layout rules in Landing.vue. */
 
-/* ---------------------------------------------------------------- 1 · Yellowfin (default): deep-ocean navy, fin yellow */
+/* ---------------------------------------------------------------- 1 · Lab notebook (default): cream grid, teal */
 :root,
-:root[data-variant='yellowfin'] {
-  --pt-font-base: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --pt-font-display: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --pt-font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
-  --pt-bg: #ffffff;
-  --pt-bg-soft: #f2f6fa;
-  --pt-bg-deep: #0a1f33;
-  --pt-on-deep: #e8f0f8;
-  --pt-text: #0b1b2b;
-  --pt-text-2: #3d5166;
-  --pt-text-3: #6b7d90;
-  --pt-line: #d9e2ec;
-  --pt-brand: #0f4c81;
-  --pt-brand-2: #1763a6;
-  --pt-brand-soft: rgba(15, 76, 129, 0.1);
-  --pt-accent: #c98a00;
-  --pt-accent-soft: rgba(229, 165, 0, 0.16);
+:root[data-variant='crisp'] {
+  --pt-font-base: 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --pt-font-display: 'Space Grotesk', 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --pt-font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --pt-font-serif: 'Newsreader', Georgia, serif;
+  --pt-bg: #f6f3ea;
+  --pt-bg-soft: #eeeadd;
+  --pt-card: #fffdf8;
+  --pt-bg-deep: #0f3b38;
+  --pt-on-deep: #e9f5f1;
+  --pt-text: #17201f;
+  --pt-text-2: #44524f;
+  --pt-text-3: #74827e;
+  --pt-line: #ddd5c3;
+  --pt-grid: rgba(15, 118, 110, 0.07);
+  --pt-brand: #0f766e;
+  --pt-brand-2: #12867d;
+  --pt-brand-soft: rgba(15, 118, 110, 0.1);
+  --pt-accent: #c2410c;
+  --pt-accent-soft: rgba(194, 65, 12, 0.1);
+  --pt-good: #15803d;
+  --pt-warn: #b42318;
+  --pt-warn-soft: rgba(180, 35, 24, 0.08);
+  /* series colours: the controllers, the same in every chart and in the replay */
+  --pt-c-stiff: #4b5563;
+  --pt-c-joint: #b45309;
+  --pt-c-host-spring: #7c3aed;
+  --pt-c-series: #0f766e;
+  --pt-c-max: #9ca3af;
+  --pt-c-torque: #2563eb;
   --pt-rung-factory: #8c98a6;
   --pt-rung-analytic: #2f7fd8;
-  --pt-rung-tuned: #d99500;
+  --pt-rung-tuned: #0f766e;
   --pt-rung-oracle: #7c3aed;
-  --pt-warn: #d6402b;
-  --pt-viewport-bg: #eef3f8;
-  --pt-viewport-floor: #dde6ef;
-  --pt-ghost: rgba(15, 76, 129, 0.22);
-  --pt-radius: 14px;
-  --pt-radius-sm: 8px;
+  --pt-viewport-bg: #ece7da;
+  --pt-viewport-floor: #ddd6c4;
+  --pt-ghost: rgba(15, 118, 110, 0.28);
+  --pt-arm: #b7bec2;
+  --pt-belt: #2c3433;
+  --pt-radius: 16px;
+  --pt-radius-sm: 10px;
   --pt-border-w: 1px;
-  --pt-shadow: 0 1px 2px rgba(10, 31, 51, 0.06), 0 8px 24px rgba(10, 31, 51, 0.06);
+  --pt-shadow: 0 1px 2px rgba(30, 40, 35, 0.05), 0 10px 30px rgba(30, 40, 35, 0.06);
   --pt-display-weight: 700;
-  --pt-display-tracking: -0.025em;
+  --pt-display-tracking: -0.02em;
   --pt-display-transform: none;
-  --pt-logo-body: #0f4c81;
-  --pt-logo-belly: #c9d6e3;
-  --pt-logo-fin: #f0ad00;
+  --pt-logo-body: #0f766e;
+  --pt-logo-belly: #cfe3dd;
+  --pt-logo-fin: #c2410c;
   --pt-logo-eye: #ffffff;
-  --pt-logo-pupil: #0a1f33;
+  --pt-logo-pupil: #17201f;
 }
 
 :root.dark,
-:root.dark[data-variant='yellowfin'] {
-  --pt-logo-body: #3d8fe0;
-  --pt-logo-belly: #c9d6e3;
-  --pt-logo-fin: #ffc21a;
-  --pt-bg: #07131f;
-  --pt-bg-soft: #0c1d2e;
-  --pt-bg-deep: #040c15;
-  --pt-on-deep: #e8f0f8;
-  --pt-text: #e6edf5;
-  --pt-text-2: #a9b8c8;
-  --pt-text-3: #7a8b9c;
-  --pt-line: #1b3046;
-  --pt-brand: #5fb0ff;
-  --pt-brand-2: #8cc6ff;
-  --pt-brand-soft: rgba(95, 176, 255, 0.14);
-  --pt-accent: #ffc21a;
-  --pt-accent-soft: rgba(255, 194, 26, 0.14);
-  --pt-rung-factory: #7b8794;
-  --pt-rung-analytic: #5fa8ff;
-  --pt-rung-tuned: #ffc21a;
-  --pt-rung-oracle: #b38cff;
-  --pt-warn: #ff6b57;
-  --pt-viewport-bg: #0b1a29;
-  --pt-viewport-floor: #13263a;
-  --pt-ghost: rgba(140, 198, 255, 0.22);
-  --pt-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+:root.dark[data-variant='crisp'] {
+  --pt-bg: #0f1615;
+  --pt-bg-soft: #151f1d;
+  --pt-card: #17221f;
+  --pt-bg-deep: #08201d;
+  --pt-on-deep: #e3f3ee;
+  --pt-text: #e5eeea;
+  --pt-text-2: #a9bab4;
+  --pt-text-3: #7d8f89;
+  --pt-line: #26352f;
+  --pt-grid: rgba(45, 212, 191, 0.05);
+  --pt-brand: #2dd4bf;
+  --pt-brand-2: #5eead4;
+  --pt-brand-soft: rgba(45, 212, 191, 0.12);
+  --pt-accent: #fb923c;
+  --pt-accent-soft: rgba(251, 146, 60, 0.12);
+  --pt-good: #4ade80;
+  --pt-warn: #f87171;
+  --pt-warn-soft: rgba(248, 113, 113, 0.1);
+  --pt-c-stiff: #9ca3af;
+  --pt-c-joint: #f59e0b;
+  --pt-c-host-spring: #a78bfa;
+  --pt-c-series: #2dd4bf;
+  --pt-c-max: #6b7280;
+  --pt-c-torque: #60a5fa;
+  --pt-rung-tuned: #2dd4bf;
+  --pt-rung-oracle: #a78bfa;
+  --pt-viewport-bg: #121c1a;
+  --pt-viewport-floor: #1b2825;
+  --pt-ghost: rgba(45, 212, 191, 0.28);
+  --pt-arm: #8d989b;
+  --pt-belt: #0b100f;
+  --pt-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.25);
+  --pt-logo-body: #2dd4bf;
+  --pt-logo-belly: #134e4a;
+  --pt-logo-fin: #fb923c;
+  --pt-logo-eye: #0f1615;
+  --pt-logo-pupil: #e5eeea;
 }
 
-/* ---------------------------------------------------------------- 2 · Tin: the tuna-can label */
-:root[data-variant='tin'] {
-  --pt-font-base: 'Archivo', ui-sans-serif, system-ui, sans-serif;
-  --pt-font-display: 'Alfa Slab One', 'Archivo', Georgia, serif;
-  --pt-font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
-  --pt-bg: #f6efe1;
-  --pt-bg-soft: #efe4cd;
-  --pt-bg-deep: #1d3f8f;
-  --pt-on-deep: #f6efe1;
-  --pt-text: #1a1a2e;
-  --pt-text-2: #45455c;
-  --pt-text-3: #6e6a78;
-  --pt-line: #1a1a2e;
-  --pt-brand: #c8102e;
-  --pt-brand-2: #a50d26;
-  --pt-brand-soft: rgba(200, 16, 46, 0.1);
-  --pt-accent: #1d3f8f;
-  --pt-accent-soft: rgba(29, 63, 143, 0.12);
-  --pt-rung-factory: #8a8a8a;
-  --pt-rung-analytic: #1d3f8f;
-  --pt-rung-tuned: #c8102e;
-  --pt-rung-oracle: #d99a00;
-  --pt-warn: #e8590c;
-  --pt-viewport-bg: #efe4cd;
-  --pt-viewport-floor: #e4d6ba;
-  --pt-ghost: rgba(29, 63, 143, 0.2);
-  --pt-radius: 4px;
-  --pt-radius-sm: 3px;
-  --pt-border-w: 2.5px;
-  --pt-shadow: 5px 5px 0 #1a1a2e;
-  --pt-display-weight: 400;
-  --pt-display-tracking: 0.005em;
-  --pt-display-transform: none;
-  --pt-logo-body: #1d3f8f;
-  --pt-logo-belly: #f6efe1;
-  --pt-logo-fin: #c8102e;
-  --pt-logo-eye: #ffffff;
-  --pt-logo-pupil: #1a1a2e;
-}
-
-:root.dark[data-variant='tin'] {
-  --pt-logo-body: #7aa2ff;
-  --pt-logo-belly: #f6efe1;
-  --pt-logo-fin: #ff5468;
-  --pt-bg: #121931;
-  --pt-bg-soft: #1a2342;
-  --pt-bg-deep: #c8102e;
-  --pt-on-deep: #fff6e6;
-  --pt-text: #f6efe1;
-  --pt-text-2: #c9c2b3;
-  --pt-text-3: #9a948a;
-  --pt-line: #f6efe1;
-  --pt-brand: #ff5468;
-  --pt-brand-2: #ff7b8a;
-  --pt-brand-soft: rgba(255, 84, 104, 0.14);
-  --pt-accent: #ffd166;
-  --pt-accent-soft: rgba(255, 209, 102, 0.14);
-  --pt-rung-factory: #8d93a6;
-  --pt-rung-analytic: #7aa2ff;
-  --pt-rung-tuned: #ff5468;
-  --pt-rung-oracle: #ffd166;
-  --pt-warn: #ff8a3d;
-  --pt-viewport-bg: #1a2342;
-  --pt-viewport-floor: #232e55;
-  --pt-ghost: rgba(255, 209, 102, 0.22);
-  --pt-shadow: 5px 5px 0 #000;
-}
-
-/* ---------------------------------------------------------------- 3 · Scope: an oscilloscope (light = chart recorder) */
+/* ---------------------------------------------------------------- 2 · Scope: a bench oscilloscope (light = bench instrument) */
 :root[data-variant='scope'] {
   --pt-font-base: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
-  --pt-font-display: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
-  --pt-font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
-  --pt-bg: #fbfbf4;
-  --pt-bg-soft: #f0f0e4;
+  --pt-font-display: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  --pt-font-mono: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  --pt-bg: #e6e9e5;
+  --pt-bg-soft: #d9ddd8;
+  --pt-card: #f4f5f2;
   --pt-bg-deep: #0b120d;
   --pt-on-deep: #c8f7d0;
-  --pt-text: #10200f;
-  --pt-text-2: #3c4f3b;
-  --pt-text-3: #6b7a69;
-  --pt-line: #c9d3c3;
+  --pt-text: #0e1a14;
+  --pt-text-2: #364740;
+  --pt-text-3: #66766e;
+  --pt-line: #aeb8b1;
+  --pt-grid: rgba(14, 26, 20, 0.08);
   --pt-brand: #0a7d3b;
   --pt-brand-2: #0b9446;
   --pt-brand-soft: rgba(10, 125, 59, 0.1);
   --pt-accent: #a05a00;
   --pt-accent-soft: rgba(160, 90, 0, 0.12);
+  --pt-good: #0a7d3b;
+  --pt-warn: #c62828;
+  --pt-warn-soft: rgba(198, 40, 40, 0.08);
+  --pt-c-stiff: #37474f;
+  --pt-c-joint: #a05a00;
+  --pt-c-host-spring: #6a1b9a;
+  --pt-c-series: #0a7d3b;
+  --pt-c-max: #90a4ae;
+  --pt-c-torque: #1565c0;
   --pt-rung-factory: #c62828;
   --pt-rung-analytic: #1565c0;
   --pt-rung-tuned: #0a7d3b;
   --pt-rung-oracle: #8d6e00;
-  --pt-warn: #c62828;
-  --pt-viewport-bg: #f0f0e4;
-  --pt-viewport-floor: #e2e4d4;
-  --pt-ghost: rgba(16, 32, 15, 0.18);
-  --pt-radius: 2px;
+  --pt-viewport-bg: #dfe3de;
+  --pt-viewport-floor: #cdd3cd;
+  --pt-ghost: rgba(10, 125, 59, 0.25);
+  --pt-arm: #9aa5a0;
+  --pt-belt: #263029;
+  --pt-radius: 3px;
   --pt-radius-sm: 2px;
   --pt-border-w: 1px;
-  --pt-shadow: none;
+  --pt-shadow: inset 0 0 0 1px rgba(14, 26, 20, 0.06);
   --pt-display-weight: 600;
   --pt-display-tracking: -0.01em;
-  --pt-display-transform: lowercase;
+  --pt-display-transform: uppercase;
   --pt-logo-body: #0a7d3b;
   --pt-logo-belly: #d6eadb;
   --pt-logo-fin: #a05a00;
-  --pt-logo-eye: #fbfbf4;
-  --pt-logo-pupil: #10200f;
+  --pt-logo-eye: #f4f5f2;
+  --pt-logo-pupil: #0e1a14;
 }
 
 :root.dark[data-variant='scope'] {
-  --pt-bg: #050806;
-  --pt-bg-soft: #0b120d;
+  --pt-bg: #04080a;
+  --pt-bg-soft: #08100f;
+  --pt-card: #070d0c;
   --pt-bg-deep: #000000;
   --pt-on-deep: #c8f7d0;
-  --pt-text: #c8f7d0;
-  --pt-text-2: #8fc79a;
-  --pt-text-3: #5f8f69;
-  --pt-line: #173521;
+  --pt-text: #c9eedb;
+  --pt-text-2: #8cb9a3;
+  --pt-text-3: #5d8a74;
+  --pt-line: #16322a;
+  --pt-grid: rgba(57, 255, 136, 0.06);
   --pt-brand: #39ff88;
   --pt-brand-2: #7dffb0;
   --pt-brand-soft: rgba(57, 255, 136, 0.1);
   --pt-accent: #ffd23f;
   --pt-accent-soft: rgba(255, 210, 63, 0.12);
+  --pt-good: #39ff88;
+  --pt-warn: #ff5c5c;
+  --pt-warn-soft: rgba(255, 92, 92, 0.1);
+  --pt-c-stiff: #b0bec5;
+  --pt-c-joint: #ffd23f;
+  --pt-c-host-spring: #e879f9;
+  --pt-c-series: #39ff88;
+  --pt-c-max: #546e7a;
+  --pt-c-torque: #4fc3ff;
   --pt-rung-factory: #ff5c5c;
   --pt-rung-analytic: #4fc3ff;
   --pt-rung-tuned: #39ff88;
   --pt-rung-oracle: #ffd23f;
-  --pt-warn: #ff5c5c;
-  --pt-viewport-bg: #07100a;
-  --pt-viewport-floor: #0d1d12;
-  --pt-ghost: rgba(57, 255, 136, 0.16);
+  --pt-viewport-bg: #050b09;
+  --pt-viewport-floor: #0c1912;
+  --pt-ghost: rgba(57, 255, 136, 0.22);
+  --pt-arm: #6f8c80;
+  --pt-belt: #0d1512;
+  --pt-shadow: 0 0 0 1px rgba(57, 255, 136, 0.06), 0 0 24px rgba(57, 255, 136, 0.04);
   --pt-logo-body: #39ff88;
   --pt-logo-belly: #0b3d1f;
   --pt-logo-fin: #ffd23f;
-  --pt-logo-eye: #050806;
+  --pt-logo-eye: #04080a;
   --pt-logo-pupil: #39ff88;
+}
+
+/* ---------------------------------------------------------------- 3 · Editorial: one serif column, hairlines */
+:root[data-variant='editorial'] {
+  --pt-font-base: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --pt-font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --pt-font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  --pt-bg: #fbfaf7;
+  --pt-bg-soft: #f3f1ec;
+  --pt-card: #fbfaf7;
+  --pt-bg-deep: #1b1b1b;
+  --pt-on-deep: #f4f1ea;
+  --pt-text: #161616;
+  --pt-text-2: #4a4a4a;
+  --pt-text-3: #7a7a7a;
+  --pt-line: #e3dfd6;
+  --pt-grid: transparent;
+  --pt-brand: #1f3a5f;
+  --pt-brand-2: #2b4f80;
+  --pt-brand-soft: rgba(31, 58, 95, 0.07);
+  --pt-accent: #c2381f;
+  --pt-accent-soft: rgba(194, 56, 31, 0.08);
+  --pt-good: #2f6b3a;
+  --pt-warn: #c2381f;
+  --pt-warn-soft: rgba(194, 56, 31, 0.07);
+  --pt-c-stiff: #6b6b6b;
+  --pt-c-joint: #b7791f;
+  --pt-c-host-spring: #1f3a5f;
+  --pt-c-series: #c2381f;
+  --pt-c-max: #bdbdbd;
+  --pt-c-torque: #3b82a0;
+  --pt-rung-factory: #9a9a9a;
+  --pt-rung-analytic: #3b82a0;
+  --pt-rung-tuned: #c2381f;
+  --pt-rung-oracle: #1f3a5f;
+  --pt-viewport-bg: #f1eee7;
+  --pt-viewport-floor: #e4e0d6;
+  --pt-ghost: rgba(194, 56, 31, 0.25);
+  --pt-arm: #c4c2bc;
+  --pt-belt: #2a2a2a;
+  --pt-radius: 0px;
+  --pt-radius-sm: 2px;
+  --pt-border-w: 1px;
+  --pt-shadow: none;
+  --pt-display-weight: 500;
+  --pt-display-tracking: -0.015em;
+  --pt-display-transform: none;
+  --pt-logo-body: #1f3a5f;
+  --pt-logo-belly: #e3dfd6;
+  --pt-logo-fin: #c2381f;
+  --pt-logo-eye: #fbfaf7;
+  --pt-logo-pupil: #161616;
+}
+
+:root.dark[data-variant='editorial'] {
+  --pt-bg: #141414;
+  --pt-bg-soft: #1c1c1c;
+  --pt-card: #141414;
+  --pt-bg-deep: #000000;
+  --pt-on-deep: #f4f1ea;
+  --pt-text: #ebe8e1;
+  --pt-text-2: #b5b1a8;
+  --pt-text-3: #858178;
+  --pt-line: #2f2d29;
+  --pt-brand: #9fbbe0;
+  --pt-brand-2: #c0d4ee;
+  --pt-brand-soft: rgba(159, 187, 224, 0.1);
+  --pt-accent: #ff7a59;
+  --pt-accent-soft: rgba(255, 122, 89, 0.1);
+  --pt-good: #7fc48b;
+  --pt-warn: #ff7a59;
+  --pt-warn-soft: rgba(255, 122, 89, 0.1);
+  --pt-c-stiff: #a3a3a3;
+  --pt-c-joint: #e0a84a;
+  --pt-c-host-spring: #9fbbe0;
+  --pt-c-series: #ff7a59;
+  --pt-c-max: #555;
+  --pt-c-torque: #6fb3cf;
+  --pt-rung-tuned: #ff7a59;
+  --pt-rung-oracle: #9fbbe0;
+  --pt-viewport-bg: #1a1a1a;
+  --pt-viewport-floor: #242424;
+  --pt-ghost: rgba(255, 122, 89, 0.25);
+  --pt-arm: #8a877f;
+  --pt-belt: #0c0c0c;
+  --pt-logo-body: #9fbbe0;
+  --pt-logo-belly: #2f2d29;
+  --pt-logo-fin: #ff7a59;
+  --pt-logo-eye: #141414;
+  --pt-logo-pupil: #ebe8e1;
 }
 
 /* ---------------------------------------------------------------- VitePress' own tokens follow ours */
@@ -215,7 +289,7 @@
   --vp-font-family-mono: var(--pt-font-mono);
   --vp-c-bg: var(--pt-bg);
   --vp-c-bg-alt: var(--pt-bg-soft);
-  --vp-c-bg-elv: var(--pt-bg);
+  --vp-c-bg-elv: var(--pt-card);
   --vp-c-bg-soft: var(--pt-bg-soft);
   --vp-c-text-1: var(--pt-text);
   --vp-c-text-2: var(--pt-text-2);
@@ -237,68 +311,180 @@
   --vp-code-block-bg: var(--pt-bg-soft);
 }
 
-/* Tin's label lines are part of the look: thick rules under the nav and around blocks */
-:root[data-variant='tin'] .VPNavBar.has-sidebar .divider,
-:root[data-variant='tin'] .VPNavBar .divider-line {
-  height: 2.5px;
-  background-color: var(--pt-line);
-}
-:root[data-variant='tin'] .vp-doc div[class*='language-'] {
-  border: var(--pt-border-w) solid var(--pt-line);
-  border-radius: var(--pt-radius);
-}
-:root[data-variant='tin'] .vp-doc h1,
-:root[data-variant='tin'] .vp-doc h2 {
-  font-family: var(--pt-font-display);
-  font-weight: 400;
-  letter-spacing: 0.01em;
-}
-:root[data-variant='tin'] .VPNavBarTitle .title {
-  font-family: var(--pt-font-display);
-  font-weight: 400;
-  font-size: 20px;
-}
-
-/* Scope: grid paper behind docs, mono headings */
-:root[data-variant='scope'] .vp-doc h1,
-:root[data-variant='scope'] .vp-doc h2,
-:root[data-variant='scope'] .vp-doc h3 {
-  font-family: var(--pt-font-display);
-  letter-spacing: -0.01em;
-}
-:root[data-variant='scope'] .VPContent {
-  background-image: linear-gradient(var(--pt-line) 1px, transparent 1px), linear-gradient(90deg, var(--pt-line) 1px, transparent 1px);
-  background-size: 48px 48px;
-  background-position: -1px -1px;
-  background-attachment: fixed;
-}
-:root.dark[data-variant='scope'] .VPContent {
-  background-image: linear-gradient(rgba(57, 255, 136, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(57, 255, 136, 0.06) 1px, transparent 1px);
-}
-:root[data-variant='scope'] .VPNavBarTitle .title {
-  font-family: var(--pt-font-mono);
-}
-
-/* Yellowfin: display font on headings */
-:root[data-variant='yellowfin'] .vp-doc h1,
-:root[data-variant='yellowfin'] .vp-doc h2 {
-  font-family: var(--pt-font-display);
-  letter-spacing: -0.02em;
+body {
+  background: var(--pt-bg);
+  color: var(--pt-text);
 }
 
 .VPNavBarTitle .title {
+  font-family: var(--pt-font-display);
   font-weight: 700;
   letter-spacing: -0.01em;
 }
-
-/* Wide pages (examples, playground) use the full content width */
-.pt-wide .VPDoc .container,
-.pt-wide .VPDoc .content,
-.pt-wide .VPDoc .content-container {
-  max-width: 1200px !important;
+:root[data-variant='scope'] .VPNavBarTitle .title {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+:root[data-variant='editorial'] .VPNavBarTitle .title {
+  font-weight: 500;
+  font-size: 19px;
 }
 
-/* Docs tables: numbers line up */
-.vp-doc td {
-  font-variant-numeric: tabular-nums;
+/* The page owns its width: VitePress' page layout adds nothing we need */
+.VPPage {
+  padding: 0 !important;
+}
+
+/* No horizontal page scroll, ever (a wide table or chart scrolls inside its own box) */
+html,
+body {
+  overflow-x: clip;
+}
+
+/* ---------------------------------------------------------------- the equation widgets (EqJointPD, EqStiffness, EqDamping) */
+.eq-widget {
+  display: grid;
+  gap: 10px;
+}
+.eq-math {
+  font-family: var(--pt-font-serif, Georgia, serif);
+  font-size: clamp(20px, 3.4vw, 30px);
+  line-height: 1.3;
+  color: var(--pt-text);
+  overflow-wrap: anywhere;
+}
+:root[data-variant='scope'] .eq-math {
+  font-family: var(--pt-font-mono);
+  font-size: clamp(16px, 2.6vw, 22px);
+  color: var(--pt-brand);
+}
+.eq-math .lhs {
+  font-style: italic;
+}
+.eq-math .hl {
+  color: var(--pt-brand);
+  font-weight: 600;
+}
+:root[data-variant='scope'] .eq-math .hl {
+  color: var(--pt-accent);
+}
+.eq-note {
+  margin: 0;
+  color: var(--pt-text-2);
+  font-size: 14px;
+  line-height: 1.55;
+}
+.eq-play {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+@media (max-width: 720px) {
+  .eq-play {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.eq-play .plot {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  border: var(--pt-border-w) solid var(--pt-line);
+  border-radius: var(--pt-radius-sm);
+  background: var(--pt-viewport-bg);
+}
+.eq-play .plot .axis {
+  stroke: var(--pt-line);
+  stroke-width: 1;
+}
+.eq-play .plot .ref {
+  stroke: var(--pt-text-3);
+  stroke-dasharray: 4 3;
+}
+.eq-play .plot .resp {
+  fill: none;
+  stroke: var(--pt-brand);
+  stroke-width: 2.2;
+}
+.eq-play .plot .resp.alt {
+  stroke: var(--pt-text-3);
+  stroke-dasharray: 5 4;
+  stroke-width: 1.6;
+}
+.eq-play .plot .arm {
+  fill: none;
+  stroke: var(--pt-text-2);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.55;
+}
+.eq-play .plot .joint {
+  fill: var(--pt-card);
+  stroke: var(--pt-text-2);
+  stroke-width: 2;
+}
+.eq-play .plot .asked {
+  fill: none;
+  stroke: var(--pt-text-2);
+  stroke-dasharray: 4 3;
+  stroke-width: 1.5;
+}
+.eq-play .plot .got {
+  fill: var(--pt-brand-soft);
+  stroke: var(--pt-c-joint);
+  stroke-width: 2;
+}
+.eq-play .plot .lbl {
+  fill: var(--pt-text-3);
+  font-size: 8px;
+  font-family: var(--pt-font-mono);
+}
+.eq-play .sliders {
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+}
+.eq-play .sliders label {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr) 72px;
+  align-items: center;
+  gap: 8px;
+  color: var(--pt-text-2);
+}
+.eq-play .sliders input[type='range'] {
+  width: 100%;
+  accent-color: var(--pt-brand);
+}
+.eq-play .sliders .v {
+  font-family: var(--pt-font-mono);
+  font-size: 12px;
+  text-align: right;
+  color: var(--pt-text);
+}
+.eq-play .out {
+  margin: 4px 0 0;
+  padding: 8px 10px;
+  border-radius: var(--pt-radius-sm);
+  background: var(--pt-brand-soft);
+  color: var(--pt-text);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.eq-play .key {
+  display: inline-block;
+  width: 14px;
+  height: 0;
+  margin: 0 3px 3px 0;
+  vertical-align: middle;
+  border-top: 2.5px solid var(--pt-brand);
+}
+.eq-play .key.dash {
+  border-top: 2px dashed var(--pt-text-3);
+}
+
+/* The page has no outline: VitePress' mobile "Return to top" bar would only take a row from the step bar */
+.VPLocalNav {
+  display: none !important;
 }
