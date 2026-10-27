@@ -174,6 +174,22 @@ test('the soft / rigid switch swaps the ablation ladder and the arm builds toget
   await expect(page.locator('#fingers').getByTestId('object-toggle').locator('[data-object="soft"]')).toHaveAttribute('aria-checked', 'true')
 })
 
+test('the hand study renders a contract-shaped hand.json (fixture until the sim lane lands it)', async ({ page }) => {
+  const errors = collectErrors(page)
+  // WHY a fixture: docs/data-contract.md freezes the shape; this proves the component reads it, before the real file exists
+  await page.route('**/data/hand.json', (route) => route.fulfill({ path: join(dirname(fileURLToPath(import.meta.url)), 'fixtures', 'hand.fixture.json'), contentType: 'application/json' }))
+  await page.goto('/#fingers')
+  const hand = page.getByTestId('hand-study')
+  await hand.scrollIntoViewIfNeeded()
+  await expect(hand).toHaveAttribute('data-state', 'data')
+  await expect(hand.locator('.case')).toHaveCount(3)
+  await expect(hand.locator('.summary')).toContainText('H2')
+  const rigid = await hand.locator('.case[data-case="H0"] .nums').innerText()
+  await page.locator('#fingers').getByTestId('object-toggle').locator('[data-object="soft"]').click()
+  await expect(hand.locator('.case[data-case="H0"] .nums')).not.toHaveText(rigid)
+  expect(errors).toEqual([])
+})
+
 test('390 px phone: no horizontal scroll and nothing pokes out of the page', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   for (const variant of VARIANTS) {
