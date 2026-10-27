@@ -126,3 +126,35 @@ an estimated lifetime of the gearbox using a model for wear and safety limits."
   combination.
 - Every run passes `run_converged` + `perturbation_check`; otherwise `converged: false` and `flag` says why.
 - 3 × 5 × 2 × 2 × 2 = 120 runs.
+
+## `hand.json` v2 additions (frozen 2026-10-27 by the dispatcher; schema "impedance-hand/2")
+
+Rigid fingers with compliant joints (Zach: "not soft fingers, rigid fingers with compliant joints, like the human hand").
+
+```json
+{
+  "schema": "impedance-hand/2",
+  "contact_models": {
+    "finding": "plain sentence: what the contact model changes and which one is used for the main runs, and why",
+    "chosen": "hunt_crossley",
+    "models": [
+      {"id": "kv_b200", "label": "Kelvin-Voigt, B 200 (old baseline)", "what": "...",
+       "results": {"J0": {"fingertip_peak_n": 0, "arm_flange_peak_n": 0}, "J1": {}, "J2": {}}}
+    ]
+  },
+  "cases": [
+    {"id": "J0", "group": "rigid joints", "arm": "stiff | host_spring", "finger_joint_k_equiv_n_m": null, "title": "...", "what": "..."},
+    {"id": "J1-k500-arm_soft", "group": "virtual torsion springs", "arm": "host_spring", "finger_joint_k_equiv_n_m": 500, "title": "...", "what": "..."},
+    {"id": "J2-k500-arm_soft", "group": "physical series-elastic springs", "arm": "host_spring", "finger_joint_k_equiv_n_m": 500, "title": "...", "what": "..."}
+  ],
+  "results": {"rigid": [{"case": "J1-k500-arm_soft", "...": "the H-row fields, plus:",
+    "finger_gear_torque_peak_nm": [0, 0, 0, 0], "arm_gear_torque_peak_nm": [0, 0, 0, 0, 0, 0],
+    "finger_travel_used": [0, 0, 0, 0], "grasp_success": true}], "soft": []},
+  "legacy": {"cases": [], "results": {}},
+  "answer": "plain sentence: do compliant finger joints act as the crumple zone, and how much shock they keep off the arm joints"
+}
+```
+
+- `cases[*].id` starts with "J"; `group` is one of "rigid joints" / "virtual torsion springs" / "physical series-elastic springs".
+- `finger_travel_used` = the fraction of each finger joint's range used (≥ 1 = hit the stop).
+- The old H-cases move under `legacy`. `replay.runs_by_object` stays as the first study had it.
