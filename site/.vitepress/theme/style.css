@@ -1,0 +1,304 @@
+/* pidtuna.com look. Three design directions share one set of tokens; html[data-variant] picks one, VitePress' .dark picks
+   the mode. Components read --pt-* tokens only, so a variant is a block of variables plus a few layout rules in Landing.vue. */
+
+/* ---------------------------------------------------------------- 1 · Yellowfin (default): deep-ocean navy, fin yellow */
+:root,
+:root[data-variant='yellowfin'] {
+  --pt-font-base: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --pt-font-display: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --pt-font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --pt-bg: #ffffff;
+  --pt-bg-soft: #f2f6fa;
+  --pt-bg-deep: #0a1f33;
+  --pt-on-deep: #e8f0f8;
+  --pt-text: #0b1b2b;
+  --pt-text-2: #3d5166;
+  --pt-text-3: #6b7d90;
+  --pt-line: #d9e2ec;
+  --pt-brand: #0f4c81;
+  --pt-brand-2: #1763a6;
+  --pt-brand-soft: rgba(15, 76, 129, 0.1);
+  --pt-accent: #c98a00;
+  --pt-accent-soft: rgba(229, 165, 0, 0.16);
+  --pt-rung-factory: #8c98a6;
+  --pt-rung-analytic: #2f7fd8;
+  --pt-rung-tuned: #d99500;
+  --pt-rung-oracle: #7c3aed;
+  --pt-warn: #d6402b;
+  --pt-viewport-bg: #eef3f8;
+  --pt-viewport-floor: #dde6ef;
+  --pt-ghost: rgba(15, 76, 129, 0.22);
+  --pt-radius: 14px;
+  --pt-radius-sm: 8px;
+  --pt-border-w: 1px;
+  --pt-shadow: 0 1px 2px rgba(10, 31, 51, 0.06), 0 8px 24px rgba(10, 31, 51, 0.06);
+  --pt-display-weight: 700;
+  --pt-display-tracking: -0.025em;
+  --pt-display-transform: none;
+  --pt-logo-body: #0f4c81;
+  --pt-logo-belly: #c9d6e3;
+  --pt-logo-fin: #f0ad00;
+  --pt-logo-eye: #ffffff;
+  --pt-logo-pupil: #0a1f33;
+}
+
+:root.dark,
+:root.dark[data-variant='yellowfin'] {
+  --pt-logo-body: #3d8fe0;
+  --pt-logo-belly: #c9d6e3;
+  --pt-logo-fin: #ffc21a;
+  --pt-bg: #07131f;
+  --pt-bg-soft: #0c1d2e;
+  --pt-bg-deep: #040c15;
+  --pt-on-deep: #e8f0f8;
+  --pt-text: #e6edf5;
+  --pt-text-2: #a9b8c8;
+  --pt-text-3: #7a8b9c;
+  --pt-line: #1b3046;
+  --pt-brand: #5fb0ff;
+  --pt-brand-2: #8cc6ff;
+  --pt-brand-soft: rgba(95, 176, 255, 0.14);
+  --pt-accent: #ffc21a;
+  --pt-accent-soft: rgba(255, 194, 26, 0.14);
+  --pt-rung-factory: #7b8794;
+  --pt-rung-analytic: #5fa8ff;
+  --pt-rung-tuned: #ffc21a;
+  --pt-rung-oracle: #b38cff;
+  --pt-warn: #ff6b57;
+  --pt-viewport-bg: #0b1a29;
+  --pt-viewport-floor: #13263a;
+  --pt-ghost: rgba(140, 198, 255, 0.22);
+  --pt-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------------------------------------------------------------- 2 · Tin: the tuna-can label */
+:root[data-variant='tin'] {
+  --pt-font-base: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+  --pt-font-display: 'Alfa Slab One', 'Archivo', Georgia, serif;
+  --pt-font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --pt-bg: #f6efe1;
+  --pt-bg-soft: #efe4cd;
+  --pt-bg-deep: #1d3f8f;
+  --pt-on-deep: #f6efe1;
+  --pt-text: #1a1a2e;
+  --pt-text-2: #45455c;
+  --pt-text-3: #6e6a78;
+  --pt-line: #1a1a2e;
+  --pt-brand: #c8102e;
+  --pt-brand-2: #a50d26;
+  --pt-brand-soft: rgba(200, 16, 46, 0.1);
+  --pt-accent: #1d3f8f;
+  --pt-accent-soft: rgba(29, 63, 143, 0.12);
+  --pt-rung-factory: #8a8a8a;
+  --pt-rung-analytic: #1d3f8f;
+  --pt-rung-tuned: #c8102e;
+  --pt-rung-oracle: #d99a00;
+  --pt-warn: #e8590c;
+  --pt-viewport-bg: #efe4cd;
+  --pt-viewport-floor: #e4d6ba;
+  --pt-ghost: rgba(29, 63, 143, 0.2);
+  --pt-radius: 4px;
+  --pt-radius-sm: 3px;
+  --pt-border-w: 2.5px;
+  --pt-shadow: 5px 5px 0 #1a1a2e;
+  --pt-display-weight: 400;
+  --pt-display-tracking: 0.005em;
+  --pt-display-transform: none;
+  --pt-logo-body: #1d3f8f;
+  --pt-logo-belly: #f6efe1;
+  --pt-logo-fin: #c8102e;
+  --pt-logo-eye: #ffffff;
+  --pt-logo-pupil: #1a1a2e;
+}
+
+:root.dark[data-variant='tin'] {
+  --pt-logo-body: #7aa2ff;
+  --pt-logo-belly: #f6efe1;
+  --pt-logo-fin: #ff5468;
+  --pt-bg: #121931;
+  --pt-bg-soft: #1a2342;
+  --pt-bg-deep: #c8102e;
+  --pt-on-deep: #fff6e6;
+  --pt-text: #f6efe1;
+  --pt-text-2: #c9c2b3;
+  --pt-text-3: #9a948a;
+  --pt-line: #f6efe1;
+  --pt-brand: #ff5468;
+  --pt-brand-2: #ff7b8a;
+  --pt-brand-soft: rgba(255, 84, 104, 0.14);
+  --pt-accent: #ffd166;
+  --pt-accent-soft: rgba(255, 209, 102, 0.14);
+  --pt-rung-factory: #8d93a6;
+  --pt-rung-analytic: #7aa2ff;
+  --pt-rung-tuned: #ff5468;
+  --pt-rung-oracle: #ffd166;
+  --pt-warn: #ff8a3d;
+  --pt-viewport-bg: #1a2342;
+  --pt-viewport-floor: #232e55;
+  --pt-ghost: rgba(255, 209, 102, 0.22);
+  --pt-shadow: 5px 5px 0 #000;
+}
+
+/* ---------------------------------------------------------------- 3 · Scope: an oscilloscope (light = chart recorder) */
+:root[data-variant='scope'] {
+  --pt-font-base: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --pt-font-display: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  --pt-font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  --pt-bg: #fbfbf4;
+  --pt-bg-soft: #f0f0e4;
+  --pt-bg-deep: #0b120d;
+  --pt-on-deep: #c8f7d0;
+  --pt-text: #10200f;
+  --pt-text-2: #3c4f3b;
+  --pt-text-3: #6b7a69;
+  --pt-line: #c9d3c3;
+  --pt-brand: #0a7d3b;
+  --pt-brand-2: #0b9446;
+  --pt-brand-soft: rgba(10, 125, 59, 0.1);
+  --pt-accent: #a05a00;
+  --pt-accent-soft: rgba(160, 90, 0, 0.12);
+  --pt-rung-factory: #c62828;
+  --pt-rung-analytic: #1565c0;
+  --pt-rung-tuned: #0a7d3b;
+  --pt-rung-oracle: #8d6e00;
+  --pt-warn: #c62828;
+  --pt-viewport-bg: #f0f0e4;
+  --pt-viewport-floor: #e2e4d4;
+  --pt-ghost: rgba(16, 32, 15, 0.18);
+  --pt-radius: 2px;
+  --pt-radius-sm: 2px;
+  --pt-border-w: 1px;
+  --pt-shadow: none;
+  --pt-display-weight: 600;
+  --pt-display-tracking: -0.01em;
+  --pt-display-transform: lowercase;
+  --pt-logo-body: #0a7d3b;
+  --pt-logo-belly: #d6eadb;
+  --pt-logo-fin: #a05a00;
+  --pt-logo-eye: #fbfbf4;
+  --pt-logo-pupil: #10200f;
+}
+
+:root.dark[data-variant='scope'] {
+  --pt-bg: #050806;
+  --pt-bg-soft: #0b120d;
+  --pt-bg-deep: #000000;
+  --pt-on-deep: #c8f7d0;
+  --pt-text: #c8f7d0;
+  --pt-text-2: #8fc79a;
+  --pt-text-3: #5f8f69;
+  --pt-line: #173521;
+  --pt-brand: #39ff88;
+  --pt-brand-2: #7dffb0;
+  --pt-brand-soft: rgba(57, 255, 136, 0.1);
+  --pt-accent: #ffd23f;
+  --pt-accent-soft: rgba(255, 210, 63, 0.12);
+  --pt-rung-factory: #ff5c5c;
+  --pt-rung-analytic: #4fc3ff;
+  --pt-rung-tuned: #39ff88;
+  --pt-rung-oracle: #ffd23f;
+  --pt-warn: #ff5c5c;
+  --pt-viewport-bg: #07100a;
+  --pt-viewport-floor: #0d1d12;
+  --pt-ghost: rgba(57, 255, 136, 0.16);
+  --pt-logo-body: #39ff88;
+  --pt-logo-belly: #0b3d1f;
+  --pt-logo-fin: #ffd23f;
+  --pt-logo-eye: #050806;
+  --pt-logo-pupil: #39ff88;
+}
+
+/* ---------------------------------------------------------------- VitePress' own tokens follow ours */
+:root,
+:root.dark {
+  --vp-font-family-base: var(--pt-font-base);
+  --vp-font-family-mono: var(--pt-font-mono);
+  --vp-c-bg: var(--pt-bg);
+  --vp-c-bg-alt: var(--pt-bg-soft);
+  --vp-c-bg-elv: var(--pt-bg);
+  --vp-c-bg-soft: var(--pt-bg-soft);
+  --vp-c-text-1: var(--pt-text);
+  --vp-c-text-2: var(--pt-text-2);
+  --vp-c-text-3: var(--pt-text-3);
+  --vp-c-divider: var(--pt-line);
+  --vp-c-gutter: var(--pt-line);
+  --vp-c-brand-1: var(--pt-brand);
+  --vp-c-brand-2: var(--pt-brand-2);
+  --vp-c-brand-3: var(--pt-brand);
+  --vp-c-brand-soft: var(--pt-brand-soft);
+  --vp-c-tip-1: var(--pt-brand);
+  --vp-c-tip-soft: var(--pt-brand-soft);
+  --vp-button-brand-bg: var(--pt-brand);
+  --vp-button-brand-hover-bg: var(--pt-brand-2);
+  --vp-button-brand-text: var(--pt-bg);
+  --vp-button-brand-hover-text: var(--pt-bg);
+  --vp-nav-bg-color: var(--pt-bg);
+  --vp-sidebar-bg-color: var(--pt-bg-soft);
+  --vp-code-block-bg: var(--pt-bg-soft);
+}
+
+/* Tin's label lines are part of the look: thick rules under the nav and around blocks */
+:root[data-variant='tin'] .VPNavBar.has-sidebar .divider,
+:root[data-variant='tin'] .VPNavBar .divider-line {
+  height: 2.5px;
+  background-color: var(--pt-line);
+}
+:root[data-variant='tin'] .vp-doc div[class*='language-'] {
+  border: var(--pt-border-w) solid var(--pt-line);
+  border-radius: var(--pt-radius);
+}
+:root[data-variant='tin'] .vp-doc h1,
+:root[data-variant='tin'] .vp-doc h2 {
+  font-family: var(--pt-font-display);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+:root[data-variant='tin'] .VPNavBarTitle .title {
+  font-family: var(--pt-font-display);
+  font-weight: 400;
+  font-size: 20px;
+}
+
+/* Scope: grid paper behind docs, mono headings */
+:root[data-variant='scope'] .vp-doc h1,
+:root[data-variant='scope'] .vp-doc h2,
+:root[data-variant='scope'] .vp-doc h3 {
+  font-family: var(--pt-font-display);
+  letter-spacing: -0.01em;
+}
+:root[data-variant='scope'] .VPContent {
+  background-image: linear-gradient(var(--pt-line) 1px, transparent 1px), linear-gradient(90deg, var(--pt-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: -1px -1px;
+  background-attachment: fixed;
+}
+:root.dark[data-variant='scope'] .VPContent {
+  background-image: linear-gradient(rgba(57, 255, 136, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(57, 255, 136, 0.06) 1px, transparent 1px);
+}
+:root[data-variant='scope'] .VPNavBarTitle .title {
+  font-family: var(--pt-font-mono);
+}
+
+/* Yellowfin: display font on headings */
+:root[data-variant='yellowfin'] .vp-doc h1,
+:root[data-variant='yellowfin'] .vp-doc h2 {
+  font-family: var(--pt-font-display);
+  letter-spacing: -0.02em;
+}
+
+.VPNavBarTitle .title {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Wide pages (examples, playground) use the full content width */
+.pt-wide .VPDoc .container,
+.pt-wide .VPDoc .content,
+.pt-wide .VPDoc .content-container {
+  max-width: 1200px !important;
+}
+
+/* Docs tables: numbers line up */
+.vp-doc td {
+  font-variant-numeric: tabular-nums;
+}

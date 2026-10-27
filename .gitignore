@@ -1,0 +1,7 @@
+node_modules/
+site/.vitepress/dist/
+site/.vitepress/cache/
+test-results/
+playwright-report/
+reports/media/
+__pycache__/

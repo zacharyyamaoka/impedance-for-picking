@@ -1,0 +1,25 @@
+{
+  "name": "impedance-controller-website",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Landing page, live demos and results for bam_impedance_controller: Cartesian impedance after the joint trajectory controller, on moteus QDD joints. VitePress static site (stack reused from pidtuna-website).",
+  "scripts": {
+    "dev": "vitepress dev site --port 4495 --strictPort",
+    "build": "vitepress build site",
+    "preview": "vitepress preview site --port 4496",
+    "export-data": "python3 scripts/export_site_data.py",
+    "test": "playwright test",
+    "test:unit": "vitest run"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "vitepress": "1.6.4",
+    "vue": "3.5.43",
+    "vitest": "2.1.9"
+  },
+  "dependencies": {
+    "@mujoco/mujoco": "3.15.0",
+    "three": "0.186.1"
+  }
+}
