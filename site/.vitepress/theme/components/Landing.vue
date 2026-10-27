@@ -1,11 +1,11 @@
 <script setup lang="ts">
-// The landing page: the whole approach on one page, answer first. Every number comes from site/public/data/site.json, which
+// The landing page: the whole approach on one page, answer first. Every number comes from site/data/site.json, which
 // scripts/export_site_data.py writes from the controller's evidence (re-run it when the evidence changes); the ablation ladder and the
 // hand study read their own files at run time (docs/data-contract.md). The three design directions differ in tokens (style.css) and in
 // the layout rules at the bottom of this file, keyed on html[data-variant].
 import { computed, ref, shallowRef } from 'vue'
 import { withBase } from 'vitepress'
-import site from '../../../public/data/site.json'
+import site from '../../../data/site.json'
 import StepBar from './StepBar.vue'
 import EqJointPD from './EqJointPD.vue'
 import EqStiffness from './EqStiffness.vue'
@@ -16,6 +16,8 @@ import BuildsChart from './BuildsChart.vue'
 import ObjectToggle from './ObjectToggle.vue'
 import AblationLadder from './AblationLadder.vue'
 import HandStudy from './HandStudy.vue'
+import Explorer from './Explorer.vue'
+import JointLoads from './JointLoads.vue'
 import { contactObject } from '../lib/contact'
 
 // The live MuJoCo pick (LivePick.vue, another lane): rendered through <component :is> so the page builds with or without it
@@ -35,6 +37,8 @@ const STEPS = [
   { id: 'demo', label: 'Demos' },
   { id: 'board', label: 'Damper on the board' },
   { id: 'impact', label: 'Impact physics' },
+  { id: 'explorer', label: 'Every combination' },
+  { id: 'joints', label: 'Joints and gears' },
   { id: 'fingers', label: 'Fingers on the arm' },
   { id: 'results', label: 'Results' },
   { id: 'tuning', label: 'Setting K and D' },
@@ -471,14 +475,43 @@ const LANE_DIR = '~/bam_ws/.claude/worktrees/bam-impedance-controller/src/core/m
         </details>
       </section>
 
-      <!-- ============================================================ 07 fingers -->
+      <!-- ============================================================ 07 explorer -->
+      <section id="explorer" class="sec">
+        <header class="sec-head">
+          <span class="sec-n">{{ n('explorer') }}</span>
+          <h2>Every combination: the explorer</h2>
+          <p class="answer">
+            The ladder changes one thing at a time. This is every combination behind it: 3 arm builds × 5 controllers × 2 approach speeds × spring
+            on / off × 2 objects, 120 runs. Start from a named view (the worst case with just the impedance controller, or with QDD motors and the
+            impedance controller), filter by any factor, and compare any two runs side by side.
+          </p>
+        </header>
+        <Explorer />
+      </section>
+
+      <!-- ============================================================ 08 joints -->
+      <section id="joints" class="sec">
+        <header class="sec-head">
+          <span class="sec-n">{{ n('joints') }}</span>
+          <h2>Joints and gears: the shock the gearbox takes</h2>
+          <p class="answer">
+            For durability the number that matters is not the force at the tool but the peak torque through each joint's gears. A high-ratio
+            gearbox must stop its fast-spinning rotor at touch, so it takes a shock a backdrivable QDD joint does not. Per joint: the peak
+            against the gearbox's repeated-peak rating, the fastest approach that stays under every rating, and an estimated life.
+          </p>
+        </header>
+        <JointLoads />
+      </section>
+
+      <!-- ============================================================ 09 fingers -->
       <section id="fingers" class="sec">
         <header class="sec-head">
           <span class="sec-n">{{ n('fingers') }}</span>
           <h2>Fingers on the arm: who takes the contact</h2>
           <p class="answer">
-            The same question with Zach's 2 × 2-DoF hand on the arm: a slap-and-grab, where the fingers or the arm (or both) can be the soft part.
-            The cases split the stiffness between the two and read the force at each fingertip and at the arm's flange.
+            Zach's 2 × 2-DoF hand on the arm, slap-and-grab: rigid fingers with compliant joints, like a human hand. The joints are held rigid,
+            rendered as virtual torsion springs by the finger motors, or given physical series-elastic springs, at several stiffnesses, on a stiff
+            or a soft arm, and the question is how much of the shock the finger joints keep off the arm's gears.
           </p>
         </header>
         <div class="object-bar">
@@ -487,7 +520,7 @@ const LANE_DIR = '~/bam_ws/.claude/worktrees/bam-impedance-controller/src/core/m
         <HandStudy />
       </section>
 
-      <!-- ============================================================ 08 results -->
+      <!-- ============================================================ 10 results -->
       <section id="results" class="sec">
         <header class="sec-head">
           <span class="sec-n">{{ n('results') }}</span>
@@ -625,7 +658,7 @@ const LANE_DIR = '~/bam_ws/.claude/worktrees/bam-impedance-controller/src/core/m
         </details>
       </section>
 
-      <!-- ============================================================ 09 tuning -->
+      <!-- ============================================================ 11 tuning -->
       <section id="tuning" class="sec">
         <header class="sec-head">
           <span class="sec-n">{{ n('tuning') }}</span>
@@ -678,7 +711,7 @@ const LANE_DIR = '~/bam_ws/.claude/worktrees/bam-impedance-controller/src/core/m
         </div>
       </section>
 
-      <!-- ============================================================ 10 crisp -->
+      <!-- ============================================================ 12 crisp -->
       <section id="crisp" class="sec">
         <header class="sec-head">
           <span class="sec-n">{{ n('crisp') }}</span>
@@ -708,7 +741,7 @@ const LANE_DIR = '~/bam_ws/.claude/worktrees/bam-impedance-controller/src/core/m
           The page's structure borrows from CRISP's site and slides; no text or assets are copied.</p>
       </section>
 
-      <!-- ============================================================ 11 verification -->
+      <!-- ============================================================ 13 verification -->
       <section id="verification" class="sec">
         <header class="sec-head">
           <span class="sec-n">{{ n('verification') }}</span>
@@ -753,7 +786,7 @@ const LANE_DIR = '~/bam_ws/.claude/worktrees/bam-impedance-controller/src/core/m
         </div>
       </section>
 
-      <!-- ============================================================ 12 reproduce -->
+      <!-- ============================================================ 14 reproduce -->
       <section id="reproduce" class="sec">
         <header class="sec-head">
           <span class="sec-n">{{ n('reproduce') }}</span>
@@ -794,7 +827,8 @@ pnpm --dir /home/bam/impedance-controller-website run dev</code></pre>
           <summary>Where every number on this page comes from</summary>
           <ul class="sources">
             <li v-for="(s, key) in sources" :key="key"><code>{{ shortPath(s.path) }}</code> <span class="dim">{{ s.sha256_12 }}</span> — {{ s.what }}</li>
-            <li><code>site/public/data/ablation.json</code>, <code>hand.json</code> — the ablation ladder and the hand study (the sim lane; docs/data-contract.md)</li>
+            <li><code>site/public/data/ablation.json</code>, <code>factorial.json</code>, <code>hand.json</code> — the ablation ladder, every combination with
+              its joint and gear loads, and the hand study (the sim lane; docs/data-contract.md)</li>
           </ul>
         </details>
       </section>

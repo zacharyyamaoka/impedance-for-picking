@@ -32,7 +32,7 @@ function watchErrors(page) {
 }
 
 async function openLab(page) {
-  await page.goto('/', { waitUntil: 'networkidle' })
+  await page.goto('./', { waitUntil: 'networkidle' })
   // the landing page's sticky bars would cover the lab in screenshots and swallow clicks near its top edge
   await page.evaluate(() => {
     for (const element of document.querySelectorAll('body *')) {

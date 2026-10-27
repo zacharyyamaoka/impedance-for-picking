@@ -3,10 +3,12 @@
 // make the motors backdrivable, then lower the mass of the arm (grounding the motors), then add a spring on the end." The data is
 // site/public/data/ablation.json (schema impedance-ablation/1, docs/data-contract.md), written by the sim lane; until it lands the
 // planned rungs show without numbers. The object comes from the page-wide soft / rigid switch.
-import { computed, onMounted, shallowRef } from 'vue'
+import { computed, onMounted, ref, shallowRef } from 'vue'
 import { withBase } from 'vitepress'
 import FzSpark from './FzSpark.vue'
+import RunCard from './RunCard.vue'
 import { contactObject, fetchOptional, type ContactObject } from '../lib/contact'
+import { FACTOR_NAMES, RUNG_COMBOS, findRun, label, loadFactorial, type Factorial } from '../lib/factorial'
 
 interface Rung {
   id: string
@@ -53,6 +55,25 @@ onMounted(async () => {
   data.value = await fetchOptional<Ablation>(withBase('/data/ablation.json'))
   loaded.value = true
   emit('loaded', data.value)
+  factorial.value = await loadFactorial()
+})
+
+// "Swap one rung's factor" (Zach, 2026-10-27): every rung is a combination of the full factorial (lib/factorial.ts RUNG_COMBOS), so
+// any one factor of a rung can be swapped and the result read from data/factorial.json, shown as a pair (the rung vs the swap).
+const factorial = shallowRef<Factorial | null>(null)
+const SWAP_FACTORS = ['build', 'controller', 'approach', 'spring'] as const
+type SwapFactor = (typeof SWAP_FACTORS)[number]
+const swap = ref<{ rung: string; factor: SwapFactor; value: string } | null>(null)
+function swapTo(rung: string, factor: SwapFactor, value: string) {
+  swap.value = value === RUNG_COMBOS[rung]?.[factor] ? null : { rung, factor, value }
+}
+const pair = computed(() => {
+  const s = swap.value
+  if (!s || !factorial.value) return null
+  const base = RUNG_COMBOS[s.rung]
+  const a = findRun(factorial.value, { ...base, object: contactObject.value })
+  const b = findRun(factorial.value, { ...base, [s.factor]: s.value, object: contactObject.value })
+  return a && b ? { a, b, s } : null
 })
 
 const rungs = computed(() => data.value?.rungs ?? PLANNED)
@@ -150,8 +171,28 @@ const summary = computed(() => {
           </p>
         </template>
         <div v-else class="placeholder" aria-hidden="true"><span /><span /></div>
+        <div v-if="factorial && RUNG_COMBOS[rung.id]" class="swaps" data-testid="rung-swaps">
+          <span class="sk">swap one factor</span>
+          <label v-for="f in SWAP_FACTORS" :key="f" class="swap">
+            <span class="sr">{{ FACTOR_NAMES[f] }}</span>
+            <select :data-factor="f" :value="swap?.rung === rung.id && swap.factor === f ? swap.value : RUNG_COMBOS[rung.id][f]"
+                    :class="{ on: swap?.rung === rung.id && swap.factor === f }" @change="swapTo(rung.id, f, ($event.target as HTMLSelectElement).value)">
+              <option v-for="v in factorial.factors[f]" :key="v" :value="v">{{ label(factorial, v) }}</option>
+            </select>
+          </label>
+        </div>
       </li>
     </ol>
+    <div v-if="pair" class="pair card-pair" data-testid="ladder-pair">
+      <div class="pair-head">
+        <b>{{ pair.s.rung }} as it is (A) vs {{ pair.s.rung }} with {{ FACTOR_NAMES[pair.s.factor].toLowerCase() }} →
+          {{ label(factorial, pair.s.value) }} (B)</b>
+        <button class="close" @click="swap = null">Close</button>
+      </div>
+      <RunCard :data="factorial!" :run="pair.a" :other="pair.b" :names="[pair.s.rung, 'swap']" :traces="false" />
+      <p class="legend">From <code>data/factorial.json</code> (every combination, {{ contactObject }} object); the ladder's cards above are
+        <code>data/ablation.json</code>, the same combinations run by the ladder's own script.</p>
+    </div>
     <p v-if="data" class="legend">
       Each card changes one thing from the card above; the trace is Fz from 50 ms before touch to the end of the hold (line at touch), on one scale.
       Bars: <span class="kp">touch peak</span> and <span class="kh">press during the hold</span>, scaled to the largest. "*": did not hold the rate or
@@ -307,6 +348,64 @@ const summary = computed(() => {
 }
 .placeholder span:last-child {
   width: 60%;
+}
+.swaps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  padding-top: 6px;
+  border-top: 1px dashed var(--pt-line);
+}
+.sk {
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--pt-text-3);
+  margin-right: 2px;
+}
+.swap .sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+.swap select {
+  max-width: 132px;
+  padding: 2px 4px;
+  border: 1px solid var(--pt-line);
+  border-radius: 6px;
+  background: var(--pt-card);
+  color: var(--pt-text-2);
+  font-size: 11.5px;
+}
+.swap select.on {
+  border-color: var(--pt-accent);
+  color: var(--pt-text);
+  font-weight: 600;
+}
+.pair {
+  display: grid;
+  gap: 8px;
+  padding: 12px 14px;
+  border: var(--pt-border-w) solid var(--pt-accent);
+  border-radius: var(--pt-radius-sm);
+  background: var(--pt-card);
+  max-width: 760px;
+}
+.pair-head {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.close {
+  padding: 2px 10px;
+  border: 1px solid var(--pt-line);
+  border-radius: 999px;
+  font-size: 12px;
 }
 .legend {
   margin: 0;

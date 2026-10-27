@@ -1,0 +1,14 @@
+{
+ "repo": "/home/bam/data-ui",
+ "commit": "7141f2330c2740196667ebc89f56c18ef6782406",
+ "commit_date": "2026-10-27T05:54:55-07:00",
+ "subject": "bench/publish.py: --history keeps a re-measure of a past commit out of the KPI series; --move-run moves one already published",
+ "built_with": "node build.mjs (data-ui's npm run build) on a git archive of the commit",
+ "manifest_sha256": "4e430f49ed4ddfbb0fa1b5277d5db337a72fd197f75707990764f03b07594b71",
+ "files": 20,
+ "skipped": {
+  "*.map": "source maps: only a debugger asks for them",
+  "site/": "data-ui's own docs site and gallery (not in the manifest)",
+  "python/": "the stdlib .base reader: nothing on this site imports it"
+ }
+}

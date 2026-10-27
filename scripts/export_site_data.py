@@ -11,7 +11,9 @@ Inputs (read only):
 - the Codex judge's verdicts: AUDITS/2026-10-26-impedance-impact-r{1..9}-verdict.md.
 
 Outputs (written into the site, all deterministic for the same inputs - no wall-clock stamps):
-- site/public/data/site.json: the page's facts and tables, each with the file it came from (``sources``);
+- site/data/site.json: the page's facts and tables, each with the file it came from (``sources``). WHY not site/public/: Landing.vue
+  imports it at build time, and Vite refuses a JavaScript import from the public directory ("Assets in public directory cannot be
+  imported from JavaScript"); out of public/ it is bundled into the page and not served as a separate file;
 - site/public/data/picks.json + site/public/models/pick_scene.xml: MuJoCo replays of real sim runs and the scene they run in;
 - site/public/media/*: the hero video, its poster and the plots, copied as is.
 
@@ -39,6 +41,7 @@ AUDITS = Path("/home/bam/bam_ws/reports/media/audits")
 SITE = Path(__file__).resolve().parent.parent / "site"
 DATA_OUT = SITE / "public" / "data"
 MEDIA_OUT = SITE / "public" / "media"
+SITE_JSON = SITE / "data" / "site.json"
 MODEL_OUT = SITE / "public" / "models" / "pick_scene.xml"
 
 # the replays: real sim runs, re-run with frames (the comparison's own cases, read back from results.json)
@@ -469,8 +472,9 @@ def main(argv: list[str] | None = None) -> int:
     }
     document["sources"] = sources.files
     DATA_OUT.mkdir(parents=True, exist_ok=True)
-    (DATA_OUT / "site.json").write_text(json.dumps(document, indent=1, sort_keys=False) + "\n")
-    print(f"  wrote {DATA_OUT / 'site.json'}")
+    SITE_JSON.parent.mkdir(parents=True, exist_ok=True)
+    SITE_JSON.write_text(json.dumps(document, indent=1, sort_keys=False) + "\n")
+    print(f"  wrote {SITE_JSON}")
 
     MODEL_OUT.parent.mkdir(parents=True, exist_ok=True)
     MODEL_OUT.write_text(scene_xml())

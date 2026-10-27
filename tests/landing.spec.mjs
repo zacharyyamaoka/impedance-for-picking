@@ -6,12 +6,13 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const SHOTS = join(dirname(fileURLToPath(import.meta.url)), '..', 'reports', 'media')
-const SECTIONS = ['overview', 'problem', 'how', 'demo', 'board', 'impact', 'fingers', 'results', 'tuning', 'crisp', 'verification', 'reproduce']
+const SECTIONS = ['overview', 'problem', 'how', 'demo', 'board', 'impact', 'explorer', 'joints', 'fingers', 'results', 'tuning', 'crisp', 'verification', 'reproduce']
 const VARIANTS = ['crisp', 'scope', 'editorial']
 
 // Third-party font CSS may be unreachable offline; that is not the page's error. The hand study's files land from another lane
-// (docs/data-contract.md): until they do, their 404s are the expected "not there yet", and the page shows a placeholder.
-const IGNORED = [/fonts\.googleapis\.com/, /fonts\.gstatic\.com/, /\/data\/hand(-[^/]*)?\.json/, /\/models\/arm_hand\.xml/]
+// (docs/data-contract.md): until they do, their 404s are the expected "not there yet", and the page shows a placeholder. The same
+// holds for factorial.json (the Explorer and the joint-loads section) and the v2 hand study's replay tapes.
+const IGNORED = [/fonts\.googleapis\.com/, /fonts\.gstatic\.com/, /\/data\/hand(-[^/]*)?\.json/, /\/models\/arm_hand\.xml/, /\/data\/factorial\.json/]
 
 function collectErrors(page) {
   const errors = []
@@ -56,7 +57,7 @@ async function useVariant(page, variant) {
 test('every section renders, with no console errors', async ({ page }) => {
   const errors = collectErrors(page)
   await page.setViewportSize({ width: 1440, height: 900 })
-  await page.goto('/')
+  await page.goto('./')
   for (const id of SECTIONS) {
     const section = page.locator(`main.lp > section#${id}`)
     await expect(section, id).toHaveCount(1)
@@ -79,7 +80,7 @@ test('every section renders, with no console errors', async ({ page }) => {
 })
 
 test('the hero video loads', async ({ page }) => {
-  await page.goto('/')
+  await page.goto('./')
   const video = page.getByTestId('hero-video')
   await expect(video).toBeVisible()
   await expect.poll(() => video.evaluate((v) => v.readyState), { timeout: 30_000 }).toBeGreaterThanOrEqual(1)
@@ -94,7 +95,7 @@ test('the hero video loads', async ({ page }) => {
 test('the replay draws the recorded runs in WebGL, plays, and switches the surface', async ({ page }) => {
   const errors = collectErrors(page)
   await page.setViewportSize({ width: 1440, height: 900 })
-  await page.goto('/#demo')
+  await page.goto('./#demo')
   const replay = page.getByTestId('pick-replay')
   await replay.scrollIntoViewIfNeeded()
   await expect(replay).toHaveAttribute('data-ready', 'true', { timeout: 90_000 })
@@ -119,7 +120,7 @@ test('the replay draws the recorded runs in WebGL, plays, and switches the surfa
 })
 
 test('all three design directions switch, and the choice is remembered', async ({ page }) => {
-  await page.goto('/')
+  await page.goto('./')
   const backgrounds = new Set()
   for (const [index, variant] of VARIANTS.entries()) {
     await page.locator('.pt-switcher .chip').click()
@@ -135,7 +136,7 @@ test('all three design directions switch, and the choice is remembered', async (
 })
 
 test('the ceiling chart is the exported table and answers the controls', async ({ page }) => {
-  await page.goto('/#board')
+  await page.goto('./#board')
   const chart = page.getByTestId('ceiling-chart')
   await chart.scrollIntoViewIfNeeded()
   // 100 Hz / 7 ms: stability.host_wn_ceiling's 55.7 and 233.6 rad/s, x4.2 / x17.6
@@ -152,7 +153,7 @@ test('the ceiling chart is the exported table and answers the controls', async (
 })
 
 test('the soft / rigid switch swaps the ablation ladder and the arm builds together', async ({ page }) => {
-  await page.goto('/#impact')
+  await page.goto('./#impact')
   const ladder = page.getByTestId('ablation-ladder')
   await ladder.scrollIntoViewIfNeeded()
   await expect(ladder).not.toHaveAttribute('data-state', 'loading', { timeout: 30_000 })
@@ -178,7 +179,7 @@ test('the hand study renders a contract-shaped hand.json (fixture until the sim 
   const errors = collectErrors(page)
   // WHY a fixture: docs/data-contract.md freezes the shape; this proves the component reads it, before the real file exists
   await page.route('**/data/hand.json', (route) => route.fulfill({ path: join(dirname(fileURLToPath(import.meta.url)), 'fixtures', 'hand.fixture.json'), contentType: 'application/json' }))
-  await page.goto('/#fingers')
+  await page.goto('./#fingers')
   const hand = page.getByTestId('hand-study')
   await hand.scrollIntoViewIfNeeded()
   await expect(hand).toHaveAttribute('data-state', 'data')
@@ -190,11 +191,43 @@ test('the hand study renders a contract-shaped hand.json (fixture until the sim 
   expect(errors).toEqual([])
 })
 
+test('the hand study renders a v2 hand.json: rigid fingers with compliant joints, contact models, the H-cases folded', async ({ page }) => {
+  const errors = collectErrors(page)
+  // WHY a fixture: docs/data-contract.md "hand.json v2 additions" freezes the shape; scripts/make_fixtures.py writes it
+  await page.route('**/data/hand.json', (route) => route.fulfill({ path: join(dirname(fileURLToPath(import.meta.url)), 'fixtures', 'hand2.fixture.json'), contentType: 'application/json' }))
+  await page.goto('./#fingers')
+  const hand = page.getByTestId('hand-study')
+  await hand.scrollIntoViewIfNeeded()
+  await expect(hand).toHaveAttribute('data-state', 'data')
+  await expect(hand.getByTestId('hand-answer')).toContainText('compliant finger joints')
+  // the soft arm first: J0 rigid, two virtual-spring stiffnesses, one series-elastic
+  await expect(hand.locator('.jcase')).toHaveCount(4)
+  await expect(hand.locator('.jgroup')).toHaveCount(3)
+  await expect(hand.locator('.jcase[data-case="J1-k500-arm_soft"] .travel .tbar')).toHaveCount(4)
+  await expect(hand.getByTestId('hand-kchart').locator('circle')).toHaveCount(3)
+  await expect(hand.getByTestId('hand-metrics')).toContainText('60 ms after first touch')
+  // the stiff arm: only the rigid-joint case in the fixture
+  await hand.locator('[data-arm="stiff"]').click()
+  await expect(hand.locator('.jcase')).toHaveCount(1)
+  // the contact models: the chosen one marked, the finding stated
+  const models = hand.getByTestId('contact-models')
+  await expect(models.locator('tbody tr')).toHaveCount(2)
+  await expect(models.locator('tr.chosen')).toContainText('Hunt-Crossley')
+  // the first study's H-cases sit folded underneath, and still answer the object switch
+  const legacy = hand.getByTestId('hand-legacy')
+  await legacy.locator('summary').click()
+  await expect(legacy.locator('.case')).toHaveCount(3)
+  const before = await hand.locator('.jcase').first().locator('.nums').innerText()
+  await page.locator('#fingers').getByTestId('object-toggle').locator('[data-object="soft"]').click()
+  await expect(hand.locator('.jcase').first().locator('.nums')).not.toHaveText(before)
+  expect(errors).toEqual([])
+})
+
 test('390 px phone: no horizontal scroll and nothing pokes out of the page', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   for (const variant of VARIANTS) {
     await useVariant(page, variant)
-    await page.goto('/')
+    await page.goto('./')
     await page.waitForLoadState('networkidle')
     const result = await page.evaluate(() => {
       const width = window.innerWidth
@@ -235,7 +268,7 @@ test('screenshots of each direction, desktop and phone (review media)', async ({
         const context = await browser.newContext({ viewport: { width: view.width, height: view.height }, colorScheme: scheme })
         const page = await context.newPage()
         await useVariant(page, variant)
-        await page.goto('/')
+        await page.goto('./')
         await page.waitForLoadState('networkidle')
         await page.screenshot({ path: join(SHOTS, `landing-${variant}-${scheme}-${view.name}-hero.png`) })
         for (const id of ['demo', 'impact', 'results']) {

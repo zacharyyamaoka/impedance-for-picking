@@ -3,12 +3,14 @@
 // WHY the timings are generous: the pick is 2.85 s of simulated time played in real time, and headless Chrome renders WebGL in software.
 import { expect, test } from '@playwright/test'
 
-const LIVE = '/live.html'
+// WHY relative: under SITE_BASE the site lives below a prefix (playwright.config.mjs), and './' resolves against it
+const LIVE = './live.html'
 
 function watchConsole(page) {
   const errors = []
   page.on('console', (message) => {
-    if (message.type() === 'error') errors.push(message.text())
+    // WHY: factorial.json lands from the sim lane (docs/data-contract.md); until then its 404 is the Explorer's expected "not yet"
+    if (message.type() === 'error' && !/\/data\/factorial\.json/.test(message.location()?.url ?? '')) errors.push(message.text())
   })
   page.on('pageerror', (error) => errors.push(error.message))
   return errors
@@ -146,7 +148,7 @@ test('at 390 px the controls stack under the view and nothing scrolls sideways',
 test('the landing page mounts it too and autoruns a pick once in view', async ({ page }) => {
   const errors = watchConsole(page)
   await page.setViewportSize({ width: 1400, height: 1000 })
-  await page.goto('/')
+  await page.goto('./')
   const root = await ready(page)
   await expect(root).toHaveAttribute('data-state', /running|done/, { timeout: 30_000 })
   expect(errors).toEqual([])

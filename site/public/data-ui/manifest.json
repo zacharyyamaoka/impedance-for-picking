@@ -1,0 +1,225 @@
+{
+ "name": "data-ui",
+ "version": "0.1.0",
+ "views": [
+  {
+   "type": "calendar",
+   "folder": "calendar",
+   "status": "built"
+  },
+  {
+   "type": "cards",
+   "folder": "cards",
+   "status": "built"
+  },
+  {
+   "type": "chart",
+   "folder": "chart",
+   "status": "built"
+  },
+  {
+   "type": "compare",
+   "folder": "compare",
+   "status": "built"
+  },
+  {
+   "type": "graph",
+   "folder": "graph",
+   "status": "built"
+  },
+  {
+   "type": "kanban",
+   "folder": "kanban",
+   "status": "built"
+  },
+  {
+   "type": "kpi",
+   "folder": "kpi",
+   "status": "built"
+  },
+  {
+   "type": "list",
+   "folder": "list",
+   "status": "built"
+  },
+  {
+   "type": "map",
+   "folder": "map",
+   "status": "built"
+  },
+  {
+   "type": "record",
+   "folder": "record",
+   "status": "built"
+  },
+  {
+   "type": "table",
+   "folder": "table",
+   "status": "built"
+  },
+  {
+   "type": "pivot",
+   "folder": "table",
+   "status": "built"
+  },
+  {
+   "type": "timeline",
+   "folder": "timeline",
+   "status": "built"
+  }
+ ],
+ "files": {
+  "LICENSES.md": {
+   "bytes": 121237,
+   "sha256": "d0c97d62381c56568879473341d1fb5c997d8b96a5006a80985d8aa2b0e43b5d"
+  },
+  "dashboard.js": {
+   "bytes": 26378,
+   "sha256": "15feed61be990a26aa2ef38aa3c0c1f28f20c5fccc3fb6b66fc7de2972f26d9c"
+  },
+  "dashboard.js.map": {
+   "bytes": 80501,
+   "sha256": "6b61736f08e21751b50f50c51373ed0b99eb4e003d5b282b614c2e49669d47b4"
+  },
+  "data-ui.css": {
+   "bytes": 40352,
+   "sha256": "c77878078b57ca9df84f27989da767798fe4f3d67c392676f65e58d60359a38b"
+  },
+  "data-ui.js": {
+   "bytes": 261770,
+   "sha256": "5e66fc1df7ac4f309e54e0b385f3863f3b6bb537947aeea3f0cbea3e560c8771"
+  },
+  "data-ui.js.map": {
+   "bytes": 1073437,
+   "sha256": "c9be9726c9768088f749171868acd7d945179916a47456b1a1dd89960c7f3568"
+  },
+  "python/data_ui_base.py": {
+   "bytes": 17698,
+   "sha256": "39dfd03d3294716daf4767a0236bfba082914865097dbbb02815ce019efb0588"
+  },
+  "resize.js": {
+   "bytes": 5583,
+   "sha256": "16e34c260f1e4453a20c4af03d092fa7a2fabe06e17e6de4ab08af535e7c2b38"
+  },
+  "resize.js.map": {
+   "bytes": 17325,
+   "sha256": "01d6031f79876a79ab5cd4da7e43d448a5752951a9f87c9064c9932b7a4fa57a"
+  },
+  "rowmodel-worker.js": {
+   "bytes": 80941,
+   "sha256": "65ac649e19d1b8ea5914e3737807860c4e892b33d78cdc208614456fd20e67b8"
+  },
+  "rowmodel-worker.js.map": {
+   "bytes": 461904,
+   "sha256": "da6716ad508c4d3b0d13a239094bb5c0e1b1683836748b187ddc51945e75257b"
+  },
+  "views/calendar.js": {
+   "bytes": 158056,
+   "sha256": "4d90fce71e374c547d5d30169ceb19a95b9dfbaa2f70a1b5aa637b6e89f9fdb6"
+  },
+  "views/calendar.js.map": {
+   "bytes": 37372,
+   "sha256": "d7c2731110476e065afc35d650ae8131d2f1dc1cb7ed6dc00703d7007013bde7"
+  },
+  "views/cards-lightbox-2WWOLVAR.js": {
+   "bytes": 67965,
+   "sha256": "c669c71bd3f847bfd2cab80aa86684e8a25ef87ef1df83e459cda93bbdd6ad6d"
+  },
+  "views/cards-lightbox-2WWOLVAR.js.map": {
+   "bytes": 304958,
+   "sha256": "825252d97b87d1ab16ca180e8345b3386ff06452d83077ca667c384fd08172af"
+  },
+  "views/cards.js": {
+   "bytes": 15442,
+   "sha256": "327c4b7e97adfade98b63f473ac1816a152c4e76cce8eca52925aa9e0cc8bc5d"
+  },
+  "views/cards.js.map": {
+   "bytes": 38847,
+   "sha256": "3999242a38241d08a3db0d1583472c8d198000f79ed9b3d83603a119721931f8"
+  },
+  "views/chart.js": {
+   "bytes": 874366,
+   "sha256": "3340c938076ab1e6f12aac1346f22f06f4fa2a45ebffd992f3e3e3f99ff14a82"
+  },
+  "views/chart.js.map": {
+   "bytes": 4506020,
+   "sha256": "463b298c85104954a48f9550ebcb172c1b3354e88d949a5635af85cdaf930f21"
+  },
+  "views/compare.js": {
+   "bytes": 22958,
+   "sha256": "fb7ab1ba30368a09e66a885ee0c8de6de9d1a45db10efab8a6fa79319c4c9463"
+  },
+  "views/compare.js.map": {
+   "bytes": 58316,
+   "sha256": "47e0ef1d84ded167b99c36cb114a44507963adb22da94f9faa84827e939618a5"
+  },
+  "views/graph.js": {
+   "bytes": 482046,
+   "sha256": "7800cce94f1c23450d072ce596b5d4973cd7d942669a754e5944a7803c093875"
+  },
+  "views/graph.js.map": {
+   "bytes": 2248391,
+   "sha256": "23c549f1f7edb68ef9f51cc1df77dd10389fa96c915b82abb13ff786c757dc5e"
+  },
+  "views/kanban.js": {
+   "bytes": 40661,
+   "sha256": "4cdf94854a6bfe06009efb0a81d97e5e7b1864ba66ae17dee6a58e8aa2698ff1"
+  },
+  "views/kanban.js.map": {
+   "bytes": 171766,
+   "sha256": "5a680886b3bd3cefd25e50767c880464d7a5db8038949ca9f76c57b89fcf0667"
+  },
+  "views/kpi.js": {
+   "bytes": 18684,
+   "sha256": "69fb0a209cf932bd8a8d6f33badedbd3e8bb5e17190c42c094d751d573789ab8"
+  },
+  "views/kpi.js.map": {
+   "bytes": 54827,
+   "sha256": "174378f1bc7b552ca4511b63dc1cf3077c7d7f089eb44a565b69a7cab6d95767"
+  },
+  "views/list.js": {
+   "bytes": 12008,
+   "sha256": "40537a9fffa417c69e73b7a9a1c588594c23e353d82c972123a88520b057e73b"
+  },
+  "views/list.js.map": {
+   "bytes": 29114,
+   "sha256": "5338cd0689f2fad4ffba4a1cef942e49c6ce3e750b4ec66dbf926dfdb615d197"
+  },
+  "views/map.js": {
+   "bytes": 1333100,
+   "sha256": "e007a1b7d1411aa3e77095ce7e754f944224e898155605cab15140dfb89913be"
+  },
+  "views/map.js.map": {
+   "bytes": 6169905,
+   "sha256": "d9aeebf326744d336207e339d356bdb39cd08f325faf2bb040f844058acfd1d7"
+  },
+  "views/maplibre-gl-worker.mjs": {
+   "bytes": 519372,
+   "sha256": "0bf06492bdb7ba3d4132b78e435621bfba60d5250967991c02b1a73affea8cd5"
+  },
+  "views/record.js": {
+   "bytes": 11714,
+   "sha256": "05186d2064458538a8d2b8b954ac13ad1e7b74775ca9e1dc1085c8a90ad0de93"
+  },
+  "views/record.js.map": {
+   "bytes": 26478,
+   "sha256": "4acac30b66c58a6f0bdf5d4192ec9cee4cc139063e98c4b00f670b349ec4d586"
+  },
+  "views/table.js": {
+   "bytes": 33243,
+   "sha256": "3b08d1c0a5af25c4ef9574be0f49a3d9c83d1d8808d3ee17467e24bd69d28584"
+  },
+  "views/table.js.map": {
+   "bytes": 96436,
+   "sha256": "c1ac17c0f52feabc7041d9d0c2b52a4fabc3152d38017ed280932383dbe7780f"
+  },
+  "views/timeline.js": {
+   "bytes": 596853,
+   "sha256": "a51a1bd75a749143ec638f6a0720a333d8ab6fbe4d55582f4011b184895a50e5"
+  },
+  "views/timeline.js.map": {
+   "bytes": 2288417,
+   "sha256": "2262489000a38e6099c0ac3ea37f06fc9834d32a131741853edeeb30ea032a69"
+  }
+ }
+}
