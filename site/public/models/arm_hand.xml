@@ -1,0 +1,118 @@
+<mujoco model="arm_hand">
+  <!-- bam_impedance_controller's hand study scene (sim/hand.py, the TRUE model) for the site's replays: the PID tuner's UR5e fixture (kinematics and inertials of MuJoCo Menagerie's universal_robots_ur5e, BSD-3-Clause, drawn with capsules - see NOTICE.md; links x 0.3, the qdd_light build), hand-ladder's L3_2x2 hand (two opposed 2-DoF fingers, capsules and tip spheres) on the tool flange, a stopped belt and a 40 mm block (free joint). qpos = 6 arm joints, F1_prox, F1_dist, F2_prox, F2_dist, the block's free joint. Written by docs/hand_study.py. -->
+  <!-- Kinematics and inertials of the MuJoCo Menagerie UR5e, nothing else: no meshes, actuators, keyframes or contacts.
+       Joint armature / damping / frictionloss are 0 here; bam_pid_tunning's ArmSim sets them per joint from its truths. -->
+  <compiler angle="radian"/>
+
+  <option timestep="0.000125" integrator="implicitfast" cone="elliptic" noslip_iterations="5"/>
+
+  <worldbody>
+    <geom name="floor" size="2 2 0.05" pos="0 0 -0.001" type="plane" contype="0" conaffinity="0" rgba="0.86 0.87 0.88 1"/>
+    <camera name="side" pos="-0.05 -1.25 0.24" quat="0.748046 0.663647 0 0" fovy="32"/>
+    <light name="key" pos="0.6 0.4 2" dir="-0.282216 -0.188144 -0.940721" diffuse="0.75 0.75 0.75"/>
+    <light name="fill" pos="-0.8 -1.5 1.2" dir="0.39036 0.78072 -0.48795" diffuse="0.35 0.35 0.35"/>
+    <body name="base" quat="0 0 0 -1">
+      <inertial pos="0 0 0" mass="4" diaginertia="0.00443333 0.00443333 0.0072"/>
+      <geom size="0.05 0.0815" pos="0 0 0.0815" quat="0 1 0 0" type="capsule" contype="0" conaffinity="0" group="3"/>
+      <body name="shoulder_link" pos="0 0 0.163">
+        <inertial pos="0 0 0" mass="1.11" diaginertia="0.00308025 0.00308025 0.001998"/>
+        <joint name="shoulder_pan_joint" pos="0 0 0" axis="0 0 1" range="-6.28319 6.28319"/>
+        <geom size="0.05 0.069" pos="0 0.069 0" quat="0.707107 0.707107 0 0" type="capsule" contype="0" conaffinity="0" group="3"/>
+        <body name="upper_arm_link" pos="0 0.138 0" quat="0.707107 0 0.707107 0">
+          <inertial pos="0 0 0.2125" mass="2.5179" diaginertia="0.0401658 0.0401658 0.00453222"/>
+          <joint name="shoulder_lift_joint" pos="0 0 0" axis="0 1 0" range="-6.28319 6.28319"/>
+          <geom size="0.05 0.222366" pos="0 -0.0655 0.2125" quat="0.148941 -0.988846 0 0" type="capsule" contype="0" conaffinity="0" group="3"/>
+          <body name="forearm_link" pos="0 -0.131 0.425">
+            <inertial pos="0 0 0.196" mass="0.6825" diaginertia="0.00935388 0.00935388 0.0012285"/>
+            <joint name="elbow_joint" pos="0 0 0" axis="0 1 0" range="-3.1415 3.1415"/>
+            <geom size="0.04 0.196" pos="0 0 0.196" quat="0 1 0 0" type="capsule" contype="0" conaffinity="0" group="3"/>
+            <body name="wrist_1_link" pos="0 0 0.392" quat="0.707107 0 0.707107 0">
+              <inertial pos="0 0.127 0" mass="0.3657" diaginertia="0.00076797 0.00076797 0.00065826"/>
+              <joint name="wrist_1_joint" pos="0 0 0" axis="0 1 0" range="-6.28319 6.28319"/>
+              <geom size="0.04 0.0635" pos="0 0.0635 0" quat="0.707107 0.707107 0 0" type="capsule" contype="0" conaffinity="0" group="3"/>
+              <body name="wrist_2_link" pos="0 0.127 0">
+                <inertial pos="0 0 0.1" mass="0.3657" diaginertia="0.00076797 0.00076797 0.00065826"/>
+                <joint name="wrist_2_joint" pos="0 0 0" axis="0 0 1" range="-6.28319 6.28319"/>
+                <geom size="0.04 0.05" pos="0 0 0.05" quat="0 1 0 0" type="capsule" contype="0" conaffinity="0" group="3"/>
+                <body name="wrist_3_link" pos="0 0 0.1">
+                  <inertial pos="0 0.0771683 0" quat="0.707107 0 0 0.707107" mass="0.05667" diaginertia="3.96402e-05 2.97259e-05 2.97259e-05"/>
+                  <joint name="wrist_3_joint" pos="0 0 0" axis="0 1 0" range="-6.28319 6.28319"/>
+                  <geom size="0.04 0.05" pos="0 0.05 0" quat="0.707107 0.707107 0 0" type="capsule" contype="0" conaffinity="0" group="3"/>
+                  <site name="tool" pos="0 0.1 0" quat="-0.707107 0.707107 0 0" size="0.01"/>
+                  <body name="palm" pos="0 0.14 0" quat="-0.707107 -0.707107 0 0">
+                    <inertial pos="0 0 0.02" mass="0.6" diaginertia="0.0001768 0.0005218 0.0005386"/>
+                    <geom name="palm_block" size="0.047 0.022 0.02" pos="0 0 0.02" type="box" contype="0" conaffinity="0" rgba="0.55 0.58 0.62 1"/>
+                    <site name="flange" pos="0 0 0.04" size="0.004"/>
+                    <site name="tcp" pos="0 0 -0.0834407" quat="0 1 0 0" size="0.004"/>
+                    <body name="F1_base" pos="-0.025 0 0">
+                      <body name="F1_prox">
+                        <joint name="F1_prox" pos="0 0 0" axis="0 -1 0" limited="true" range="-1.5708 1.5708" armature="0.0004" damping="0.01"/>
+                        <geom name="F1_prox_link" size="0.008 0.025" pos="0 0 -0.025" type="capsule" contype="0" conaffinity="0" rgba="0.42 0.52 0.66 1"/>
+                        <body name="F1_dist" pos="0 0 -0.05">
+                          <joint name="F1_dist" pos="0 0 0" axis="0 -1 0" limited="true" range="0 2.0944" armature="0.0004" damping="0.01"/>
+                          <geom name="F1_dist_link" size="0.008 0.021" pos="0 0 -0.021" type="capsule" contype="0" conaffinity="0" rgba="0.42 0.52 0.66 1"/>
+                          <geom name="F1_tip" size="0.008" pos="0 0 -0.05" contype="0" conaffinity="0" rgba="0.25 0.36 0.55 1"/>
+                          <site name="F1_tip_site" pos="0 0 -0.05" size="0.003"/>
+                        </body>
+                      </body>
+                    </body>
+                    <body name="F2_base" pos="0.025 0 0" quat="0 0 0 1">
+                      <body name="F2_prox">
+                        <joint name="F2_prox" pos="0 0 0" axis="0 -1 0" limited="true" range="-1.5708 1.5708" armature="0.0004" damping="0.01"/>
+                        <geom name="F2_prox_link" size="0.008 0.025" pos="0 0 -0.025" type="capsule" contype="0" conaffinity="0" rgba="0.42 0.52 0.66 1"/>
+                        <body name="F2_dist" pos="0 0 -0.05">
+                          <joint name="F2_dist" pos="0 0 0" axis="0 -1 0" limited="true" range="0 2.0944" armature="0.0004" damping="0.01"/>
+                          <geom name="F2_dist_link" size="0.008 0.021" pos="0 0 -0.021" type="capsule" contype="0" conaffinity="0" rgba="0.42 0.52 0.66 1"/>
+                          <geom name="F2_tip" size="0.008" pos="0 0 -0.05" contype="0" conaffinity="0" rgba="0.25 0.36 0.55 1"/>
+                          <site name="F2_tip_site" pos="0 0 -0.05" size="0.003"/>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="belt" pos="-0.1 -0.45 0.09">
+      <geom name="belt_surface" size="0.3 0.2 0.02" type="box" contype="0" conaffinity="0" rgba="0.18 0.2 0.22 1"/>
+      <geom size="0.004 0.2 0.0005" pos="-0.2 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="-0.1 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="0 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="0.1 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+      <geom size="0.004 0.2 0.0005" pos="0.2 0 0.02" type="box" contype="0" conaffinity="0" mass="0" rgba="0.85 0.85 0.2 1"/>
+    </body>
+    <body name="block" pos="-0.1 -0.45 0.13">
+      <joint name="block_free" type="free"/>
+      <geom name="block_geom" size="0.02 0.02 0.02" type="box" contype="0" conaffinity="0" mass="0.15" rgba="0.85 0.55 0.25 1"/>
+    </body>
+  </worldbody>
+
+  <contact>
+    <pair geom1="palm_block" geom2="belt_surface" name="palm_block|belt" solref="-10000 -10" solimp="0.05 0.05" friction="0.6 0.6 0.005 0.0001 0.0001"/>
+    <pair geom1="palm_block" geom2="block_geom" name="palm_block|block" condim="4" solref="-10000 -10" solimp="0.05 0.05" friction="0.6 0.6 0.005 0.0001 0.0001"/>
+    <pair geom1="F1_prox_link" geom2="belt_surface" name="F1_prox_link|belt" solref="-10000 -10" solimp="0.05 0.05" friction="0.6 0.6 0.005 0.0001 0.0001"/>
+    <pair geom1="F1_prox_link" geom2="block_geom" name="F1_prox_link|block" condim="4" solref="-10000 -10" solimp="0.05 0.05" friction="0.6 0.6 0.005 0.0001 0.0001"/>
+    <pair geom1="F1_dist_link" geom2="F2_dist_link" name="F1_dist_link|F2_dist_link" solref="-10000 -10" solimp="0.05 0.05" friction="0.5 0.5 0.005 0.0001 0.0001"/>
+    <pair geom1="F1_dist_link" geom2="F2_tip" name="F1_dist_link|F2_tip" solref="-10000 -10" solimp="0.05 0.05" friction="0.5 0.5 0.005 0.0001 0.0001"/>
+    <pair geom1="F1_tip" geom2="F2_dist_link" name="F1_tip|F2_dist_link" solref="-10000 -10" solimp="0.05 0.05" friction="0.5 0.5 0.005 0.0001 0.0001"/>
+    <pair geom1="F1_tip" geom2="F2_tip" name="F1_tip|F2_tip" solref="-10000 -10" solimp="0.05 0.05" friction="0.5 0.5 0.005 0.0001 0.0001"/>
+    <pair geom1="F1_dist_link" geom2="belt_surface" name="F1_dist_link|belt" solref="-10000 -10" solimp="0.05 0.05" friction="0.6 0.6 0.005 0.0001 0.0001"/>
+    <pair geom1="F1_tip" geom2="belt_surface" name="F1_tip|belt" solref="-10000 -10" solimp="0.05 0.05" friction="0.6 0.6 0.005 0.0001 0.0001"/>
+    <pair geom1="F1_dist_link" geom2="block_geom" name="F1_dist_link|block" condim="4" solref="-10000 -10" solimp="0.05 0.05" friction="0.6 0.6 0.005 0.0001 0.0001"/>
+    <pair geom1="F1_tip" geom2="block_geom" name="F1_tip|block" condim="4" solref="-10000 -10" solimp="0.05 0.05" friction="0.6 0.6 0.005 0.0001 0.0001"/>
+    <pair geom1="F2_prox_link" geom2="belt_surface" name="F2_prox_link|belt" solref="-10000 -10" solimp="0.05 0.05" friction="0.6 0.6 0.005 0.0001 0.0001"/>
+    <pair geom1="F2_prox_link" geom2="block_geom" name="F2_prox_link|block" condim="4" solref="-10000 -10" solimp="0.05 0.05" friction="0.6 0.6 0.005 0.0001 0.0001"/>
+    <pair geom1="F2_dist_link" geom2="belt_surface" name="F2_dist_link|belt" solref="-10000 -10" solimp="0.05 0.05" friction="0.6 0.6 0.005 0.0001 0.0001"/>
+    <pair geom1="F2_tip" geom2="belt_surface" name="F2_tip|belt" solref="-10000 -10" solimp="0.05 0.05" friction="0.6 0.6 0.005 0.0001 0.0001"/>
+    <pair geom1="F2_dist_link" geom2="block_geom" name="F2_dist_link|block" condim="4" solref="-10000 -10" solimp="0.05 0.05" friction="0.6 0.6 0.005 0.0001 0.0001"/>
+    <pair geom1="F2_tip" geom2="block_geom" name="F2_tip|block" condim="4" solref="-10000 -10" solimp="0.05 0.05" friction="0.6 0.6 0.005 0.0001 0.0001"/>
+    <pair geom1="belt_surface" geom2="block_geom" name="block|belt" condim="4" solref="-10000 -10" solimp="0.05 0.05" friction="0.6 0.6 0.005 0.0001 0.0001"/>
+  </contact>
+
+  <sensor>
+    <force site="flange" name="flange_force"/>
+  </sensor>
+</mujoco>
