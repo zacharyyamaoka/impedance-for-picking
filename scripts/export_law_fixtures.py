@@ -481,8 +481,9 @@ def export_arm2d() -> None:
     cases = [
         # free swing from rest under gravity, viscous + armature, no Coulomb: the rigid-body dynamics alone
         {"name": "free_swing", "q0": [0.6, -1.1], "v0": [0.0, 0.0], "coulomb": [0.0, 0.0], "durationS": 1.0},
-        # the same with the JMC-like dry friction: swings, then sticks
-        {"name": "free_swing_coulomb", "q0": [1.2, -0.4], "v0": [0.0, 0.0], "coulomb": jmc, "durationS": 1.0},
+        # the JMC-like dry friction holds the arm against gravity at rest (23 % of the cap), so this one is thrown: it slides,
+        # the elbow sticks first, then the shoulder
+        {"name": "free_swing_coulomb", "q0": [0.3, -0.6], "v0": [4.0, -6.0], "coulomb": jmc, "durationS": 1.0},
         # a joint PD pulls the tip from 2 cm above the belt to a target 3 cm into it: the touch, the bounce, the steady press
         {"name": "pressed_contact", "q0": [0.0, 0.0], "v0": [0.0, 0.0], "coulomb": [0.0, 0.0], "durationS": 0.6, "surfaceZ": -0.30,
          "pd": {"kp": [300.0, 120.0], "kd": [6.0, 2.0], "target": [0.0, 0.0], "ff": [0.0, 0.0]}},
