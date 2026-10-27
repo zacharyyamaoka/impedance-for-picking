@@ -8,6 +8,8 @@ const remote = process.env.BASE_URL
 
 export default defineConfig({
   testDir: 'tests',
+  // WHY: tests/unit holds vitest files; Playwright must only run the page specs
+  testMatch: '*.spec.mjs',
   timeout: 120_000,
   expect: { timeout: 30_000 },
   reporter: [['list']],
